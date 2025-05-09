@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2in52y6ycisl"]
+
+[ext_resource type="Texture2D" uid="uid://bdq214k1dfden" path="res://assets/towers/gun-turret/Gun-Turret-1.png" id="1_y2kio"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c54au"]
+atlas = ExtResource("1_y2kio")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doq0e"]
+atlas = ExtResource("1_y2kio")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsm4w"]
+atlas = ExtResource("1_y2kio")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mu2o"]
+atlas = ExtResource("1_y2kio")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thp5d"]
+atlas = ExtResource("1_y2kio")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_edxmu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c54au")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doq0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsm4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mu2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thp5d")
+}],
+"loop": true,
+"name": &"nembak",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcaos"]
+size = Vector2(42, 29)
+
+[node name="GunTurret" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_edxmu")
+animation = &"nembak"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_wcaos")

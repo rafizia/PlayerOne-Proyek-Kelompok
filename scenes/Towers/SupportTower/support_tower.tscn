@@ -1,0 +1,110 @@
+[gd_scene load_steps=16 format=3 uid="uid://ctkn6sofm7345"]
+
+[ext_resource type="Texture2D" uid="uid://br6x7xc2afh7c" path="res://assets/towers/support-tower/Support-Tower-2-anim.png" id="1_eifr0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2sy7"]
+atlas = ExtResource("1_eifr0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1ktu"]
+atlas = ExtResource("1_eifr0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn1o5"]
+atlas = ExtResource("1_eifr0")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt0nc"]
+atlas = ExtResource("1_eifr0")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as7kh"]
+atlas = ExtResource("1_eifr0")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3th4"]
+atlas = ExtResource("1_eifr0")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pv4o0"]
+atlas = ExtResource("1_eifr0")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nutpa"]
+atlas = ExtResource("1_eifr0")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy3b1"]
+atlas = ExtResource("1_eifr0")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5mxn"]
+atlas = ExtResource("1_eifr0")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8irav"]
+atlas = ExtResource("1_eifr0")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrxoi"]
+atlas = ExtResource("1_eifr0")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w2tke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2sy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1ktu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn1o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kt0nc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_as7kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3th4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pv4o0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nutpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vy3b1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5mxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8irav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrxoi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51k52"]
+size = Vector2(34, 47)
+
+[node name="SupportTower" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w2tke")
+autoplay = "default"
+frame = 1
+frame_progress = 0.0721667
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_51k52")
