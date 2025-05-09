@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjmcp3atom5c8"]
+
+[ext_resource type="Texture2D" uid="uid://d8ol186cbcun" path="res://assets/towers/gun-turret/Bullet-Red.png" id="1_g7rx7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5m8pp"]
+size = Vector2(23, 8)
+
+[node name="BulletRed" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_g7rx7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_5m8pp")
