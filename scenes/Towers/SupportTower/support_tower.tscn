@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://ctkn6sofm7345"]
+[gd_scene load_steps=17 format=3 uid="uid://ctkn6sofm7345"]
 
+[ext_resource type="Script" path="res://scripts/towers/support_tower.gd" id="1_1krxg"]
 [ext_resource type="Texture2D" uid="uid://br6x7xc2afh7c" path="res://assets/towers/support-tower/Support-Tower-2-anim.png" id="1_eifr0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y2sy7"]
@@ -98,6 +99,7 @@ animations = [{
 size = Vector2(34, 47)
 
 [node name="SupportTower" type="StaticBody2D"]
+script = ExtResource("1_1krxg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_w2tke")
