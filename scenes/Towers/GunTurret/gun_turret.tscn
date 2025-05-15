@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2in52y6ycisl"]
+[gd_scene load_steps=12 format=3 uid="uid://d2in52y6ycisl"]
 
+[ext_resource type="Script" path="res://scripts/towers/attack_tower.gd" id="1_7cibg"]
 [ext_resource type="Texture2D" uid="uid://bdq214k1dfden" path="res://assets/towers/gun-turret/Gun-Turret-1.png" id="1_y2kio"]
+[ext_resource type="PackedScene" uid="uid://cjmcp3atom5c8" path="res://scenes/Towers/GunTurret/bullet_red.tscn" id="2_wanj0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c54au"]
 atlas = ExtResource("1_y2kio")
@@ -53,7 +55,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcaos"]
 size = Vector2(42, 29)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bgwk7"]
+radius = 120.0
+
 [node name="GunTurret" type="StaticBody2D"]
+script = ExtResource("1_7cibg")
+bullet_scene = ExtResource("2_wanj0")
+
+[node name="Aim" type="Marker2D" parent="."]
+position = Vector2(30, -5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_edxmu")
@@ -62,3 +72,14 @@ animation = &"nembak"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_wcaos")
+
+[node name="Sight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
+shape = SubResource("CircleShape2D_bgwk7")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Sight" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Sight" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
