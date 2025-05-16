@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m55df3dechs1"
-path="res://.godot/imported/character_sprite_sheet.png-92090f2cbc9da7284e70adcaa9ba62ca.ctex"
+uid="uid://bnwgfnlxqabr1"
+path="res://.godot/imported/seasonal sample (spring).png-a529d7b427ee81b7cf971e049a1767f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/The Painted Lands - Forest Tileset/character_sprite_sheet.png"
-dest_files=["res://.godot/imported/character_sprite_sheet.png-92090f2cbc9da7284e70adcaa9ba62ca.ctex"]
+source_file="res://assets/mana seed seasonal forest sample (spring)/seasonal sample (spring).png"
+dest_files=["res://.godot/imported/seasonal sample (spring).png-a529d7b427ee81b7cf971e049a1767f4.ctex"]
 
 [params]
 
