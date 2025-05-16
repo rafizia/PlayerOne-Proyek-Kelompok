@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm8es100xod2f"
-path="res://.godot/imported/bush.png-ba208cddb7fda653644197eb053b8468.ctex"
+uid="uid://c44odg3vtfo33"
+path="res://.godot/imported/autumn waterfall B 16x16.png-a79fd51f2a7dcf384e7721e2b3eba994.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/The Painted Lands - Forest Tileset/bush.png"
-dest_files=["res://.godot/imported/bush.png-ba208cddb7fda653644197eb053b8468.ctex"]
+source_file="res://assets/mana seed seasonal forest sample (autumn)/seasonal water animations/autumn waterfall B 16x16.png"
+dest_files=["res://.godot/imported/autumn waterfall B 16x16.png-a79fd51f2a7dcf384e7721e2b3eba994.ctex"]
 
 [params]
 

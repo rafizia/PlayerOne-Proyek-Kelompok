@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4kv4lh44o3hu"
-path="res://.godot/imported/firecamp.png-ea25e69409f8f6e95ae528f819ee6ae2.ctex"
+uid="uid://bv3taycgdex23"
+path="res://.godot/imported/autumn water sparkles B 16x16.png-c4efe8bd39f2fa2002bb2e7f98705458.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/The Painted Lands - Forest Tileset/firecamp.png"
-dest_files=["res://.godot/imported/firecamp.png-ea25e69409f8f6e95ae528f819ee6ae2.ctex"]
+source_file="res://assets/mana seed seasonal forest sample (autumn)/seasonal water animations/autumn water sparkles B 16x16.png"
+dest_files=["res://.godot/imported/autumn water sparkles B 16x16.png-c4efe8bd39f2fa2002bb2e7f98705458.ctex"]
 
 [params]
 

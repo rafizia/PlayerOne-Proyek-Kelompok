@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbrj38uhc012i"
-path="res://.godot/imported/TILESET.png-40e19a1441cdf6cab4176d2ea7e220ed.ctex"
+uid="uid://dlj0y2ik0g70o"
+path="res://.godot/imported/ground_tiles.png-043ef234c087fd1051f9a11035533c73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/The Painted Lands - Forest Tileset/TILESET.png"
-dest_files=["res://.godot/imported/TILESET.png-40e19a1441cdf6cab4176d2ea7e220ed.ctex"]
+source_file="res://assets/ground_tiles.png"
+dest_files=["res://.godot/imported/ground_tiles.png-043ef234c087fd1051f9a11035533c73.ctex"]
 
 [params]
 

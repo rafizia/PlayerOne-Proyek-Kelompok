@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvigf8rsih5u7"
-path="res://.godot/imported/explanations.png-f6c2ccc58f182fdc3b3209e843638567.ctex"
+uid="uid://f504iiinf0xm"
+path="res://.godot/imported/seasonal sample (winter).png-e2ad68c90c46a6d6e64c05a9b7daff97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/The Painted Lands - Forest Tileset/explanations.png"
-dest_files=["res://.godot/imported/explanations.png-f6c2ccc58f182fdc3b3209e843638567.ctex"]
+source_file="res://assets/mana seed seasonal forest sample (winter)/seasonal sample (winter).png"
+dest_files=["res://.godot/imported/seasonal sample (winter).png-e2ad68c90c46a6d6e64c05a9b7daff97.ctex"]
 
 [params]
 
