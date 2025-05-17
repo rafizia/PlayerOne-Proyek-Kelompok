@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=4 uid="uid://clgmvh0gs4f8t"]
+[gd_scene load_steps=18 format=4 uid="uid://clgmvh0gs4f8t"]
 
 [ext_resource type="Texture2D" uid="uid://f504iiinf0xm" path="res://assets/mana seed seasonal forest sample (winter)/seasonal sample (winter).png" id="1_vxnwx"]
 [ext_resource type="Texture2D" uid="uid://c67y66bqmu60i" path="res://assets/mana seed seasonal forest sample (winter)/seasonal water animations/winter water sparkles B 16x16.png" id="2_yvqe0"]
+[ext_resource type="PackedScene" uid="uid://j6misgjrn25h" path="res://scenes/UI/tower_selections_ui.tscn" id="3_i6xd4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ss4h"]
 texture = ExtResource("1_vxnwx")
@@ -1452,3 +1453,7 @@ tile_set = SubResource("TileSet_dtygc")
 position = Vector2(536, 307)
 scale = Vector2(5, 1)
 zoom = Vector2(1.1, 1.1)
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="TowerSelectionsUI" parent="." instance=ExtResource("3_i6xd4")]
