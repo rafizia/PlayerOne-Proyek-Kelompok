@@ -7,6 +7,10 @@ size = Vector2(23, 8)
 
 [node name="BulletGreen" type="CharacterBody2D"]
 
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("1_51044")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vrnb0")
 
