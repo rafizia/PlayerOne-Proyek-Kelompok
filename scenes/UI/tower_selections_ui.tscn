@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://j6misgjrn25h"]
+
+[ext_resource type="PackedScene" uid="uid://yft57h3u8x5c" path="res://scenes/UI/gun_turret_panel.tscn" id="1_k3p2b"]
+[ext_resource type="PackedScene" uid="uid://76h8yy252gon" path="res://scenes/UI/sniper_tower_panel.tscn" id="2_qsqdr"]
+[ext_resource type="PackedScene" uid="uid://u5erdnutatqe" path="res://scenes/UI/support_tower_panel.tscn" id="3_n44jj"]
+[ext_resource type="PackedScene" uid="uid://d2mhiejcamqu" path="res://scenes/UI/resource_tower_panel.tscn" id="4_a6svv"]
+
+[node name="TowerSelectionsUI" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.823529)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -190.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VFlowContainer" type="HFlowContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="GunTurretPanel" parent="Panel/MarginContainer/VFlowContainer" instance=ExtResource("1_k3p2b")]
+layout_mode = 2
+
+[node name="SniperTowerPanel" parent="Panel/MarginContainer/VFlowContainer" instance=ExtResource("2_qsqdr")]
+layout_mode = 2
+
+[node name="SupportTowerPanel" parent="Panel/MarginContainer/VFlowContainer" instance=ExtResource("3_n44jj")]
+layout_mode = 2
+
+[node name="ResourceTowerPanel" parent="Panel/MarginContainer/VFlowContainer" instance=ExtResource("4_a6svv")]
+layout_mode = 2

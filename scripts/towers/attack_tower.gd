@@ -1,6 +1,11 @@
 extends BaseTower
 class_name AttackTower
 
+# Tower properties
+@export var attack_tower_name: String = "Attack Tower"
+@export var attack_tower_build_cost: int = 15
+@export var attack_tower_maintenance_cost: int = 5
+
 # Combat properties
 @export var bullet_scene: PackedScene
 @export var base_bullet_speed: float = 500
@@ -35,6 +40,12 @@ var current_target: Node2D = null
 
 func _ready():
 	super._ready()
+
+	# Set tower properties
+	tower_name = attack_tower_name
+	build_cost = attack_tower_build_cost
+	maintenance_cost = attack_tower_maintenance_cost
+	
 	_build_upgrade_arrays()
 	initialize_stats()
 	update_detection_area()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmkx14uyeu3s1"]
+[gd_scene load_steps=10 format=3 uid="uid://dmkx14uyeu3s1"]
 
 [ext_resource type="Texture2D" uid="uid://dsj4dqmrj2avu" path="res://assets/towers/sniper-tower/Sniper-Tower.png" id="1_5tetq"]
 [ext_resource type="Script" path="res://scripts/towers/attack_tower.gd" id="1_rvifk"]
@@ -20,13 +20,28 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga5v3"]
-size = Vector2(22.5, 39)
+size = Vector2(22, 39)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkpds"]
 radius = 250.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tt5t8"]
+size = Vector2(24, 18)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xweef"]
+bg_color = Color(0, 1, 0, 0.313726)
+corner_radius_top_left = 250
+corner_radius_top_right = 250
+corner_radius_bottom_right = 250
+corner_radius_bottom_left = 250
+corner_detail = 6
+
 [node name="SniperTower" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_rvifk")
+attack_tower_build_cost = 20
+attack_tower_maintenance_cost = 8
 bullet_scene = ExtResource("2_2c465")
 base_bullet_speed = 1000.0
 base_bullet_damage = 3.0
@@ -44,15 +59,32 @@ position = Vector2(30, -12)
 sprite_frames = SubResource("SpriteFrames_mtbu0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.75, 10.5)
+position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_ga5v3")
 
 [node name="Sight" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
 shape = SubResource("CircleShape2D_bkpds")
 
+[node name="TowerDetector" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetector"]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_tt5t8")
+
 [node name="CooldownTimer" type="Timer" parent="."]
+
+[node name="Area" type="Panel" parent="."]
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xweef")
 
 [connection signal="body_entered" from="Sight" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Sight" to="." method="_on_detection_area_body_exited"]
