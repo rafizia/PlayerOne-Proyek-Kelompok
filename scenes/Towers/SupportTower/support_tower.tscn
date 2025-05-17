@@ -1,6 +1,5 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctkn6sofm7345"]
+[gd_scene load_steps=16 format=3 uid="uid://ctkn6sofm7345"]
 
-[ext_resource type="Script" path="res://scripts/towers/support_tower.gd" id="1_1krxg"]
 [ext_resource type="Texture2D" uid="uid://br6x7xc2afh7c" path="res://assets/towers/support-tower/Support-Tower-2-anim.png" id="1_eifr0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y2sy7"]
@@ -96,15 +95,9 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51k52"]
-size = Vector2(34, 46.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_akwhk"]
-size = Vector2(36, 18)
+size = Vector2(34, 47)
 
 [node name="SupportTower" type="StaticBody2D"]
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("1_1krxg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_w2tke")
@@ -113,13 +106,5 @@ frame = 1
 frame_progress = 0.0721667
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4.25)
+position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_51k52")
-
-[node name="TowerDetector" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetector"]
-position = Vector2(0, 11)
-shape = SubResource("RectangleShape2D_akwhk")

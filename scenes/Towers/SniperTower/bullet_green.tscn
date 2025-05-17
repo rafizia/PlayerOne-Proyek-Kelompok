@@ -1,20 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmcw8gn0qrjpj"]
+[gd_scene load_steps=3 format=3 uid="uid://dmcw8gn0qrjpj"]
 
-[ext_resource type="Script" path="res://scripts/towers/bullet.gd" id="1_51044"]
 [ext_resource type="Texture2D" uid="uid://csbueq8tsjd6u" path="res://assets/towers/sniper-tower/Bullet-Green.png" id="1_vrnb0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wj8m8"]
 size = Vector2(23, 8)
 
 [node name="BulletGreen" type="CharacterBody2D"]
-collision_layer = 8
-collision_mask = 16
-script = ExtResource("1_51044")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vrnb0")
-offset = Vector2(-10, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9.5, 0)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_wj8m8")
