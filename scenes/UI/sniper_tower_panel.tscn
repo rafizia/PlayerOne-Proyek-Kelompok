@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://76h8yy252gon"]
+
+[ext_resource type="Script" path="res://scripts/UI/tower_panel.gd" id="1_qji7y"]
+[ext_resource type="Texture2D" uid="uid://dsj4dqmrj2avu" path="res://assets/towers/sniper-tower/Sniper-Tower.png" id="1_y4ggs"]
+[ext_resource type="PackedScene" uid="uid://dmkx14uyeu3s1" path="res://scenes/Towers/SniperTower/sniper_tower.tscn" id="2_4qxhs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irr40"]
+bg_color = Color(0.3, 0.3, 0.3, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifuie"]
+atlas = ExtResource("1_y4ggs")
+region = Rect2(12, 13, 48, 49)
+
+[node name="SniperTowerPanel" type="Panel"]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 80.0
+offset_bottom = 80.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_irr40")
+script = ExtResource("1_qji7y")
+tower_scene = ExtResource("2_4qxhs")
+build_cost = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_ifuie")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="BuildCostLabel" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "20"
+
+[node name="MaintenanceLabel" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
+text = "8"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
