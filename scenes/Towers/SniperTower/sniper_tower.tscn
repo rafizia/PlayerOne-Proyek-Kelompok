@@ -12,8 +12,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hwhal")
 }],
-"loop": true,
-"name": &"default",
+"loop": false,
+"name": &"shoot",
 "speed": 5.0
 }]
 
@@ -55,6 +55,7 @@ position = Vector2(30, -12)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mtbu0")
+animation = &"shoot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10.5)
@@ -84,6 +85,7 @@ offset_right = 250.0
 offset_bottom = 250.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xweef")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="Sight" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Sight" to="." method="_on_detection_area_body_exited"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
