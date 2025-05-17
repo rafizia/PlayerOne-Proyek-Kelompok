@@ -37,6 +37,7 @@ var current_target: Node2D = null
 @onready var aim: Marker2D = $Aim
 @onready var detection_area: Area2D = $Sight
 @onready var cooldown_timer: Timer = $CooldownTimer
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready():
 	super._ready()
@@ -85,6 +86,10 @@ func _process(delta):
 	if not is_active:
 		return
 	
+	# Only process if the tower is placed (not being dragged)
+	if get_parent().name != "Towers":
+		return
+	
 	enemies_in_range = enemies_in_range.filter(func(enemy): 
 		return is_instance_valid(enemy) and enemy.is_inside_tree()
 	)
@@ -106,6 +111,7 @@ func shoot():
 	if not bullet_scene or not current_target:
 		return
 	
+	animated_sprite.play("shoot")
 	var bullet = bullet_scene.instantiate()
 	var spawn_pos = aim.global_position
 	get_parent().add_child(bullet)
@@ -116,6 +122,10 @@ func shoot():
 		current_bullet_speed,
 		spawn_pos
 	)
+
+func _on_animation_finished():
+	print("Animation finished")
+	animated_sprite.stop()
 
 func _on_detection_area_body_entered(body):
 	if body.is_in_group("enemies") and is_active:
