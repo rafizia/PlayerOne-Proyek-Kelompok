@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://f504iiinf0xm" path="res://assets/mana seed seasonal forest sample (winter)/seasonal sample (winter).png" id="1_vxnwx"]
 [ext_resource type="Texture2D" uid="uid://c67y66bqmu60i" path="res://assets/mana seed seasonal forest sample (winter)/seasonal water animations/winter water sparkles B 16x16.png" id="2_yvqe0"]
 [ext_resource type="Texture2D" uid="uid://c0m4tvak3pv5x" path="res://assets/healthbar.png" id="4_m6owa"]
-[ext_resource type="PackedScene" uid="uid://dtnjvfw383ydi" path="res://scenes/Levels/level_ui.tscn" id="4_pis4w"]
-[ext_resource type="PackedScene" uid="uid://cpxvmtmfi4spg" path="res://scenes/Levels/pause_screen.tscn" id="5_dhwgq"]
+[ext_resource type="PackedScene" path="res://scenes/Levels/level_ui.tscn" id="4_pis4w"]
+[ext_resource type="PackedScene" path="res://scenes/Levels/pause_screen.tscn" id="5_dhwgq"]
 [ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="7_55a7k"]
 [ext_resource type="Script" path="res://scripts/levels/start_battle.gd" id="8_yk5th"]
 
