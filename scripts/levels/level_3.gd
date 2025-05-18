@@ -42,11 +42,23 @@ var wave_data = [
 	[	# Wave 7
 		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
 		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+	],
+	[	# Wave 8
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+	],
+	[	# Wave 9
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+	],
+	[	# Wave 10
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
 	]
 ]
 
 func _ready():
-	wave_label.text = "Wave 1/7"
+	wave_label.text = "Wave 1/10"
 	
 func start_wave():
 	enemy_queue.clear()
@@ -58,7 +70,7 @@ func start_wave():
 	# Tambah semua musuh dalam antrian spawn
 	enemy_queue = wave_data[current_wave].duplicate()	
 
-	wave_label.text = "Wave %d/7" % (current_wave + 1)
+	wave_label.text = "Wave %d/10" % (current_wave + 1)
 	print("Wave %d: %d musuh" % [current_wave + 1, enemy_queue.size()])
 	timer.wait_time = spawn_delay
 	timer.start()

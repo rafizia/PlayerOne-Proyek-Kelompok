@@ -1,7 +1,13 @@
-[gd_scene load_steps=17 format=4 uid="uid://clgmvh0gs4f8t"]
+[gd_scene load_steps=25 format=4 uid="uid://clgmvh0gs4f8t"]
 
+[ext_resource type="Script" path="res://scripts/levels/level_3.gd" id="1_ntp0s"]
 [ext_resource type="Texture2D" uid="uid://f504iiinf0xm" path="res://assets/mana seed seasonal forest sample (winter)/seasonal sample (winter).png" id="1_vxnwx"]
 [ext_resource type="Texture2D" uid="uid://c67y66bqmu60i" path="res://assets/mana seed seasonal forest sample (winter)/seasonal water animations/winter water sparkles B 16x16.png" id="2_yvqe0"]
+[ext_resource type="Texture2D" uid="uid://c0m4tvak3pv5x" path="res://assets/healthbar.png" id="4_m6owa"]
+[ext_resource type="PackedScene" uid="uid://dtnjvfw383ydi" path="res://scenes/Levels/level_ui.tscn" id="4_pis4w"]
+[ext_resource type="PackedScene" uid="uid://cpxvmtmfi4spg" path="res://scenes/Levels/pause_screen.tscn" id="5_dhwgq"]
+[ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="7_55a7k"]
+[ext_resource type="Script" path="res://scripts/levels/start_battle.gd" id="8_yk5th"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ss4h"]
 texture = ExtResource("1_vxnwx")
@@ -1416,7 +1422,20 @@ texture = ExtResource("1_vxnwx")
 [sub_resource type="TileSet" id="TileSet_dtygc"]
 sources/0 = SubResource("TileSetAtlasSource_bw3tl")
 
+[sub_resource type="Curve2D" id="Curve2D_dwhfv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -31, 262, 0, 0, 0, 0, 160, 259, 0, 0, 0, 0, 263, 182, 0, 0, 0, 0, 376, 180, 0, 0, 0, 0, 445, 199, 0, 0, 0, 0, 526, 172, 0, 0, 0, 0, 600, 170, 0, 0, 0, 0, 660, 194, 0, 0, 0, 0, 745, 245, 0, 0, 0, 0, 805, 279, 0, 0, 0, 0, 917, 279, 0, 0, 0, 0, 1145, 277)
+}
+point_count = 12
+
+[sub_resource type="Curve2D" id="Curve2D_wvfp8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -39, 259, 0, 0, 0, 0, 159, 260, 0, 0, 0, 0, 251, 364, 0, 0, 0, 0, 318, 460, 0, 0, 0, 0, 384, 510, 0, 0, 0, 0, 493, 561, 0, 0, 0, 0, 584, 563, 0, 0, 0, 0, 695, 533, 0, 0, 0, 0, 770, 473, 0, 0, 0, 0, 843, 403, 0, 0, 0, 0, 906, 321, 0, 0, 0, 0, 934, 279, 0, 0, 0, 0, 1144, 274)
+}
+point_count = 13
+
 [node name="Level3" type="Node2D"]
+script = ExtResource("1_ntp0s")
 
 [node name="Tilemap" type="Node2D" parent="."]
 
@@ -1452,3 +1471,45 @@ tile_set = SubResource("TileSet_dtygc")
 position = Vector2(536, 307)
 scale = Vector2(5, 1)
 zoom = Vector2(1.1, 1.1)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_dwhfv")
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_wvfp8")
+
+[node name="Level_UI" parent="." instance=ExtResource("4_pis4w")]
+
+[node name="PauseScreen" parent="." instance=ExtResource("5_dhwgq")]
+visible = false
+
+[node name="StartBattleIcon" type="TextureRect" parent="."]
+offset_left = 840.0
+offset_top = 525.0
+offset_right = 1045.0
+offset_bottom = 587.0
+texture = ExtResource("4_m6owa")
+
+[node name="StartBattle" type="LinkButton" parent="StartBattleIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -13.0
+offset_right = 44.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_55a7k")
+theme_override_font_sizes/font_size = 30
+text = "Start Battle"
+underline = 2
+script = ExtResource("8_yk5th")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="StartBattleIcon/StartBattle" to="StartBattleIcon/StartBattle" method="_on_pressed"]
