@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://514k5b5q723t"]
+
+[ext_resource type="Texture2D" uid="uid://dtus7ex80cybg" path="res://assets/MainMenu.png" id="1_g4j0d"]
+[ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="2_jw7bk"]
+[ext_resource type="Script" path="res://scripts/main_menu/play_button.gd" id="4_fyrgf"]
+[ext_resource type="Script" path="res://scripts/main_menu/quit_button.gd" id="5_l6ne5"]
+[ext_resource type="FontFile" uid="uid://m8d57bup8fh5" path="res://assets/Fonts/Raw/upheavtt.ttf" id="6_o67gm"]
+
+[node name="MainMenu" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.517647)
+offset_left = -28.0
+offset_top = -61.0
+offset_right = 1186.0
+offset_bottom = 748.0
+texture = ExtResource("1_g4j0d")
+expand_mode = 1
+
+[node name="PlayButton" type="LinkButton" parent="."]
+offset_left = 78.0
+offset_top = 523.0
+offset_right = 271.0
+offset_bottom = 633.0
+theme_override_colors/font_color = Color(1, 0.94902, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_jw7bk")
+theme_override_font_sizes/font_size = 40
+text = "PLAY"
+underline = 2
+script = ExtResource("4_fyrgf")
+
+[node name="QuitButton" type="LinkButton" parent="."]
+offset_left = 75.0
+offset_top = 582.0
+offset_right = 268.0
+offset_bottom = 692.0
+theme_override_colors/font_color = Color(1, 0.94902, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_jw7bk")
+theme_override_font_sizes/font_size = 40
+text = "QUIT"
+underline = 2
+script = ExtResource("5_l6ne5")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 73.0
+offset_top = 60.0
+offset_right = 666.0
+offset_bottom = 243.0
+theme_override_colors/font_color = Color(1, 0.94902, 0.8, 1)
+theme_override_fonts/font = ExtResource("6_o67gm")
+theme_override_font_sizes/font_size = 80
+text = "Persediaan 
+Terakhir
+"
+
+[node name="PlayArrowLabel" type="Label" parent="."]
+offset_left = 37.0
+offset_top = 516.0
+offset_right = 106.0
+offset_bottom = 626.0
+theme_override_font_sizes/font_size = 30
+
+[node name="QuitArrowLabel" type="Label" parent="."]
+offset_left = 37.0
+offset_top = 575.0
+offset_right = 106.0
+offset_bottom = 624.0
+theme_override_font_sizes/font_size = 30
+
+[connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PlayButton" to="PlayButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="QuitButton" to="QuitButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="QuitButton" to="QuitButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="QuitButton" to="QuitButton" method="_on_pressed"]
