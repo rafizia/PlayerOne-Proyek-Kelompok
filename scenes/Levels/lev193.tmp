@@ -1,15 +1,9 @@
-[gd_scene load_steps=27 format=4 uid="uid://b02ypjvs52k1g"]
+[gd_scene load_steps=20 format=4 uid="uid://b02ypjvs52k1g"]
 
 [ext_resource type="Texture2D" uid="uid://c4kkhofhke3qb" path="res://assets/mana seed seasonal forest sample (autumn)/seasonal sample (autumn).png" id="1_khvkq"]
-[ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_y2po5"]
 [ext_resource type="Texture2D" uid="uid://c67y66bqmu60i" path="res://assets/mana seed seasonal forest sample (winter)/seasonal water animations/winter water sparkles B 16x16.png" id="2_1h8jx"]
 [ext_resource type="Texture2D" uid="uid://c44odg3vtfo33" path="res://assets/mana seed seasonal forest sample (autumn)/seasonal water animations/autumn waterfall B 16x16.png" id="2_c6qsw"]
-[ext_resource type="Texture2D" uid="uid://c0m4tvak3pv5x" path="res://assets/healthbar.png" id="7_0f76c"]
-[ext_resource type="Texture2D" uid="uid://c0xaw16i5q6h4" path="res://assets/energy.png" id="7_7jdd7"]
-[ext_resource type="Texture2D" uid="uid://dhyypxq3qxdd" path="res://assets/favpng_99f669ebc25cc70a321d94173ad1e3fb.png" id="8_vnlw8"]
-[ext_resource type="FontFile" uid="uid://cnbae18fxsbpb" path="res://assets/Fonts/Raw/VCR_OSD_MONO_1.001.ttf" id="9_x2vf7"]
-[ext_resource type="Texture2D" uid="uid://b6eb4wmscbkm4" path="res://assets/pixelart_skull.png" id="10_dvcyg"]
-[ext_resource type="Texture2D" uid="uid://bpcbe0ae5b31g" path="res://assets/pngwing.com.png" id="11_vio7t"]
+[ext_resource type="PackedScene" uid="uid://cdfc0daqxsi6i" path="res://scenes/enemy/tank1.tscn" id="4_ya7rp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8imk0"]
 texture = ExtResource("1_khvkq")
@@ -1281,18 +1275,11 @@ sources/0 = SubResource("TileSetAtlasSource_2jdjk")
 
 [sub_resource type="Curve2D" id="Curve2D_bi4ff"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -60, 259, 0, 0, 0, 0, 58, 228, 0, 0, 0, 0, 161, 168, 0, 0, 0, 0, 281, 144, 0, 0, 0, 0, 386, 166, 0, 0, 0, 0, 470, 131, 0, 0, 0, 0, 661, 127, 0, 0, 0, 0, 696, 61, 0, 0, 0, 0, 713, -73, 0, 0, 0, 0, 759, -169, 0, 0, 0, 0, 850, -312)
+"points": PackedVector2Array(0, 0, 0, 0, -60, 259, 0, 0, 0, 0, 58, 228, 0, 0, 0, 0, 161, 168, 0, 0, 0, 0, 281, 144, 0, 0, 0, 0, 386, 166, 0, 0, 0, 0, 470, 131, 0, 0, 0, 0, 661, 127, 0, 0, 0, 0, 696, 61, 0, 0, 0, 0, 713, -73, 0, 0, 0, 0, 759, -169, 0, 0, 0, 0, 821, -287)
 }
 point_count = 11
 
-[sub_resource type="Curve2D" id="Curve2D_4usqh"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 60, -115, 0, 0, 0, 0, 117, -45, 0, 0, 0, 0, 179, 8, 0, 0, 0, 0, 244, 65, 0, 0, 0, 0, 274, 138, 0, 0, 0, 0, 382, 166, 0, 0, 0, 0, 466, 130, 0, 0, 0, 0, 658, 127, 0, 0, 0, 0, 696, 61, 0, 0, 0, 0, 713, -67, 0, 0, 0, 0, 761, -175, 0, 0, 0, 0, 851, -314)
-}
-point_count = 12
-
 [node name="Level2" type="Node2D"]
-script = ExtResource("1_y2po5")
 
 [node name="Tilemap" type="Node2D" parent="."]
 
@@ -1309,7 +1296,7 @@ tile_map_data = PackedByteArray("AAA0AAEAAQANAA4AAAA0AAIAAQALAA0AAAA0AAMAAQANAA4
 tile_set = SubResource("TileSet_312m8")
 
 [node name="WaterSparkle" type="TileMapLayer" parent="Tilemap"]
-tile_map_data = PackedByteArray("AAA5APv/AAAAAAIAAAA9APz/AAAAAAIAAAA6AP3/AAAAAAAAAAA5APz/AAAAAAIAAAA5AP//AAAAAAEAAAA7APv/AAAAAAEAAAA1AAQAAAAAAAAAAAA3AAUAAAAAAAAAAAA9AAUAAAAAAAIAAAA9AAcAAAAAAAEAAAA3AAcAAAAAAAEAAAA6AAYAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAACACIAAAAAAAAAAAAFACQAAAAAAAAAAAAAACMAAAAAAAEAAAABACcAAAAAAAIAAAACACgAAAAAAAEAAAADACMAAAAAAAIAAAAEACQAAAAAAAEAAAAEACcAAAAAAAAAAAAGACUAAAAAAAIAAAAGACYAAAAAAAIAAAAHACYAAAAAAAEAAAABAB8AAAAAAAIAAAAHACMAAAAAAAAAAAAEACEAAAAAAAEAAAAKACcAAAAAAAAAAAABACUAAAAAAAAAAAA5APv/AAAAAAIAAAA9APz/AAAAAAIAAAA6AP3/AAAAAAAAAAA5APz/AAAAAAIAAAA5AP//AAAAAAEAAAA7APv/AAAAAAEAAAA1AAQAAAAAAAAAAAA3AAUAAAAAAAAAAAA9AAUAAAAAAAIAAAA9AAcAAAAAAAEAAAA3AAcAAAAAAAEAAAA6AAYAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_fruuw")
 
 [node name="Cliff" type="TileMapLayer" parent="Tilemap"]
@@ -1332,155 +1319,6 @@ tile_set = SubResource("TileSet_fg1rr")
 tile_map_data = PackedByteArray("AAAHAP7/AAALAAQAAAADAOv/AAALAAAAAAADAOz/AAALAAEAAAADAO3/AAALAAIAAAADAO7/AAALAAMAAAADAO//AAALAAQAAAAEAOv/AAAMAAAAAAAEAOz/AAAMAAEAAAAEAO3/AAAMAAIAAAAEAO7/AAAMAAMAAAAEAO//AAAMAAQAAAAEAPD/AAAMAAUAAAAEAPH/AAAMAAYAAAAFAOv/AAANAAAAAAAFAOz/AAANAAEAAAAFAO3/AAALAAAAAAAFAO7/AAALAAEAAAAFAO//AAALAAIAAAAFAPD/AAALAAMAAAAFAPH/AAALAAQAAAAGAOv/AAAOAAAAAAAGAOz/AAAOAAEAAAAGAO3/AAAMAAAAAAAGAO7/AAAMAAEAAAAGAO//AAAMAAIAAAAGAPD/AAAMAAMAAAAGAPH/AAAMAAQAAAAHAOv/AAAPAAAAAAAHAOz/AAAPAAEAAAAHAO3/AAANAAAAAAAHAO7/AAANAAEAAAAHAO//AAANAAIAAAAHAPD/AAANAAMAAAAHAPH/AAANAAQAAAALAO3/AAALAAAAAAALAO7/AAALAAEAAAALAO//AAALAAIAAAALAPD/AAALAAMAAAALAPH/AAALAAQAAAAMAO3/AAAMAAAAAAAMAO7/AAAMAAEAAAAMAO//AAAMAAIAAAAMAPD/AAAMAAMAAAAMAPH/AAAMAAQAAAAMAPL/AAAMAAUAAAAMAPP/AAAMAAYAAAANAO3/AAANAAAAAAANAO7/AAANAAEAAAANAO//AAANAAIAAAANAPD/AAANAAMAAAANAPH/AAANAAQAAAANAPL/AAANAAUAAAANAPP/AAANAAYAAAAOAO3/AAAOAAAAAAAOAO7/AAAOAAEAAAAOAO//AAAOAAIAAAAOAPD/AAAOAAMAAAAOAPH/AAAOAAQAAAAOAPL/AAAOAAUAAAAOAPP/AAAOAAYAAAAPAO3/AAAPAAAAAAAPAO7/AAALAAAAAAAPAO//AAALAAEAAAAPAPD/AAALAAIAAAAPAPH/AAALAAMAAAAPAPL/AAALAAQAAAAPAPP/AAAPAAYAAAATAPH/AAAPAAMAAAATAPL/AAAPAAQAAAATAPP/AAAPAAUAAAATAPT/AAAPAAYAAAATAPX/AAALAAQAAAAUAPH/AAAMAAAAAAAUAPL/AAAMAAEAAAAUAPP/AAAMAAIAAAAUAPT/AAAMAAMAAAAUAPX/AAAMAAQAAAAUAPb/AAAMAAUAAAAUAPf/AAAMAAYAAAAVAPH/AAANAAAAAAAVAPL/AAANAAEAAAAVAPP/AAANAAIAAAAVAPT/AAANAAMAAAAVAPX/AAANAAQAAAAVAPb/AAANAAUAAAAVAPf/AAANAAYAAAAWAPH/AAAOAAAAAAAWAPL/AAAOAAEAAAAWAPP/AAAOAAIAAAAWAPT/AAAOAAMAAAAWAPX/AAAOAAQAAAAWAPb/AAAOAAUAAAAWAPf/AAAOAAYAAAAXAPH/AAAPAAAAAAAXAPL/AAAPAAEAAAAXAPP/AAAPAAIAAAAXAPT/AAAPAAMAAAAXAPX/AAAPAAQAAAAXAPb/AAAPAAUAAAAXAPf/AAAPAAYAAAAaAOz/AAALAAAAAAAaAO3/AAALAAEAAAAaAO7/AAALAAIAAAAaAO//AAALAAMAAAAaAPD/AAALAAQAAAAbAOz/AAAMAAAAAAAbAO3/AAAMAAEAAAAbAO7/AAAMAAIAAAAbAO//AAAMAAMAAAAbAPD/AAAMAAQAAAAbAPH/AAAMAAUAAAAbAPL/AAANAAAAAAAcAOz/AAANAAAAAAAcAO3/AAANAAEAAAAcAO7/AAANAAIAAAAcAO//AAANAAMAAAAcAPD/AAANAAQAAAAcAPH/AAANAAUAAAAcAPL/AAAOAAAAAAAdAOz/AAAOAAAAAAAdAO3/AAAOAAEAAAAdAO7/AAAOAAIAAAAdAO//AAAOAAMAAAAdAPD/AAAOAAQAAAAdAPH/AAAOAAUAAAAdAPL/AAAPAAAAAAAeAOz/AAAPAAAAAAAeAO3/AAAPAAEAAAAeAO7/AAAPAAIAAAAeAO//AAALAAAAAAAeAPD/AAALAAEAAAAeAPH/AAALAAIAAAAeAPL/AAALAAMAAAAhAO7/AAALAAAAAAAhAO//AAAOAAAAAAAhAPD/AAAOAAEAAAAhAPH/AAAOAAIAAAAhAPL/AAAOAAMAAAAiAO7/AAAMAAAAAAAiAO//AAAPAAAAAAAiAPD/AAAPAAEAAAAiAPH/AAAPAAIAAAAiAPL/AAAPAAMAAAAiAPP/AAAPAAQAAAAiAPT/AAAPAAUAAAAjAO7/AAANAAAAAAAjAO//AAANAAEAAAAjAPD/AAANAAIAAAAjAPH/AAANAAMAAAAjAPL/AAANAAQAAAAjAPP/AAANAAUAAAAjAPT/AAANAAYAAAAkAO7/AAAOAAAAAAAkAO//AAAOAAEAAAAkAPD/AAAOAAIAAAAkAPH/AAAOAAMAAAAkAPL/AAAOAAQAAAAkAPP/AAAOAAUAAAAkAPT/AAAOAAYAAAAlAO7/AAAPAAAAAAAlAO//AAAPAAEAAAAlAPD/AAAPAAIAAAAlAPH/AAAPAAMAAAAlAPL/AAAPAAQAAAAlAPP/AAAPAAUAAAAlAPT/AAAPAAYAAAARAOr/AAALAAAAAAARAOv/AAALAAEAAAARAOz/AAALAAIAAAARAO3/AAALAAMAAAARAO7/AAANAAAAAAASAOr/AAAMAAAAAAASAOv/AAAMAAEAAAASAOz/AAAMAAIAAAASAO3/AAAMAAMAAAASAO7/AAAOAAAAAAASAO//AAAOAAEAAAASAPD/AAAOAAIAAAATAOr/AAANAAAAAAATAOv/AAANAAEAAAATAOz/AAANAAIAAAATAO3/AAANAAMAAAATAO7/AAAPAAAAAAATAO//AAAPAAEAAAATAPD/AAAPAAIAAAAUAOr/AAAOAAAAAAAUAOv/AAAOAAEAAAAUAOz/AAAOAAIAAAAUAO3/AAAOAAMAAAAUAO7/AAAOAAQAAAAUAO//AAAOAAUAAAAUAPD/AAAOAAYAAAAVAOr/AAAPAAAAAAAVAOv/AAAPAAEAAAAVAOz/AAAPAAIAAAAVAO3/AAAPAAMAAAAVAO7/AAAPAAQAAAAVAO//AAAPAAUAAAAVAPD/AAAPAAYAAAAZAPL/AAALAAAAAAAZAPP/AAALAAEAAAAZAPT/AAALAAIAAAAZAPX/AAALAAMAAAAZAPb/AAALAAQAAAAaAPL/AAAMAAAAAAAaAPP/AAAMAAEAAAAaAPT/AAAMAAIAAAAaAPX/AAAMAAMAAAAaAPb/AAAMAAQAAAAaAPf/AAAMAAUAAAAaAPj/AAAMAAYAAAAbAPP/AAANAAEAAAAbAPT/AAANAAIAAAAbAPX/AAANAAMAAAAbAPb/AAANAAQAAAAbAPf/AAANAAUAAAAbAPj/AAANAAYAAAAcAPP/AAAOAAEAAAAcAPT/AAAOAAIAAAAcAPX/AAAOAAMAAAAcAPb/AAAOAAQAAAAcAPf/AAAOAAUAAAAcAPj/AAAOAAYAAAAdAPP/AAAPAAEAAAAdAPT/AAAPAAIAAAAdAPX/AAAPAAMAAAAdAPb/AAAPAAQAAAAdAPf/AAAPAAUAAAAdAPj/AAAPAAYAAAAGAPL/AAAMAAUAAAAGAPP/AAAMAAYAAAAHAPL/AAANAAUAAAAHAPP/AAANAAYAAAAIAO3/AAAOAAAAAAAIAO7/AAAOAAEAAAAIAO//AAAOAAIAAAAIAPD/AAAOAAMAAAAIAPH/AAAOAAQAAAAIAPL/AAAOAAUAAAAIAPP/AAAOAAYAAAAJAO3/AAAPAAAAAAAJAO7/AAAPAAEAAAAJAO//AAAPAAIAAAAJAPD/AAAPAAMAAAAJAPH/AAAPAAQAAAAJAPL/AAAPAAUAAAAJAPP/AAAPAAYAAAAeAPP/AAALAAQAAAAfAO//AAAMAAAAAAAfAPD/AAAMAAEAAAAfAPH/AAAMAAIAAAAfAPL/AAAMAAMAAAAfAPP/AAAMAAQAAAAfAPT/AAAMAAUAAAAfAPX/AAAMAAYAAAAgAO//AAANAAAAAAAgAPD/AAANAAEAAAAgAPH/AAANAAIAAAAgAPL/AAANAAMAAAAgAPP/AAANAAQAAAAgAPT/AAANAAUAAAAgAPX/AAANAAYAAAAhAPP/AAAOAAQAAAAhAPT/AAAOAAUAAAAhAPX/AAAOAAYAAAAiAPX/AAAPAAYAAAAQAO7/AAAMAAAAAAAQAO//AAAMAAEAAAAQAPD/AAAMAAIAAAAQAPH/AAAMAAMAAAAQAPL/AAAMAAQAAAAQAPP/AAAMAAUAAAAQAPT/AAAMAAYAAAARAO//AAANAAEAAAARAPD/AAANAAIAAAARAPH/AAANAAMAAAARAPL/AAANAAQAAAARAPP/AAANAAUAAAARAPT/AAANAAYAAAASAPH/AAAOAAMAAAASAPL/AAAOAAQAAAASAPP/AAAOAAUAAAASAPT/AAAOAAYAAAA1AAoAAAALAAAAAAA1AAsAAAALAAEAAAA1AAwAAAALAAIAAAA1AA0AAAALAAMAAAA1AA4AAAALAAQAAAA2AAoAAAAMAAAAAAA2AAsAAAAMAAEAAAA2AAwAAAAMAAIAAAA2AA0AAAAMAAMAAAA2AA4AAAAMAAQAAAA2AA8AAAAMAAUAAAA2ABAAAAAMAAYAAAA3AAoAAAANAAAAAAA3AAsAAAANAAEAAAA3AAwAAAANAAIAAAA3AA0AAAANAAMAAAA3AA4AAAANAAQAAAA3AA8AAAANAAUAAAA3ABAAAAANAAYAAAA4AAoAAAAOAAAAAAA4AAsAAAAOAAEAAAA4AAwAAAAOAAIAAAA4AA0AAAAOAAMAAAA4AA4AAAAOAAQAAAA4AA8AAAAOAAUAAAA4ABAAAAAOAAYAAAA5AAoAAAAPAAAAAAA5AAsAAAAPAAEAAAA5AAwAAAAPAAIAAAA5AA0AAAAPAAMAAAA5AA4AAAAPAAQAAAA5AA8AAAAPAAUAAAA5ABAAAAAPAAYAAAA7AA0AAAALAAAAAAA7AA4AAAALAAEAAAA7AA8AAAALAAIAAAA7ABAAAAALAAMAAAA7ABEAAAALAAQAAAA8AA0AAAAMAAAAAAA8AA4AAAAMAAEAAAA8AA8AAAAMAAIAAAA8ABAAAAAMAAMAAAA8ABEAAAAMAAQAAAA8ABIAAAAMAAUAAAA8ABMAAAAMAAYAAAA9AA0AAAANAAAAAAA9AA4AAAANAAEAAAA9AA8AAAANAAIAAAA9ABAAAAANAAMAAAA9ABEAAAANAAQAAAA9ABIAAAANAAUAAAA9ABMAAAANAAYAAAA+AA0AAAAOAAAAAAA+AA4AAAAOAAEAAAA+AA8AAAAOAAIAAAA+ABAAAAAOAAMAAAA+ABEAAAAOAAQAAAA+ABIAAAAOAAUAAAA+ABMAAAAOAAYAAAA/AA0AAAAPAAAAAAA/AA4AAAAPAAEAAAA/AA8AAAAPAAIAAAA/ABAAAAAPAAMAAAA/ABEAAAAPAAQAAAA/ABIAAAAPAAUAAAA/ABMAAAAPAAYAAAA=")
 tile_set = SubResource("TileSet_fg1rr")
 
-[node name="UI" type="CanvasLayer" parent="."]
-offset = Vector2(10, 250)
-transform = Transform2D(1, 0, 0, 1, 10, 250)
-
-[node name="Health" type="TextureRect" parent="UI"]
-modulate = Color(1, 1, 1, 0.784314)
-offset_left = 6.0
-offset_top = -244.0
-offset_right = 90.0
-offset_bottom = -201.0
-texture = ExtResource("7_0f76c")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="UI/Health"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 2.0
-offset_right = 41.0
-offset_bottom = 38.0
-texture = ExtResource("8_vnlw8")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="HPLabel" type="Label" parent="UI/Health"]
-offset_left = 45.0
-offset_top = 10.0
-offset_right = 71.0
-offset_bottom = 36.0
-theme_override_fonts/font = ExtResource("9_x2vf7")
-theme_override_font_sizes/font_size = 20
-text = "10"
-metadata/_edit_use_anchors_ = true
-
-[node name="Waves" type="TextureRect" parent="UI"]
-modulate = Color(1, 1, 1, 0.784314)
-offset_left = 3.0
-offset_top = -199.0
-offset_right = 163.0
-offset_bottom = -156.0
-texture = ExtResource("7_0f76c")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="UI/Waves"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 8.0
-offset_right = 39.0
-offset_bottom = 33.0
-texture = ExtResource("10_dvcyg")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="WaveLabel" type="Label" parent="UI/Waves"]
-offset_left = 50.0
-offset_top = 10.0
-offset_right = 175.0
-offset_bottom = 40.0
-theme_override_fonts/font = ExtResource("9_x2vf7")
-theme_override_font_sizes/font_size = 20
-text = "Wave 1/5
-"
-metadata/_edit_use_anchors_ = true
-
-[node name="Energy" type="TextureRect" parent="UI"]
-modulate = Color(1, 1, 1, 0.784314)
-offset_left = 100.0
-offset_top = -244.0
-offset_right = 230.0
-offset_bottom = -201.0
-texture = ExtResource("7_0f76c")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="UI/Energy"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.00625
-anchor_top = -0.116279
-anchor_right = 0.05625
-anchor_bottom = 0.116279
-offset_left = 14.0
-offset_top = 8.0
-offset_right = 39.0
-offset_bottom = 33.0
-texture = ExtResource("7_7jdd7")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="EnergyLabel" type="Label" parent="UI/Energy"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.347222
-anchor_top = 0.232558
-anchor_right = 0.347222
-anchor_bottom = 0.232558
-offset_left = 4.86111
-offset_right = 129.861
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("9_x2vf7")
-theme_override_font_sizes/font_size = 20
-text = "1000
-"
-metadata/_edit_use_anchors_ = true
-
-[node name="Coin" type="TextureRect" parent="UI"]
-modulate = Color(1, 1, 1, 0.784314)
-offset_left = 240.0
-offset_top = -244.0
-offset_right = 370.0
-offset_bottom = -201.0
-texture = ExtResource("7_0f76c")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="UI/Coin"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.00625
-anchor_top = -0.116279
-anchor_right = 0.05625
-anchor_bottom = 0.116279
-offset_left = 10.7813
-offset_top = 8.0
-offset_right = 35.7813
-offset_bottom = 33.0
-texture = ExtResource("11_vio7t")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="CoinLabel" type="Label" parent="UI/Coin"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.384
-anchor_top = 0.232558
-anchor_right = 0.384
-anchor_bottom = 0.232558
-offset_left = 0.079998
-offset_right = 125.08
-offset_bottom = 30.0
-theme_override_fonts/font = ExtResource("9_x2vf7")
-theme_override_font_sizes/font_size = 20
-text = "1000
-"
-metadata/_edit_use_anchors_ = true
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(496, 32)
 zoom = Vector2(1.156, 1.156)
@@ -1488,9 +1326,10 @@ zoom = Vector2(1.156, 1.156)
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_bi4ff")
 
-[node name="Path2D2" type="Path2D" parent="."]
-curve = SubResource("Curve2D_4usqh")
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-60, 259)
+rotation = -0.256907
+loop = false
 
-[node name="Timer" type="Timer" parent="."]
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="tank1" parent="Path2D/PathFollow2D" instance=ExtResource("4_ya7rp")]
+rotation = 1.64934
