@@ -45,3 +45,25 @@ sprite_frames = SubResource("SpriteFrames_yqca7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -6)
 shape = SubResource("RectangleShape2D_3pmki")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -135.0
+offset_top = 80.0005
+offset_right = 25.0003
+offset_bottom = 110.0
+rotation = -1.56831
+max_value = 300.0
+value = 300.0
+show_percentage = false
+
+[node name="ShieldIndicator" type="Node2D" parent="."]
+visible = false
+
+[node name="Shield" type="Polygon2D" parent="ShieldIndicator"]
+color = Color(0.2, 0.5, 1, 0.3)
+polygon = PackedVector2Array(-90, -120, 90, -120, 110, 0, 90, 120, -90, 120, -110, 0)
+
+[node name="ShieldOutline" type="Line2D" parent="ShieldIndicator"]
+points = PackedVector2Array(-90, -120, 90, -120, 110, 0, 90, 120, -90, 120, -110, 0, -90, -120)
+width = 3.0
+default_color = Color(0.4, 0.7, 1, 0.8)

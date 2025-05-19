@@ -164,5 +164,5 @@ func update_speed():
     total_slow = min(total_slow, 0.8)
     
     # Apply slow effect to current speed
-    var modifier = defense_active ? 0.5 : 1.0  # Half speed if defense active
+    var modifier = 0.5 if defense_active else 1.0  # Half speed if defense active
     current_speed = base_speed * (1.0 - total_slow) * modifier
