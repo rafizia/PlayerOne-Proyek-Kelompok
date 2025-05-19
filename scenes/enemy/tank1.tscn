@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdfc0daqxsi6i"]
+
+[ext_resource type="Script" path="res://scripts/enemy/tank_1.gd" id="1_j7gl4"]
+[ext_resource type="Texture2D" uid="uid://bov7bs6cbakkc" path="res://assets/free-2d-battle-tank-game-assets/PNG/Hulls_Color_B/Hull_01.png" id="1_mr7og"]
+[ext_resource type="Texture2D" uid="uid://45o3gycoaspo" path="res://assets/free-2d-battle-tank-game-assets/PNG/Weapon_Color_B/Gun_01.png" id="2_g8ovl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l5x4u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mr7og")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yqca7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g8ovl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pmki"]
+size = Vector2(171, 268)
+
+[node name="tank1" type="CharacterBody2D"]
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_j7gl4")
+
+[node name="Hull" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l5x4u")
+frame_progress = 0.226028
+
+[node name="Weapon" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -36)
+sprite_frames = SubResource("SpriteFrames_yqca7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -6)
+shape = SubResource("RectangleShape2D_3pmki")

@@ -1,0 +1,167 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtnjvfw383ydi"]
+
+[ext_resource type="Texture2D" uid="uid://c0m4tvak3pv5x" path="res://assets/healthbar.png" id="1_eigc6"]
+[ext_resource type="Texture2D" uid="uid://dhyypxq3qxdd" path="res://assets/favpng_99f669ebc25cc70a321d94173ad1e3fb.png" id="2_4xrvq"]
+[ext_resource type="FontFile" uid="uid://cnbae18fxsbpb" path="res://assets/Fonts/Raw/VCR_OSD_MONO_1.001.ttf" id="3_b6pu6"]
+[ext_resource type="Texture2D" uid="uid://b6eb4wmscbkm4" path="res://assets/pixelart_skull.png" id="4_8arkv"]
+[ext_resource type="Texture2D" uid="uid://c0xaw16i5q6h4" path="res://assets/energy.png" id="5_vqnir"]
+[ext_resource type="Texture2D" uid="uid://bpcbe0ae5b31g" path="res://assets/pngwing.com.png" id="6_dgk4v"]
+[ext_resource type="Texture2D" uid="uid://df1vfyhly1spa" path="res://assets/pause.png" id="7_8m3sx"]
+[ext_resource type="Script" path="res://scripts/levels/pause_button.gd" id="8_2elmq"]
+
+[node name="Level_UI" type="CanvasLayer"]
+offset = Vector2(0, 250)
+transform = Transform2D(1, 0, 0, 1, 0, 250)
+
+[node name="Health" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+offset_left = 6.0
+offset_top = -244.0
+offset_right = 90.0
+offset_bottom = -201.0
+texture = ExtResource("1_eigc6")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Health"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 41.0
+offset_bottom = 38.0
+texture = ExtResource("2_4xrvq")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HPLabel" type="Label" parent="Health"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 10.0
+offset_right = 71.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("3_b6pu6")
+theme_override_font_sizes/font_size = 20
+text = "20"
+metadata/_edit_use_anchors_ = true
+
+[node name="Waves" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+offset_left = 4.0
+offset_top = -199.0
+offset_right = 171.0
+offset_bottom = -156.0
+texture = ExtResource("1_eigc6")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Waves"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 8.0
+offset_right = 39.0
+offset_bottom = 33.0
+texture = ExtResource("4_8arkv")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="WaveLabel" type="Label" parent="Waves"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 10.0
+offset_right = 173.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("3_b6pu6")
+theme_override_font_sizes/font_size = 20
+text = "Wave 1/5"
+metadata/_edit_use_anchors_ = true
+
+[node name="Energy" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+offset_left = 100.0
+offset_top = -244.0
+offset_right = 230.0
+offset_bottom = -201.0
+texture = ExtResource("1_eigc6")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Energy"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00625
+anchor_top = -0.116279
+anchor_right = 0.05625
+anchor_bottom = 0.116279
+offset_left = 14.0
+offset_top = 8.0
+offset_right = 39.0
+offset_bottom = 33.0
+texture = ExtResource("5_vqnir")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="EnergyLabel" type="Label" parent="Energy"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.347222
+anchor_top = 0.232558
+anchor_right = 0.347222
+anchor_bottom = 0.232558
+offset_left = 4.86111
+offset_right = 129.861
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_b6pu6")
+theme_override_font_sizes/font_size = 20
+text = "1000
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Coin" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+offset_left = 240.0
+offset_top = -244.0
+offset_right = 370.0
+offset_bottom = -201.0
+texture = ExtResource("1_eigc6")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Coin"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00625
+anchor_top = -0.116279
+anchor_right = 0.05625
+anchor_bottom = 0.116279
+offset_left = 10.7813
+offset_top = 8.0
+offset_right = 35.7813
+offset_bottom = 33.0
+texture = ExtResource("6_dgk4v")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CoinLabel" type="Label" parent="Coin"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.384
+anchor_top = 0.232558
+anchor_right = 0.384
+anchor_bottom = 0.232558
+offset_left = 0.079998
+offset_right = 125.08
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("3_b6pu6")
+theme_override_font_sizes/font_size = 20
+text = "1000
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseButton" type="TextureButton" parent="."]
+offset_left = 1074.0
+offset_top = -241.0
+offset_right = 1094.0
+offset_bottom = -221.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("7_8m3sx")
+script = ExtResource("8_2elmq")
+
+[connection signal="pressed" from="PauseButton" to="PauseButton" method="_on_pressed"]
