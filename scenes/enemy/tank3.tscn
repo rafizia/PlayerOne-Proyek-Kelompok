@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://uav8ek4v4tqf"]
 
 [ext_resource type="Texture2D" uid="uid://r46po5hhph61" path="res://assets/free-2d-battle-tank-game-assets/PNG/Hulls_Color_C/Hull_03.png" id="1_0iubh"]
-[ext_resource type="Script" path="res://scripts/enemy/tank_1.gd" id="1_gxxqj"]
+[ext_resource type="Script" path="res://scripts/enemy/tank_3.gd" id="1_qn1uc"]
 [ext_resource type="Texture2D" uid="uid://bnstuqbcq38wj" path="res://assets/free-2d-battle-tank-game-assets/PNG/Weapon_Color_C/Gun_03.png" id="2_w0lvy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l5x4u"]
@@ -32,7 +32,7 @@ size = Vector2(171, 268)
 [node name="tank3" type="CharacterBody2D"]
 rotation = 1.5708
 scale = Vector2(0.2, 0.2)
-script = ExtResource("1_gxxqj")
+script = ExtResource("1_qn1uc")
 
 [node name="Hull" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l5x4u")
