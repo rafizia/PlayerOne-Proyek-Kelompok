@@ -1,6 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://bqehgu3gwdwet"]
+[gd_scene load_steps=33 format=3 uid="uid://bqehgu3gwdwet"]
 
 [ext_resource type="Texture2D" uid="uid://bjlakxd8rjo2n" path="res://assets/craftpix-net-679950-free-raider-sprite-sheets-pixel-art/Raider_1/Shot.png" id="1_bvvbb"]
+[ext_resource type="Script" path="res://scripts/enemy/grunt.gd" id="1_d3f1d"]
 [ext_resource type="Texture2D" uid="uid://3nopbkn11i3x" path="res://assets/craftpix-net-679950-free-raider-sprite-sheets-pixel-art/Raider_1/Idle.png" id="2_trskm"]
 [ext_resource type="Texture2D" uid="uid://bae0gwgrk55db" path="res://assets/craftpix-net-679950-free-raider-sprite-sheets-pixel-art/Raider_1/Run.png" id="3_2bnhr"]
 
@@ -208,13 +209,23 @@ animations = [{
 size = Vector2(28, 65.25)
 
 [node name="Grunt" type="CharacterBody2D"]
+script = ExtResource("1_d3f1d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g4k6r")
 animation = &"Run"
 autoplay = "Idle"
-frame_progress = 0.473139
+frame_progress = 0.930167
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-11, 34.625)
 shape = SubResource("RectangleShape2D_sg7xe")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -36.0
+offset_top = -10.0
+offset_right = 14.0
+offset_bottom = -4.0
+max_value = 80.0
+value = 80.0
+show_percentage = false
