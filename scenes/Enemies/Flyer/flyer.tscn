@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://c2ohkvrxijaik"]
 
 [ext_resource type="Texture2D" uid="uid://cr7pwtnwekwgm" path="res://assets/enemies/flyer/Giant Fly Sprite Sheet.png" id="1_oq2n2"]
-[ext_resource type="Script" path="res://scenes/Enemies/Flyer/flyer.gd" id="1_qbwrw"]
+[ext_resource type="Script" path="res://scripts/enemies/flyer.gd" id="1_qbwrw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fns6e"]
 atlas = ExtResource("1_oq2n2")
