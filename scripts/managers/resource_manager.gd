@@ -66,6 +66,30 @@ func _spend_gold(amount: int) -> bool:
 		return true
 	return false
 
+static func modify_gold(amount: int) -> bool:
+    if _get_instance():
+        return _get_instance()._modify_gold(amount)
+    return false
+    
+func _modify_gold(amount: int) -> bool:
+    gold = clamp(gold + amount, 0, MAX_GOLD)
+    emit_signal("resources_updated", energy, gold, hp)
+    return true
+
+static func modify_hp(amount: int) -> bool:
+    if _get_instance():
+        return _get_instance()._modify_hp(amount)
+    return false
+    
+func _modify_hp(amount: int) -> bool:
+    hp = clamp(hp + amount, 0, MAX_HP)
+    emit_signal("resources_updated", energy, gold, hp)
+    
+    if hp <= 0:
+        emit_signal("game_over", "base_destroyed")
+        return false
+    return true
+
 func _process(delta):
 	# Apply energy decay
 	energy = max(0, energy - (energy_decay_rate * delta))
