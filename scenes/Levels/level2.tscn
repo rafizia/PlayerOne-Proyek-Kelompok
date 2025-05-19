@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://c0m4tvak3pv5x" path="res://assets/healthbar.png" id="7_0f76c"]
 [ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="9_384f0"]
 [ext_resource type="Script" path="res://scripts/levels/start_battle.gd" id="9_tpf36"]
-[ext_resource type="PackedScene" uid="uid://dtnjvfw383ydi" path="res://scenes/Levels/level_ui.tscn" id="13_yex21"]
-[ext_resource type="PackedScene" uid="uid://cpxvmtmfi4spg" path="res://scenes/Levels/pause_screen.tscn" id="17_lsllv"]
+[ext_resource type="PackedScene" uid="uid://cfm55348ldayh" path="res://scenes/Levels/level_ui.tscn" id="13_yex21"]
+[ext_resource type="PackedScene" path="res://scenes/Levels/pause_screen.tscn" id="17_lsllv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8imk0"]
 texture = ExtResource("1_khvkq")
