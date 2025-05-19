@@ -4,10 +4,10 @@ extends Node2D
 @onready var path2 := $Path2D2
 @onready var timer := $Timer
 @export var spawn_delay := 1.0
-@onready var hp_label = $UI/Health/HPLabel
-@onready var wave_label = $UI/Waves/WaveLabel
+@onready var hp_label = $Level_UI/Health/HPLabel
+@onready var wave_label = $Level_UI/Waves/WaveLabel
 
-var hp := 10
+var hp := 20
 var remaining_enemies = 0
 var current_wave = 0
 var enemy_queue: Array = []
@@ -26,11 +26,27 @@ var wave_data = [
 	[	# Wave 3
 		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
 		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+	],
+	[	# Wave 4
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+	],
+	[	# Wave 5
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+	],
+	[	# Wave 6
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+	],
+	[	# Wave 7
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
 	]
 ]
 
 func _ready():
-	start_wave()
+	wave_label.text = "Wave 1/7"
 	
 func start_wave():
 	enemy_queue.clear()
@@ -42,7 +58,7 @@ func start_wave():
 	# Tambah semua musuh dalam antrian spawn
 	enemy_queue = wave_data[current_wave].duplicate()	
 
-	wave_label.text = "Wave %d/5" % (current_wave + 1)
+	wave_label.text = "Wave %d/7" % (current_wave + 1)
 	print("Wave %d: %d musuh" % [current_wave + 1, enemy_queue.size()])
 	timer.wait_time = spawn_delay
 	timer.start()
