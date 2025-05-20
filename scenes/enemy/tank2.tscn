@@ -29,9 +29,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pmki"]
 size = Vector2(171, 268)
 
-[node name="tank2" type="CharacterBody2D"]
+[node name="tank2" type="CharacterBody2D" groups=["enemies"]]
 rotation = 1.5708
 scale = Vector2(0.2, 0.2)
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_xmein")
 
 [node name="Hull" type="AnimatedSprite2D" parent="."]

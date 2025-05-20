@@ -14,6 +14,11 @@ var level_path: String = "Level1"  # Default to Level1
 var tilemap_layers: Array = []
 
 func _ready():
+	# Wait for the scene to be ready
+	await get_tree().process_frame
+	initialize_level()
+
+func initialize_level():
 	# Get the current level number from the scene name
 	var scene_name = get_tree().current_scene.name
 	if scene_name.begins_with("Level"):

@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2in52y6ycisl"]
+[gd_scene load_steps=14 format=3 uid="uid://d2in52y6ycisl"]
 
+[ext_resource type="Script" path="res://scripts/towers/attack_tower.gd" id="1_7cibg"]
 [ext_resource type="Texture2D" uid="uid://bdq214k1dfden" path="res://assets/towers/gun-turret/Gun-Turret-1.png" id="1_y2kio"]
+[ext_resource type="PackedScene" uid="uid://cjmcp3atom5c8" path="res://scenes/Towers/GunTurret/bullet_red.tscn" id="2_wanj0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c54au"]
 atlas = ExtResource("1_y2kio")
@@ -45,20 +47,72 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_thp5d")
 }],
-"loop": true,
-"name": &"nembak",
+"loop": false,
+"name": &"shoot",
 "speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcaos"]
 size = Vector2(42, 29)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bgwk7"]
+radius = 120.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_864wr"]
+size = Vector2(44, 23)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8od16"]
+bg_color = Color(1, 1, 1, 0.313726)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 120
+corner_radius_bottom_left = 120
+corner_detail = 6
+
 [node name="GunTurret" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_7cibg")
+bullet_scene = ExtResource("2_wanj0")
+
+[node name="Aim" type="Marker2D" parent="."]
+position = Vector2(30, -5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_edxmu")
-animation = &"nembak"
+animation = &"shoot"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_wcaos")
+
+[node name="Sight" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
+shape = SubResource("CircleShape2D_bgwk7")
+
+[node name="TowerDetector" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetector"]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_864wr")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[node name="Area" type="Panel" parent="."]
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = 120.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8od16")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
+[connection signal="body_entered" from="Sight" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Sight" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

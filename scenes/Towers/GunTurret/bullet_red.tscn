@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjmcp3atom5c8"]
+[gd_scene load_steps=4 format=3 uid="uid://cjmcp3atom5c8"]
 
 [ext_resource type="Texture2D" uid="uid://d8ol186cbcun" path="res://assets/towers/gun-turret/Bullet-Red.png" id="1_g7rx7"]
+[ext_resource type="Script" path="res://scripts/towers/bullet.gd" id="1_sr80s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5m8pp"]
 size = Vector2(23, 8)
 
 [node name="BulletRed" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("1_sr80s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_g7rx7")
