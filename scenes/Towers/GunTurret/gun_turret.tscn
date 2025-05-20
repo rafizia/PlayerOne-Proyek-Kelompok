@@ -1,6 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://d2in52y6ycisl"]
 
+[ext_resource type="Script" path="res://scripts/towers/attack_tower.gd" id="1_7cibg"]
 [ext_resource type="Texture2D" uid="uid://bdq214k1dfden" path="res://assets/towers/gun-turret/Gun-Turret-1.png" id="1_y2kio"]
+[ext_resource type="PackedScene" uid="uid://cjmcp3atom5c8" path="res://scenes/Towers/GunTurret/bullet_red.tscn" id="2_wanj0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c54au"]
 atlas = ExtResource("1_y2kio")
