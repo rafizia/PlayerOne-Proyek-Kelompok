@@ -1,0 +1,281 @@
+[gd_scene load_steps=13 format=3 uid="uid://ddraxtf0w5187"]
+
+[ext_resource type="Texture2D" uid="uid://cuki80rjsyxfe" path="res://assets/LevelSelect2.png" id="1_irw1o"]
+[ext_resource type="Texture2D" uid="uid://cvlkgp1kfyaif" path="res://assets/shield.png" id="2_6bdhq"]
+[ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="2_cg03r"]
+[ext_resource type="Script" path="res://scripts/level_select/level_select_button.gd" id="3_pcpra"]
+[ext_resource type="Script" path="res://scripts/level_select/play_button.gd" id="5_vjvle"]
+[ext_resource type="Texture2D" uid="uid://5m7s7ld4a260" path="res://assets/woodenSign.png" id="6_sthea"]
+[ext_resource type="FontFile" uid="uid://m8d57bup8fh5" path="res://assets/Fonts/Raw/upheavtt.ttf" id="7_gwcpp"]
+[ext_resource type="Script" path="res://scripts/level_select/cancel_button.gd" id="7_u3wdi"]
+
+[sub_resource type="Animation" id="Animation_lsfke"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(556, -360)]
+}
+
+[sub_resource type="Animation" id="Animation_gdx2w"]
+resource_name = "drop"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(556, -360), Vector2(556, -42)]
+}
+
+[sub_resource type="Animation" id="Animation_ai1dm"]
+resource_name = "up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(556, -42), Vector2(556, -360)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fo075"]
+_data = {
+"RESET": SubResource("Animation_lsfke"),
+"drop": SubResource("Animation_gdx2w"),
+"up": SubResource("Animation_ai1dm")
+}
+
+[node name="LevelSelect" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -10.0
+offset_top = -90.0
+offset_right = 1204.0
+offset_bottom = 841.0
+texture = ExtResource("1_irw1o")
+expand_mode = 1
+
+[node name="Lines" type="Node2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Lines"]
+points = PackedVector2Array(342, 455, 353, 467)
+width = 5.0
+default_color = Color(0.339753, 0.185771, 0.158438, 1)
+
+[node name="Line2D2" type="Line2D" parent="Lines"]
+position = Vector2(17, 18)
+points = PackedVector2Array(342, 455, 353, 466)
+width = 5.0
+default_color = Color(0.341176, 0.184314, 0.156863, 1)
+
+[node name="Line2D3" type="Line2D" parent="Lines"]
+position = Vector2(33, 34)
+points = PackedVector2Array(342, 455, 353, 466)
+width = 5.0
+default_color = Color(0.341176, 0.184314, 0.156863, 1)
+
+[node name="Line2D4" type="Line2D" parent="Lines"]
+position = Vector2(50, 50)
+points = PackedVector2Array(342, 455, 354, 464)
+width = 5.0
+default_color = Color(0.341176, 0.184314, 0.156863, 1)
+
+[node name="Line2D5" type="Line2D" parent="Lines"]
+position = Vector2(68, 62)
+points = PackedVector2Array(342, 455, 356, 463)
+width = 5.0
+default_color = Color(0.341176, 0.184314, 0.156863, 1)
+
+[node name="Line2D6" type="Line2D" parent="Lines"]
+position = Vector2(88, 73)
+points = PackedVector2Array(342, 455, 356, 460)
+width = 5.0
+default_color = Color(0.341176, 0.184314, 0.156863, 1)
+
+[node name="Line2D7" type="Line2D" parent="Lines"]
+position = Vector2(203, 58)
+points = PackedVector2Array(329, 486, 348, 480)
+width = 5.0
+default_color = Color(0.341176, 0.184314, 0.156863, 1)
+
+[node name="Line2D8" type="Line2D" parent="Lines"]
+position = Vector2(228, 59)
+points = PackedVector2Array(328, 477, 347, 470)
+width = 5.0
+default_color = Color(0.341176, 0.184314, 0.156863, 1)
+
+[node name="Line2D9" type="Line2D" parent="Lines"]
+position = Vector2(256, 51)
+points = PackedVector2Array(324, 476, 338, 466)
+width = 5.0
+default_color = Color(0.341176, 0.184314, 0.156863, 1)
+
+[node name="Line2D10" type="Line2D" parent="Lines"]
+position = Vector2(273, 32)
+points = PackedVector2Array(325, 481, 337, 471)
+width = 5.0
+default_color = Color(0.341176, 0.184314, 0.156863, 1)
+
+[node name="Line2D11" type="Line2D" parent="Lines"]
+position = Vector2(287, 19)
+points = PackedVector2Array(328, 480, 337, 468)
+width = 5.0
+default_color = Color(0.341176, 0.184314, 0.156863, 1)
+
+[node name="Line2D12" type="Line2D" parent="Lines"]
+position = Vector2(297, 4)
+points = PackedVector2Array(330, 479, 336, 466)
+width = 5.0
+default_color = Color(0.341176, 0.184314, 0.156863, 1)
+
+[node name="Level_Icon" type="Node2D" parent="."]
+
+[node name="TextureRect2" type="TextureRect" parent="Level_Icon"]
+offset_left = 265.0
+offset_top = 381.0
+offset_right = 348.0
+offset_bottom = 462.0
+texture = ExtResource("2_6bdhq")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Level_Icon"]
+offset_left = 614.0
+offset_top = 390.0
+offset_right = 697.0
+offset_bottom = 471.0
+texture = ExtResource("2_6bdhq")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="Level_Icon"]
+offset_left = 446.0
+offset_top = 520.0
+offset_right = 529.0
+offset_bottom = 601.0
+texture = ExtResource("2_6bdhq")
+expand_mode = 1
+
+[node name="Level1_Button" type="LinkButton" parent="Level_Icon"]
+offset_left = 288.0
+offset_top = 395.0
+offset_right = 328.0
+offset_bottom = 466.0
+theme_override_fonts/font = ExtResource("2_cg03r")
+theme_override_font_sizes/font_size = 60
+text = "1"
+underline = 2
+script = ExtResource("3_pcpra")
+level_path = "res://scenes/Levels/level1.tscn"
+
+[node name="Level2_Button" type="LinkButton" parent="Level_Icon"]
+offset_left = 473.0
+offset_top = 534.0
+offset_right = 513.0
+offset_bottom = 605.0
+theme_override_fonts/font = ExtResource("2_cg03r")
+theme_override_font_sizes/font_size = 60
+text = "2"
+underline = 2
+script = ExtResource("3_pcpra")
+level_path = "res://scenes/Levels/level2.tscn"
+
+[node name="Level3_Button" type="LinkButton" parent="Level_Icon"]
+offset_left = 640.0
+offset_top = 406.0
+offset_right = 680.0
+offset_bottom = 477.0
+theme_override_fonts/font = ExtResource("2_cg03r")
+theme_override_font_sizes/font_size = 60
+text = "3"
+underline = 2
+script = ExtResource("3_pcpra")
+level_path = "res://scenes/Levels/level3.tscn"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 39.0
+offset_top = 27.0
+offset_right = 632.0
+offset_bottom = 210.0
+theme_override_colors/font_color = Color(1, 0.94902, 0.8, 1)
+theme_override_fonts/font = ExtResource("7_gwcpp")
+theme_override_font_sizes/font_size = 60
+text = "SELECT 
+LEVEL
+"
+
+[node name="Confirm_Dialog" type="Node2D" parent="."]
+position = Vector2(556, -360)
+
+[node name="TextureRect" type="TextureRect" parent="Confirm_Dialog"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_right = 165.0
+offset_bottom = 358.0
+grow_horizontal = 2
+texture = ExtResource("6_sthea")
+
+[node name="Label" type="Label" parent="Confirm_Dialog"]
+offset_left = -108.0
+offset_top = 130.0
+offset_right = 147.0
+offset_bottom = 189.0
+theme_override_colors/font_color = Color(0.238577, 0.121615, 0.101182, 1)
+theme_override_fonts/font = ExtResource("2_cg03r")
+theme_override_font_sizes/font_size = 30
+text = "PLAY THIS 
+LEVEL?"
+horizontal_alignment = 1
+
+[node name="Play" type="LinkButton" parent="Confirm_Dialog"]
+offset_left = -27.0
+offset_top = 228.0
+offset_right = 77.0
+offset_bottom = 274.0
+theme_override_colors/font_color = Color(1, 0.94902, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_cg03r")
+theme_override_font_sizes/font_size = 40
+text = "PLAY"
+underline = 2
+script = ExtResource("5_vjvle")
+
+[node name="Cancel" type="LinkButton" parent="Confirm_Dialog"]
+offset_left = -18.0
+offset_top = 283.0
+offset_right = 91.0
+offset_bottom = 323.0
+theme_override_colors/font_color = Color(1, 0.94902, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_cg03r")
+theme_override_font_sizes/font_size = 20
+text = "CANCEL"
+underline = 2
+script = ExtResource("7_u3wdi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Confirm_Dialog"]
+libraries = {
+"": SubResource("AnimationLibrary_fo075")
+}
+
+[connection signal="pressed" from="Level_Icon/Level1_Button" to="Level_Icon/Level1_Button" method="_on_pressed"]
+[connection signal="pressed" from="Level_Icon/Level2_Button" to="Level_Icon/Level2_Button" method="_on_pressed"]
+[connection signal="pressed" from="Level_Icon/Level3_Button" to="Level_Icon/Level3_Button" method="_on_pressed"]
+[connection signal="pressed" from="Confirm_Dialog/Play" to="Confirm_Dialog/Play" method="_on_pressed"]
+[connection signal="pressed" from="Confirm_Dialog/Cancel" to="Confirm_Dialog/Cancel" method="_on_pressed"]

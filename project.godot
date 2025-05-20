@@ -11,16 +11,27 @@ config_version=5
 [application]
 
 config/name="PlayerOne Proyek Kelompok"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 ResourceManager="*res://scripts/managers/resource_manager.gd"
+TransitionLayer="*res://scenes/transition_layer.tscn"
+TowerPlacerManager="*res://scripts/managers/tower_placer_manager.gd"
 
 [global_group]
 
 enemies=""
+
+[layer_names]
+
+2d_physics/layer_1="environments"
+2d_physics/layer_2="towers"
+2d_physics/layer_3="towerdetectors"
+2d_physics/layer_4="bullets"
+2d_physics/layer_5="enemies"
 
 [rendering]
 
