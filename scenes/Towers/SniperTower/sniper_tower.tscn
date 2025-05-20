@@ -29,7 +29,7 @@ radius = 250.0
 size = Vector2(24, 18)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xweef"]
-bg_color = Color(0, 1, 0, 0.313726)
+bg_color = Color(1, 1, 1, 0.313726)
 corner_radius_top_left = 250
 corner_radius_top_right = 250
 corner_radius_bottom_right = 250

@@ -124,7 +124,6 @@ func shoot():
 	)
 
 func _on_animation_finished():
-	print("Animation finished")
 	animated_sprite.stop()
 
 func _on_detection_area_body_entered(body):

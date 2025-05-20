@@ -1,21 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://j6misgjrn25h"]
+[gd_scene load_steps=6 format=3 uid="uid://j6misgjrn25h"]
 
 [ext_resource type="PackedScene" uid="uid://yft57h3u8x5c" path="res://scenes/UI/gun_turret_panel.tscn" id="1_k3p2b"]
 [ext_resource type="PackedScene" uid="uid://76h8yy252gon" path="res://scenes/UI/sniper_tower_panel.tscn" id="2_qsqdr"]
 [ext_resource type="PackedScene" uid="uid://u5erdnutatqe" path="res://scenes/UI/support_tower_panel.tscn" id="3_n44jj"]
 [ext_resource type="PackedScene" uid="uid://d2mhiejcamqu" path="res://scenes/UI/resource_tower_panel.tscn" id="4_a6svv"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ug4ns"]
+bg_color = Color(0.0971, 0.081, 0.15, 0.470588)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="TowerSelectionsUI" type="CanvasLayer"]
 
 [node name="Panel" type="Panel" parent="."]
-modulate = Color(1, 1, 1, 0.823529)
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -190.0
-grow_horizontal = 0
-grow_vertical = 2
+offset_left = 5.0
+offset_top = -105.0
+offset_right = -777.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ug4ns")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -29,7 +39,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VFlowContainer" type="HFlowContainer" parent="Panel/MarginContainer"]
+[node name="VFlowContainer" type="VFlowContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
