@@ -12,7 +12,6 @@ var is_active: bool = true
 # Called when the node enters the scene tree for the first time
 func _ready():
 	add_to_group("towers")
-	#update_tower_stats()
 
 # Tower activation/deactivation
 func set_active(active: bool):

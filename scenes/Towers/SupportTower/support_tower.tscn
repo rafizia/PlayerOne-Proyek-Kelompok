@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctkn6sofm7345"]
+[gd_scene load_steps=19 format=3 uid="uid://ctkn6sofm7345"]
 
 [ext_resource type="Script" path="res://scripts/towers/support_tower.gd" id="1_1krxg"]
 [ext_resource type="Texture2D" uid="uid://br6x7xc2afh7c" path="res://assets/towers/support-tower/Support-Tower-2-anim.png" id="1_eifr0"]
@@ -101,6 +101,14 @@ size = Vector2(34, 46.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akwhk"]
 size = Vector2(36, 18)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xgu8u"]
+bg_color = Color(1, 1, 1, 0.313726)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 6
+
 [node name="SupportTower" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 0
@@ -123,3 +131,10 @@ collision_mask = 6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetector"]
 position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_akwhk")
+
+[node name="Area" type="Panel" parent="."]
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xgu8u")
