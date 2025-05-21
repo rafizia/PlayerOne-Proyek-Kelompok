@@ -71,14 +71,12 @@ var wave_data = [
 
 func _ready():
 	wave_label.text = "Wave 1/10"
-<<<<<<< HEAD
+	win_screen_continue.level_path = "res://scenes/Levels/level3.tscn"
+	restart_button.level_path = "res://scenes/Levels/level3.tscn"
 
 func get_bgm():
 	return bgm
 
-=======
-	win_screen_continue.level_path = "res://scenes/Levels/level3.tscn"
-	restart_button.level_path = "res://scenes/Levels/level3.tscn"
 	
 func _process(delta):
 	hp_label.text = str(ResourcesManager.hp)
@@ -88,9 +86,9 @@ func _process(delta):
 	if (ResourcesManager.hp <= 0 or ResourcesManager.energy <= 0) and not is_game_over_handled:
 		is_game_over_handled = true
 		game_over.visible = true
+		SoundManager.play_bgm(losebgm, false, false)
 		get_tree().paused = true
 	
->>>>>>> dev
 func start_wave():
 	enemy_queue.clear()
 	
@@ -149,15 +147,4 @@ func _on_timer_timeout() -> void:
 	timer.start() 
 	
 func decrease_hp():
-<<<<<<< HEAD
-	hp -= 1
-	hp_label.text = "%d" % hp
-	if hp <= 0:
-		game_over()
-
-func game_over():
-	SoundManager.play_bgm(losebgm, false, false)
-	print("Game Over!")
-=======
 	pass
->>>>>>> dev

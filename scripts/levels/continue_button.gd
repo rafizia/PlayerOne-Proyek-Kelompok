@@ -3,6 +3,7 @@ extends LinkButton
 @export var level_path: String
 
 func _on_pressed() -> void:	
+	SoundManager.play_click()
 	get_tree().paused = false
 	
 	ResourcesManager.hp = 20
