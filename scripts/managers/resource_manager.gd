@@ -1,7 +1,5 @@
 extends Node
 
-class_name ResourcesManager
-
 # Game resources
 var energy: float = 100.0
 var gold: int = 100

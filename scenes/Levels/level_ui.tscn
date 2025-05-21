@@ -151,7 +151,7 @@ offset_right = 125.08
 offset_bottom = 30.0
 theme_override_fonts/font = ExtResource("3_b6pu6")
 theme_override_font_sizes/font_size = 20
-text = "1000
+text = "100
 "
 metadata/_edit_use_anchors_ = true
 

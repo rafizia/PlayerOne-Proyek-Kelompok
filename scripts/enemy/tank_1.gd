@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
 signal enemy_died
+signal enemy_pass
 signal base_damaged(damage)
 signal reward_earned(amount)
 
-@export var speed: float = 100
-@export var max_health: float = 100
+@export var speed: float = 50
+@export var max_health: float = 10
 @export var damage_to_base: int = 1
 @export var reward: int = 25
 
