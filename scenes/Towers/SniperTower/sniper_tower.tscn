@@ -96,11 +96,20 @@ offset_right = 250.0
 offset_bottom = 250.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xweef")
 
+[node name="ClickArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -12.0
+offset_top = -9.0
+offset_right = 11.0
+offset_bottom = 30.0
+
 [node name="Upgrade" type="Panel" parent="."]
+visible = false
 offset_left = 30.0
-offset_top = -20.0
+offset_top = -12.0
 offset_right = 70.0
-offset_bottom = 20.0
+offset_bottom = 28.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t34qh")
 
 [node name="MarginContainer" type="MarginContainer" parent="Upgrade"]
@@ -132,3 +141,5 @@ horizontal_alignment = 1
 [connection signal="body_entered" from="Sight" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Sight" to="." method="_on_detection_area_body_exited"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="gui_input" from="ClickArea" to="." method="_on_click_area_gui_input"]
+[connection signal="gui_input" from="Upgrade" to="." method="_on_upgrade_gui_input"]
