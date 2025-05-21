@@ -6,8 +6,10 @@ extends Node2D
 @export var spawn_delay := 1.0
 @onready var hp_label = $Level_UI/Health/HPLabel
 @onready var wave_label = $Level_UI/Waves/WaveLabel
+@onready var coin_label = $Level_UI/Coin/CoinLabel
+@onready var energy_label = $Level_UI/Energy/EnergyLabel
 
-var hp := 20
+var hp = ResourcesManager.hp
 var remaining_enemies = 0
 var current_wave = 0
 var enemy_queue: Array = []
@@ -47,6 +49,11 @@ var wave_data = [
 
 func _ready():
 	wave_label.text = "Wave 1/7"
+	
+func _process(delta):
+	hp_label.text = str(ResourcesManager.hp)
+	coin_label.text = str(ResourcesManager.gold)
+	energy_label.text = str(int(ResourcesManager.energy))
 	
 func start_wave():
 	enemy_queue.clear()
@@ -102,10 +109,4 @@ func _on_timer_timeout() -> void:
 	timer.start() 
 	
 func decrease_hp():
-	hp -= 1
-	hp_label.text = "%d" % hp
-	if hp <= 0:
-		game_over()
-
-func game_over():
-	print("Game Over!")
+	pass
