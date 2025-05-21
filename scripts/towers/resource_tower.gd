@@ -19,13 +19,19 @@ func _ready():
 
 func _process(delta):
 	# Only generate resources if tower is active
-	if is_active:
-		var generated = current_generation_rate * delta
-		if ResourcesManager._instance:
-			ResourcesManager._instance.energy = min(
-				ResourcesManager._instance.MAX_ENERGY,
-				ResourcesManager._instance.energy + generated
-			)
+	if !is_active:
+		return
+		
+	# Only process if the tower is placed (not being dragged)
+	if get_parent().name != "Towers":
+		return
+		
+	var generated = current_generation_rate * delta
+	if ResourcesManager._instance:
+		ResourcesManager._instance.energy = min(
+			ResourcesManager._instance.MAX_ENERGY,
+			ResourcesManager._instance.energy + generated
+		)
 
 # Override update_tower_stats
 func update_tower_stats():
