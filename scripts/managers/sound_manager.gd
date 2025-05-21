@@ -1,9 +1,11 @@
 extends Node2D
 ## Node to manage sound playing through the game
 ##
-## put `SoundManager.play_sfx(AudioStream) to play sfx, `SoundManager.play_bgm(AudioStreamMP3) to set BGM
-## sfx is one and done, and can be set to change pitch each initiation with the random flag
-## bgm is a set and it loops until it's set to none or null
+## already been set to be a global node, so you can put the node.function directly on the code
+## put `SoundManager.play_sfx(AudioStream)` to play sfx, `SoundManager.play_bgm(AudioStreamMP3) to set BGM.
+## sfx is one and done, and can be set to change pitch each initiation with the random flag.
+## bgm is a set and it loops until it's set to none or null.
+## 
 ##
 
 @onready var sfx_player : AudioStreamPlayer
@@ -32,5 +34,5 @@ func play_bgm(bgm: AudioStreamMP3):
 			add_child(bgm_player)
 			bgm_player.set_process_mode(3)
 		bgm_player.stream = bgm
-		bgm_player.bus = "Music"
+		bgm_player.bus = "BGM"
 		bgm_player.play()
