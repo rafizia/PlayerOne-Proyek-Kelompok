@@ -121,7 +121,6 @@ func shoot():
 	if not bullet_scene or not current_target:
 		return
 	
-	print("Current damage: ", current_bullet_damage)
 	animated_sprite.play("shoot")
 	var bullet = bullet_scene.instantiate()
 	var spawn_pos = aim.global_position

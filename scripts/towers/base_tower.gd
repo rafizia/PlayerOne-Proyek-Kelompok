@@ -22,6 +22,7 @@ func _ready():
 	# Hide upgrade panel initially
 	if upgrade_panel:
 		upgrade_panel.hide()
+		upgrade_panel.z_index = 100
 		
 	# Connect to resource manager for cost updates
 	if ResourcesManager._instance:
