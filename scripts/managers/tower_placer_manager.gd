@@ -137,15 +137,4 @@ func end_tower_placement() -> void:
 	
 	current_tower = null
 	is_dragging = false
-	can_place = false
-
-func cancel_tower_placement() -> void:
-	if not is_dragging or not current_tower:
-		return
-	
-	# Refund the cost and remove the tower
-	ResourcesManager._instance.gold += current_tower.cost
-	current_tower.queue_free()
-	current_tower = null
-	is_dragging = false
 	can_place = false 

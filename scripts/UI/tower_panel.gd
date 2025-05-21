@@ -16,6 +16,10 @@ func _ready():
 	if ResourcesManager._instance:
 		ResourcesManager._instance.connect("resources_updated", Callable(self, "_on_resources_updated"))
 	
+	# Connect to tower placer's signal
+	if tower_placer:
+		tower_placer.connect("tower_placement_ended", Callable(self, "_on_tower_placement_ended"))
+	
 	# Initial check
 	check_affordability()
 
@@ -35,6 +39,10 @@ func _on_gui_input(event):
 		tower_placer.update_tower_position(event.global_position) 
 
 func _on_resources_updated(energy, gold, hp):
+	check_affordability()
+
+func _on_tower_placement_ended(tower_instance, success):
+	# Update panel appearance when tower placement ends (whether successful or not)
 	check_affordability()
 
 func check_affordability():

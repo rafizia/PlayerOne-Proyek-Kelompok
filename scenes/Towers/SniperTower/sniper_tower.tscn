@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmkx14uyeu3s1"]
+[gd_scene load_steps=14 format=3 uid="uid://dmkx14uyeu3s1"]
 
 [ext_resource type="Texture2D" uid="uid://dsj4dqmrj2avu" path="res://assets/towers/sniper-tower/Sniper-Tower.png" id="1_5tetq"]
 [ext_resource type="Script" path="res://scripts/towers/attack_tower.gd" id="1_rvifk"]
 [ext_resource type="PackedScene" uid="uid://dmcw8gn0qrjpj" path="res://scenes/Towers/SniperTower/bullet_green.tscn" id="2_2c465"]
+[ext_resource type="Script" path="res://scripts/towers/effect_area_draw.gd" id="4_27frw"]
+[ext_resource type="Texture2D" uid="uid://ca03ken5iggig" path="res://assets/towers/arrow_up.png" id="4_fnjm5"]
+[ext_resource type="FontFile" uid="uid://cnbae18fxsbpb" path="res://assets/Fonts/Raw/VCR_OSD_MONO_1.001.ttf" id="5_bn8w6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwhal"]
 atlas = ExtResource("1_5tetq")
@@ -36,6 +39,13 @@ corner_radius_bottom_right = 250
 corner_radius_bottom_left = 250
 corner_detail = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t34qh"]
+bg_color = Color(0.0980392, 0.0823529, 0.14902, 0.470588)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="SniperTower" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 0
@@ -45,12 +55,11 @@ attack_tower_maintenance_cost = 8
 bullet_scene = ExtResource("2_2c465")
 base_bullet_speed = 1000.0
 base_bullet_damage = 4.0
-base_attack_range = 200.0
 base_reload_time = 2.5
 range_upgrade_add = 20.0
-damage_upgrade_add = 3.0
+damage_upgrade_add = 1.0
 reload_upgrade_reduce = 0.2
-upgrade_cost_base = 75
+upgrade_cost_base = 30
 
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(30, -12)
@@ -63,12 +72,13 @@ animation = &"shoot"
 position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_ga5v3")
 
-[node name="Sight" type="Area2D" parent="."]
+[node name="EffectArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EffectArea"]
 shape = SubResource("CircleShape2D_bkpds")
+script = ExtResource("4_27frw")
 
 [node name="TowerDetector" type="Area2D" parent="."]
 collision_layer = 4
@@ -87,7 +97,50 @@ offset_right = 250.0
 offset_bottom = 250.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xweef")
 
+[node name="ClickArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -12.0
+offset_top = -9.0
+offset_right = 11.0
+offset_bottom = 30.0
+
+[node name="Upgrade" type="Panel" parent="."]
+visible = false
+offset_left = 30.0
+offset_top = -12.0
+offset_right = 70.0
+offset_bottom = 28.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t34qh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Upgrade"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Upgrade/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="Upgrade/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_fnjm5")
+stretch_mode = 3
+
+[node name="Cost" type="Label" parent="Upgrade/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_bn8w6")
+theme_override_font_sizes/font_size = 14
+text = "10"
+horizontal_alignment = 1
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
-[connection signal="body_entered" from="Sight" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Sight" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="EffectArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="EffectArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="gui_input" from="ClickArea" to="." method="_on_click_area_gui_input"]
+[connection signal="gui_input" from="Upgrade" to="." method="_on_upgrade_gui_input"]
