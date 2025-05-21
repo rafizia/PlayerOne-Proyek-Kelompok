@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://b0jcl344gbrrs"]
+[gd_scene load_steps=20 format=3 uid="uid://b0jcl344gbrrs"]
 
 [ext_resource type="Script" path="res://scripts/towers/resource_tower.gd" id="1_psnmm"]
 [ext_resource type="Texture2D" uid="uid://b2ngtkli1ri2p" path="res://assets/towers/resource-tower/Resource-Tower-1.png" id="1_v30kd"]
+[ext_resource type="Texture2D" uid="uid://ca03ken5iggig" path="res://assets/towers/arrow_up.png" id="3_1y3bc"]
+[ext_resource type="FontFile" uid="uid://cnbae18fxsbpb" path="res://assets/Fonts/Raw/VCR_OSD_MONO_1.001.ttf" id="4_dwukq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ml4o"]
 atlas = ExtResource("1_v30kd")
@@ -94,6 +96,13 @@ size = Vector2(34, 38)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txva7"]
 size = Vector2(36, 24)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8u6h6"]
+bg_color = Color(0.0980392, 0.0823529, 0.14902, 0.470588)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="ResourceTower" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 0
@@ -116,3 +125,35 @@ collision_mask = 6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetector"]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_txva7")
+
+[node name="Upgrade" type="Panel" parent="."]
+offset_left = 30.0
+offset_top = -20.0
+offset_right = 70.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8u6h6")
+
+[node name="MarginContainer" type="MarginContainer" parent="Upgrade"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Upgrade/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="Upgrade/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_1y3bc")
+stretch_mode = 3
+
+[node name="Cost" type="Label" parent="Upgrade/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_dwukq")
+theme_override_font_sizes/font_size = 14
+text = "10"
+horizontal_alignment = 1

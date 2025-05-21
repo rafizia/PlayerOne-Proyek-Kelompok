@@ -1,7 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://ctkn6sofm7345"]
+[gd_scene load_steps=22 format=3 uid="uid://ctkn6sofm7345"]
 
 [ext_resource type="Script" path="res://scripts/towers/support_tower.gd" id="1_1krxg"]
 [ext_resource type="Texture2D" uid="uid://br6x7xc2afh7c" path="res://assets/towers/support-tower/Support-Tower-2-anim.png" id="1_eifr0"]
+[ext_resource type="Texture2D" uid="uid://ca03ken5iggig" path="res://assets/towers/arrow_up.png" id="3_2yjme"]
+[ext_resource type="FontFile" uid="uid://cnbae18fxsbpb" path="res://assets/Fonts/Raw/VCR_OSD_MONO_1.001.ttf" id="4_01b2o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y2sy7"]
 atlas = ExtResource("1_eifr0")
@@ -109,6 +111,13 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 corner_detail = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mwb2"]
+bg_color = Color(0.0980392, 0.0823529, 0.14902, 0.470588)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="SupportTower" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 0
@@ -138,3 +147,35 @@ offset_top = -100.0
 offset_right = 100.0
 offset_bottom = 100.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xgu8u")
+
+[node name="Upgrade" type="Panel" parent="."]
+offset_left = 30.0
+offset_top = -20.0
+offset_right = 70.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6mwb2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Upgrade"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Upgrade/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="Upgrade/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_2yjme")
+stretch_mode = 3
+
+[node name="Cost" type="Label" parent="Upgrade/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_01b2o")
+theme_override_font_sizes/font_size = 14
+text = "10"
+horizontal_alignment = 1
