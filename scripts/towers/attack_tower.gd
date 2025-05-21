@@ -121,7 +121,7 @@ func shoot():
 	if not bullet_scene or not current_target:
 		return
 	
-	print("Current damage: ", current_bullet_damage)
+	#print("Current damage: ", current_bullet_damage)
 	animated_sprite.play("shoot")
 	var bullet = bullet_scene.instantiate()
 	var spawn_pos = aim.global_position
@@ -167,7 +167,7 @@ func _on_cooldown_timer_timeout():
 # Support tower interaction methods
 func apply_damage_boost(boost_amount: float):
 	# Apply damage boost as a multiplier
-	current_bullet_damage = base_damage * (1.0 + boost_amount)
+	current_bullet_damage = base_damage * (1.5 + boost_amount)
 
 func remove_damage_boost(boost_amount: float):
 	# Remove damage boost and return to base damage

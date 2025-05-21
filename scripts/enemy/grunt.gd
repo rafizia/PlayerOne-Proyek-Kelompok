@@ -5,7 +5,7 @@ signal enemy_died
 @export var base_speed: float = 50.0  # Kecepatan tinggi (unit cepat)
 @export var health: float = 4      # Health rendah
 @export var max_health: float = 4
-@export var gold_reward: int = 5      # Reward gold saat dibunuh
+@export var gold_reward: int = 3      # Reward gold saat dibunuh
 @export var base_damage: int = 1       # Damage ke base
 @export var attack_range: float = 200.0  # Range attack
 @export var attack_damage: float = 5.0   # Damage per serangan
@@ -18,6 +18,7 @@ var attack_timer: Timer
 var current_target = null
 var can_attack = true
 var attacking = false
+var has_been_died = false
 
 func _ready():
 	# Masukkan ke grup enemies agar bisa dideteksi tower
@@ -96,7 +97,9 @@ func _process(delta):
 			# Deal damage to base
 			if ResourcesManager:
 				ResourcesManager.modify_hp(-base_damage)
-			emit_signal("enemy_died")
+			if not has_been_died:
+				has_been_died = true
+				emit_signal("enemy_died")
 			queue_free()
 
 # Handler saat ada tower di area serangan
@@ -168,7 +171,9 @@ func take_damage(amount: float) -> bool:
 
 # Die
 func die():
-	emit_signal("enemy_died")
+	if not has_been_died:
+		has_been_died = true
+		emit_signal("enemy_died")
 	
 	# Berikan gold ke player
 	if ResourcesManager:
