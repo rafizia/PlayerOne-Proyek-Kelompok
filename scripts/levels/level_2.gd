@@ -11,6 +11,7 @@ extends Node2D
 @onready var win_screen = $WinScreen
 @onready var win_screen_continue = $WinScreen/TextureRect/Continue
 @onready var game_over = $GameOver
+@onready var restart_button = $GameOver/TextureRect/Restart
 
 var hp = ResourcesManager.hp
 var remaining_enemies = 0
@@ -58,6 +59,7 @@ var wave_data = [
 func _ready():
 	wave_label.text = "Wave 1/7"
 	win_screen_continue.level_path = "res://scenes/Levels/level3.tscn"
+	restart_button.level_path = "res://scenes/Levels/level2.tscn"
 	
 func _process(delta):
 	hp_label.text = str(ResourcesManager.hp)
