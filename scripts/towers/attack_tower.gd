@@ -28,6 +28,7 @@ var upgrade_costs: Array[int] = []
 # Current stats
 var current_bullet_speed: float
 var current_bullet_damage: float
+var base_damage: float  # Store base damage separately from boosted damage
 var current_attack_range: float
 var current_reload_time: float
 
@@ -73,6 +74,7 @@ func _build_upgrade_arrays():
 func initialize_stats():
 	current_bullet_speed = base_bullet_speed
 	current_bullet_damage = base_bullet_damage
+	base_damage = base_bullet_damage  # Initialize base damage
 	current_attack_range = base_attack_range
 	current_reload_time = base_reload_time
 	cooldown_timer.wait_time = current_reload_time
@@ -111,6 +113,7 @@ func shoot():
 	if not bullet_scene or not current_target:
 		return
 	
+	print("Current damage: ", current_bullet_damage)
 	animated_sprite.play("shoot")
 	var bullet = bullet_scene.instantiate()
 	var spawn_pos = aim.global_position
@@ -137,7 +140,8 @@ func _on_detection_area_body_exited(body):
 # Override base tower methods
 func update_tower_stats():
 	current_attack_range = base_attack_range + range_additions[tower_level - 1]
-	current_bullet_damage = base_bullet_damage + damage_additions[tower_level - 1]
+	base_damage = base_bullet_damage + damage_additions[tower_level - 1]
+	current_bullet_damage = base_damage  # Reset to base damage before applying any boosts
 	current_reload_time = base_reload_time - reload_reductions[tower_level - 1]
 	
 	# Update components
@@ -151,3 +155,12 @@ func get_upgrade_cost() -> int:
 
 func _on_cooldown_timer_timeout():
 	cooldown_timer.stop()
+
+# Support tower interaction methods
+func apply_damage_boost(boost_amount: float):
+	# Apply damage boost as a multiplier
+	current_bullet_damage = base_damage * (1.0 + boost_amount)
+
+func remove_damage_boost(boost_amount: float):
+	# Remove damage boost and return to base damage
+	current_bullet_damage = base_damage

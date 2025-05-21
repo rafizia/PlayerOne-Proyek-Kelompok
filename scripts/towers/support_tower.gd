@@ -4,7 +4,7 @@ class_name SupportTower
 enum SupportType { SLOW, DAMAGE_BOOST }
 
 # Support effect settings
-var support_type: SupportType = SupportType.SLOW
+var support_type: SupportType = SupportType.DAMAGE_BOOST
 var base_effect_amount: float = 0.2  # 20% slow or 20% damage boost
 var current_effect_amount: float = 0.2
 var base_radius: float = 100.0
@@ -32,6 +32,14 @@ func _ready():
 	
 	# Setup effect area
 	setup_effect_area()
+
+func _process(_delta):
+	if !is_active:
+		return
+	
+	# Only process if the tower is placed (not being dragged)
+	if get_parent().name != "Towers":
+		return
 
 # Setup the effect area
 func setup_effect_area():
@@ -64,15 +72,17 @@ func _on_effect_area_body_entered(body):
 	
 	# For slow effect (enemies)
 	if support_type == SupportType.SLOW and body.is_in_group("enemies"):
-		affected_enemies.append(body)
-		if body.has_method("apply_slow"):
-			body.apply_slow(current_effect_amount)
+		if !affected_enemies.has(body):
+			affected_enemies.append(body)
+			if body.has_method("apply_slow"):
+				body.apply_slow(current_effect_amount)
 	
 	# For damage boost (other towers)
 	elif support_type == SupportType.DAMAGE_BOOST and body.is_in_group("towers"):
-		affected_towers.append(body)
-		if body.has_method("apply_damage_boost"):
-			body.apply_damage_boost(current_effect_amount)
+		if !affected_towers.has(body):
+			affected_towers.append(body)
+			if body.has_method("apply_damage_boost"):
+				body.apply_damage_boost(current_effect_amount)
 
 # Handler when body exits effect area
 func _on_effect_area_body_exited(body):
