@@ -41,6 +41,8 @@ var current_target: Node2D = null
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready():
+	super._ready()
+
 	# Set tower properties
 	tower_name = attack_tower_name
 	build_cost = attack_tower_build_cost
@@ -49,8 +51,6 @@ func _ready():
 	_build_upgrade_arrays()
 	initialize_stats()
 	update_detection_area()
-	
-	super._ready()
 
 func _build_upgrade_arrays():
 	range_additions = [0.0]
