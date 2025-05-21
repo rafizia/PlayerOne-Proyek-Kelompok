@@ -3,10 +3,10 @@ extends CharacterBody2D
 signal enemy_died
 
 @export var base_speed: float = 40.0  # Kecepatan lambat (heavy tank)
-@export var health: float = 300.0     # Health tinggi
-@export var max_health: float = 300.0
-@export var gold_reward: int = 35     # Reward gold saat dibunuh
-@export var base_damage: int = 3      # Damage ke base (lebih tinggi dari tank biasa)
+@export var health: float = 50    # Health tinggi
+@export var max_health: float = 50
+@export var gold_reward: int = 20     # Reward gold saat dibunuh
+@export var base_damage: int = 4      # Damage ke base (lebih tinggi dari tank biasa)
 @export var damage_reduction: float = 0.75  # Reduksi damage saat defense mode (terima 25% damage)
 @export var defense_duration: float = 5.0   # Durasi defense mode
 @export var defense_cooldown: float = 15.0  # Cooldown defense mode
@@ -16,6 +16,7 @@ var current_speed: float
 var slow_effects = []
 var defense_active = false
 var can_defense = true
+var has_been_died = false
 
 func _ready():
 	# Set kecepatan awal
@@ -67,7 +68,9 @@ func _process(delta):
 			# Tank mencapai endpoint - berikan damage extra ke base
 			if ResourcesManager:
 				ResourcesManager.modify_hp(-base_damage)
-			emit_signal("enemy_died")
+			if not has_been_died:
+				has_been_died = true
+				emit_signal("enemy_died")
 			queue_free()
 
 # Aktifkan defense mode
@@ -138,7 +141,9 @@ func take_damage(amount: float) -> bool:
 
 # Mati dan berikan reward
 func die():
-	emit_signal("enemy_died")
+	if not has_been_died:
+		has_been_died = true
+		emit_signal("enemy_died")
 	
 	# Berikan gold ke player
 	if ResourcesManager:

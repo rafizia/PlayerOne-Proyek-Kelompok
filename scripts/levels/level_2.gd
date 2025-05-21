@@ -12,6 +12,8 @@ extends Node2D
 @onready var win_screen_continue = $WinScreen/TextureRect/Continue
 @onready var game_over = $GameOver
 @onready var restart_button = $GameOver/TextureRect/Restart
+@onready var start_battle = $StartBattleIcon
+@onready var restart_button_pause = $PauseScreen/TextureRect/Restart
 
 var hp = ResourcesManager.hp
 var remaining_enemies = 0
@@ -31,28 +33,67 @@ var wave_data = [
 	[	# Wave 2
 		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
 		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 1},
 		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
-		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 1}
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1}
 	],
 	[	# Wave 3
-		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
-		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 2}
 	],
 	[	# Wave 4
-		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
-		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 2}
 	],
 	[	# Wave 5
-		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
-		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 2},
+		
 	],
 	[	# Wave 6
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 2},
 		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
-		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1},
 	],
 	[	# Wave 7
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1},
 		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
-		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1},
 	]
 ]
 
@@ -60,6 +101,7 @@ func _ready():
 	wave_label.text = "Wave 1/7"
 	win_screen_continue.level_path = "res://scenes/Levels/level3.tscn"
 	restart_button.level_path = "res://scenes/Levels/level2.tscn"
+	restart_button_pause.level_path = "res://scenes/Levels/level2.tscn"
 	
 func _process(delta):
 	hp_label.text = str(ResourcesManager.hp)
@@ -74,7 +116,7 @@ func _process(delta):
 func start_wave():
 	enemy_queue.clear()
 
-	if current_wave >= wave_data.size():
+	if current_wave >= wave_data.size() and remaining_enemies == 0:
 		print("Semua wave selesai!")
 		win_screen.visible = true
 		return
@@ -83,6 +125,7 @@ func start_wave():
 	enemy_queue = wave_data[current_wave].duplicate()	
 
 	wave_label.text = "Wave %d/7" % (current_wave + 1)
+	remaining_enemies = enemy_queue.size()
 	print("Wave %d: %d musuh" % [current_wave + 1, enemy_queue.size()])
 	timer.wait_time = spawn_delay
 	timer.start()
@@ -99,19 +142,20 @@ func spawn_enemy(enemy_scene: PackedScene, path_id: int):
 	selected_path.add_child(path_follow)
 
 	var enemy = enemy_scene.instantiate()
-	remaining_enemies += 1
 	path_follow.add_child(enemy)
 
 	enemy.path_follow = path_follow
 	enemy.connect("enemy_died", Callable(self, "_on_enemy_died"))
 
 func _on_enemy_died():
-	decrease_hp()
 	remaining_enemies -= 1
+	print("sisa musuh:", remaining_enemies)
 	if remaining_enemies == 0:
-		print("Wave %d selesai!" % (current_wave))		
-		await get_tree().create_timer(2.0).timeout
-		start_wave()
+		print("Wave %d selesai!" % (current_wave))	
+		if current_wave != wave_data.size():
+			start_battle.visible = true	
+		else:
+			start_wave()
 
 func _on_timer_timeout() -> void:
 	if enemy_queue.is_empty():
@@ -124,6 +168,3 @@ func _on_timer_timeout() -> void:
 	var path_id = enemy_info["path"]
 	spawn_enemy(enemy_scene, path_id)
 	timer.start() 
-	
-func decrease_hp():
-	pass
