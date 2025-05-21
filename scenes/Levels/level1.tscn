@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cwfbe6lp8vwtu"]
+[gd_scene load_steps=14 format=4 uid="uid://cwfbe6lp8vwtu"]
 
 [ext_resource type="TileSet" uid="uid://g3dqf1ufjofm" path="res://assets/mana seed seasonal forest sample (spring)/seasonalforestspring.tres" id="1_1dl2o"]
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_n6yy5"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cfm55348ldayh" path="res://scenes/Levels/level_ui.tscn" id="7_sf1gh"]
 [ext_resource type="PackedScene" uid="uid://cpxvmtmfi4spg" path="res://scenes/Levels/pause_screen.tscn" id="8_005pk"]
 [ext_resource type="PackedScene" uid="uid://j6misgjrn25h" path="res://scenes/UI/tower_selections_ui.tscn" id="9_7f6hi"]
+[ext_resource type="AudioStream" path="res://assets/sfx/11L-Epic_orchestral_back-1747870378148.mp3" id="10_5gdxc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_luk14"]
 texture = ExtResource("2_i5c24")
@@ -119,5 +120,9 @@ visible = false
 [node name="Towers" type="Node2D" parent="."]
 
 [node name="TowerSelectionsUI" parent="." instance=ExtResource("9_7f6hi")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_5gdxc")
+autoplay = true
 
 [connection signal="pressed" from="StartBattleIcon/StartBattle" to="StartBattleIcon/StartBattle" method="_on_pressed"]
