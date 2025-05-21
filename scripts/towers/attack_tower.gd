@@ -55,7 +55,7 @@ func _build_upgrade_arrays():
 	range_additions = [0.0]
 	damage_additions = [0.0]
 	reload_reductions = [0.0]
-	upgrade_costs = []
+	upgrade_costs = [0]
 	
 	for level in range(1, max_level + 1):
 		# Range: linear addition (0, +15, +30)
@@ -78,9 +78,17 @@ func initialize_stats():
 	cooldown_timer.wait_time = current_reload_time
 
 func update_detection_area():
-	var collision_shape = detection_area.get_node("CollisionShape2D")
-	var circle_shape = collision_shape.shape as CircleShape2D
-	circle_shape.radius = current_attack_range
+	if not is_instance_valid(detection_area):
+		return
+
+	var collision_shape = detection_area.get_node_or_null("CollisionShape2D")
+	if not collision_shape:
+		return
+
+	var circle_shape = collision_shape.shape
+	
+	if circle_shape is CircleShape2D:
+		circle_shape.radius = current_attack_range
 
 func _process(delta):
 	if not is_active:
@@ -136,7 +144,7 @@ func _on_detection_area_body_exited(body):
 
 # Upgrade implementation
 func get_upgrade_cost() -> int:
-	if tower_level <= max_level:
+	if tower_level <= max_level and upgrade_costs.size() > tower_level - 1:
 		return upgrade_costs[tower_level - 1]
 	return 0
 
