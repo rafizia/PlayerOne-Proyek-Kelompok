@@ -155,6 +155,11 @@ func update_tower_stats():
 	current_range_radius = base_range_radius + range_additions[tower_level - 1]
 	base_damage = base_bullet_damage + damage_additions[tower_level - 1]
 	current_bullet_damage = base_damage  # Reset to base damage before applying any boosts
+	
+	if has_meta("support_boost"):
+		var boost_amount = get_meta("support_boost")
+		current_bullet_damage = base_damage * (1.5 + boost_amount)
+	
 	current_reload_time = base_reload_time - reload_reductions[tower_level - 1]
 	
 	# Update components
@@ -168,7 +173,9 @@ func _on_cooldown_timer_timeout():
 func apply_damage_boost(boost_amount: float):
 	# Apply damage boost as a multiplier
 	current_bullet_damage = base_damage * (1.5 + boost_amount)
+	set_meta("support_boost", boost_amount)
 
 func remove_damage_boost(boost_amount: float):
 	# Remove damage boost and return to base damage
 	current_bullet_damage = base_damage
+	remove_meta("support_boost")
