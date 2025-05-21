@@ -134,12 +134,7 @@ func _on_detection_area_body_exited(body):
 	if body in enemies_in_range:
 		enemies_in_range.erase(body)
 
-# Upgrade implementation
-func get_upgrade_cost() -> int:
-	if tower_level <= max_level:
-		return upgrade_costs[tower_level - 1]
-	return 0
-
+# Override base tower methods
 func update_tower_stats():
 	current_attack_range = base_attack_range + range_additions[tower_level - 1]
 	current_bullet_damage = base_bullet_damage + damage_additions[tower_level - 1]
@@ -148,6 +143,11 @@ func update_tower_stats():
 	# Update components
 	update_detection_area()
 	cooldown_timer.wait_time = current_reload_time
+
+func get_upgrade_cost() -> int:
+	if tower_level < max_level:
+		return upgrade_costs[tower_level - 1]
+	return 0
 
 func _on_cooldown_timer_timeout():
 	cooldown_timer.stop()
