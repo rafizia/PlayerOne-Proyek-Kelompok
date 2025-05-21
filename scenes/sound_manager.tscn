@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgx0jlmcmlfgq"]
+[gd_scene load_steps=3 format=3 uid="uid://bvoflpnhy3nkj"]
 
 [ext_resource type="Script" path="res://scripts/managers/sound_manager.gd" id="1_pkqnl"]
+[ext_resource type="AudioStream" uid="uid://cdijr3ugnndi1" path="res://assets/sound/sfx/click.wav" id="2_q871e"]
 
 [node name="SoundManager" type="Node2D"]
 script = ExtResource("1_pkqnl")
+clicksfx = ExtResource("2_q871e")

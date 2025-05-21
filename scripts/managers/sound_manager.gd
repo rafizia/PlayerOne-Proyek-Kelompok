@@ -10,6 +10,8 @@ extends Node2D
 
 @onready var sfx_player : AudioStreamPlayer
 @onready var bgm_player : AudioStreamPlayer
+var bgmplaytime : float
+@export var clicksfx : AudioStream
 
 func play_sfx(sfx: AudioStream, random = false):
 	if sfx:
@@ -26,13 +28,23 @@ func play_sfx(sfx: AudioStream, random = false):
 		
 		sfx_player.finished.connect(sfx_player.queue_free)
 		
-func play_bgm(bgm: AudioStreamMP3):
+func play_bgm(bgm: AudioStreamMP3, switch = false, loop = true):
 	if bgm:
-		bgm.loop = true
+		bgm.loop = loop
 		if !bgm_player:
 			bgm_player = AudioStreamPlayer.new()
 			add_child(bgm_player)
 			bgm_player.set_process_mode(3)
+		if switch:
+			bgmplaytime = bgm_player.get_playback_position()
+		else:
+			bgmplaytime = 0
 		bgm_player.stream = bgm
 		bgm_player.bus = "BGM"
-		bgm_player.play()
+		bgm_player.play(bgmplaytime)
+
+func stop_bgm():
+	bgm_player.stop()
+	
+func play_click():
+	play_sfx(clicksfx)

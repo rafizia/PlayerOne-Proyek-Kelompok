@@ -45,13 +45,25 @@ var wave_data = [
 	]
 ]
 
+@export var bgm : AudioStreamMP3
+@export var runbgm : AudioStreamMP3
+@export var winbgm : AudioStreamMP3
+@export var losebgm : AudioStreamMP3
+
 func _ready():
 	wave_label.text = "Wave 1/7"
-	
+
+func get_bgm():
+	return bgm
+
 func start_wave():
 	enemy_queue.clear()
 
+	if current_wave == 0:
+		SoundManager.play_bgm(runbgm,true)
+
 	if current_wave >= wave_data.size():
+		SoundManager.play_bgm(winbgm, false, false)
 		print("Semua wave selesai!")
 		return
 
@@ -108,4 +120,5 @@ func decrease_hp():
 		game_over()
 
 func game_over():
+	SoundManager.play_bgm(losebgm, false, false)
 	print("Game Over!")

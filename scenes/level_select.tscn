@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddraxtf0w5187"]
+[gd_scene load_steps=14 format=3 uid="uid://bmkivkp7mk4ut"]
 
 [ext_resource type="Texture2D" uid="uid://cuki80rjsyxfe" path="res://assets/LevelSelect2.png" id="1_irw1o"]
 [ext_resource type="Texture2D" uid="uid://cvlkgp1kfyaif" path="res://assets/shield.png" id="2_6bdhq"]
 [ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="2_cg03r"]
 [ext_resource type="Script" path="res://scripts/level_select/level_select_button.gd" id="3_pcpra"]
+[ext_resource type="AudioStream" uid="uid://drvqfkkt25cq4" path="res://assets/sound/sfx/board.wav" id="5_u8dgh"]
 [ext_resource type="Script" path="res://scripts/level_select/play_button.gd" id="5_vjvle"]
 [ext_resource type="Texture2D" uid="uid://5m7s7ld4a260" path="res://assets/woodenSign.png" id="6_sthea"]
 [ext_resource type="FontFile" uid="uid://m8d57bup8fh5" path="res://assets/Fonts/Raw/upheavtt.ttf" id="7_gwcpp"]
@@ -183,6 +184,7 @@ text = "1"
 underline = 2
 script = ExtResource("3_pcpra")
 level_path = "res://scenes/Levels/level1.tscn"
+sfx = ExtResource("5_u8dgh")
 
 [node name="Level2_Button" type="LinkButton" parent="Level_Icon"]
 offset_left = 473.0
@@ -195,6 +197,7 @@ text = "2"
 underline = 2
 script = ExtResource("3_pcpra")
 level_path = "res://scenes/Levels/level2.tscn"
+sfx = ExtResource("5_u8dgh")
 
 [node name="Level3_Button" type="LinkButton" parent="Level_Icon"]
 offset_left = 640.0
@@ -207,6 +210,7 @@ text = "3"
 underline = 2
 script = ExtResource("3_pcpra")
 level_path = "res://scenes/Levels/level3.tscn"
+sfx = ExtResource("5_u8dgh")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 39.0
@@ -268,12 +272,14 @@ theme_override_font_sizes/font_size = 20
 text = "CANCEL"
 underline = 2
 script = ExtResource("7_u3wdi")
+sfx = ExtResource("5_u8dgh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Confirm_Dialog"]
 libraries = {
 "": SubResource("AnimationLibrary_fo075")
 }
 
+[connection signal="mouse_entered" from="Level_Icon/Level1_Button" to="Level_Icon/Level1_Button" method="_on_mouse_entered"]
 [connection signal="pressed" from="Level_Icon/Level1_Button" to="Level_Icon/Level1_Button" method="_on_pressed"]
 [connection signal="pressed" from="Level_Icon/Level2_Button" to="Level_Icon/Level2_Button" method="_on_pressed"]
 [connection signal="pressed" from="Level_Icon/Level3_Button" to="Level_Icon/Level3_Button" method="_on_pressed"]
