@@ -84,6 +84,7 @@ collision_mask = 0
 script = ExtResource("1_7cibg")
 bullet_scene = ExtResource("2_wanj0")
 base_bullet_damage = 0.8
+upgrade_cost_base = 25
 
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(30, -5)

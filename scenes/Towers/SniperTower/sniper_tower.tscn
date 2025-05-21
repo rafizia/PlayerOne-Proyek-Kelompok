@@ -59,7 +59,7 @@ base_reload_time = 2.5
 range_upgrade_add = 20.0
 damage_upgrade_add = 3.0
 reload_upgrade_reduce = 0.2
-upgrade_cost_base = 75
+upgrade_cost_base = 30
 
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(30, -12)

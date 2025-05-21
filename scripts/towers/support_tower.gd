@@ -13,7 +13,7 @@ var current_radius: float = 100.0
 # Upgrade settings
 var effect_multipliers: Array[float] = [1.0, 1.5, 2.0]  # Effect strength multiplier
 var radius_increases: Array[float] = [0.0, 30.0, 60.0]  # Additional radius per level
-var upgrade_costs: Array[int] = [0, 75, 150]  # Costs for upgrading to level 2, 3
+var upgrade_costs: Array[int] = [0, 30, 60]  # Costs for upgrading to level 2, 3
 
 # Effect area
 var effect_area: Area2D
