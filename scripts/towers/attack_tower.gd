@@ -41,8 +41,6 @@ var current_target: Node2D = null
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready():
-	super._ready()
-
 	# Set tower properties
 	tower_name = attack_tower_name
 	build_cost = attack_tower_build_cost
@@ -51,12 +49,14 @@ func _ready():
 	_build_upgrade_arrays()
 	initialize_stats()
 	update_detection_area()
+	
+	super._ready()
 
 func _build_upgrade_arrays():
 	range_additions = [0.0]
 	damage_additions = [0.0]
 	reload_reductions = [0.0]
-	upgrade_costs = []
+	upgrade_costs = [0]
 	
 	for level in range(1, max_level + 1):
 		# Range: linear addition (0, +15, +30)
@@ -80,9 +80,17 @@ func initialize_stats():
 	cooldown_timer.wait_time = current_reload_time
 
 func update_detection_area():
-	var collision_shape = detection_area.get_node("CollisionShape2D")
-	var circle_shape = collision_shape.shape as CircleShape2D
-	circle_shape.radius = current_attack_range
+	if not is_instance_valid(detection_area):
+		return
+
+	var collision_shape = detection_area.get_node_or_null("CollisionShape2D")
+	if not collision_shape:
+		return
+
+	var circle_shape = collision_shape.shape
+	
+	if circle_shape is CircleShape2D:
+		circle_shape.radius = current_attack_range
 
 func _process(delta):
 	if not is_active:
@@ -137,7 +145,12 @@ func _on_detection_area_body_exited(body):
 	if body in enemies_in_range:
 		enemies_in_range.erase(body)
 
-# Override base tower methods
+# Upgrade implementation
+func get_upgrade_cost() -> int:
+	if tower_level < max_level:
+		return upgrade_costs[tower_level]
+	return 0
+
 func update_tower_stats():
 	current_attack_range = base_attack_range + range_additions[tower_level - 1]
 	base_damage = base_bullet_damage + damage_additions[tower_level - 1]
@@ -147,11 +160,6 @@ func update_tower_stats():
 	# Update components
 	update_detection_area()
 	cooldown_timer.wait_time = current_reload_time
-
-func get_upgrade_cost() -> int:
-	if tower_level < max_level:
-		return upgrade_costs[tower_level - 1]
-	return 0
 
 func _on_cooldown_timer_timeout():
 	cooldown_timer.stop()
