@@ -29,12 +29,22 @@ func _process(delta):
 		
 		# Rotate tank to follow path direction
 		if path_follow.progress_ratio < 0.99:
-			rotation = path_follow.rotation + PI/2
+			# Simpan posisi saat ini
+			var current_pos = global_position
+			
+			# Cek posisi berikutnya di path
+			var original_offset = path_follow.progress
+			path_follow.progress += 10.0  # Geser sedikit ke depan
+			var next_pos = path_follow.global_position
+			path_follow.progress = original_offset  # Kembalikan ke posisi asli
+			
+			# Hitung arah yang benar
+			var direction = (next_pos - current_pos).normalized()
+			rotation = direction.angle() + PI/2
 
 		if path_follow.progress_ratio >= 1.0:
 			# Tank reached end - damage base
-			if ResourcesManager:
-				ResourcesManager.modify_hp(-damage_to_base)
+			emit_signal("base_damaged", damage_to_base)
 			emit_signal("enemy_died")
 			queue_free()
 
