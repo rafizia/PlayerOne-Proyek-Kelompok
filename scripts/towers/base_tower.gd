@@ -13,6 +13,7 @@ var is_active: bool = true
 @onready var upgrade_panel = $Upgrade
 @onready var cost_label = $Upgrade/MarginContainer/VBoxContainer/Cost
 @onready var click_area = $ClickArea
+@onready var effect_area_collision = $EffectArea/CollisionShape2D
 
 # Called when the node enters the scene tree for the first time
 func _ready():
@@ -33,18 +34,19 @@ func _input(event):
 			var click_pos = get_global_mouse_position()
 			if !click_area.get_global_rect().has_point(click_pos) and !upgrade_panel.get_global_rect().has_point(click_pos):
 				upgrade_panel.hide()
+				if effect_area_collision:
+					effect_area_collision.hide()
 
 func _on_click_area_gui_input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		toggle_upgrade_panel()
-	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
-		if upgrade_panel and upgrade_panel.visible:
-			upgrade_panel.hide()
 
 func _on_upgrade_gui_input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if upgrade():
 			upgrade_panel.hide()
+			if effect_area_collision:
+				effect_area_collision.hide()
 
 func toggle_upgrade_panel():
 	if !upgrade_panel:
@@ -52,11 +54,14 @@ func toggle_upgrade_panel():
 		
 	if upgrade_panel.visible:
 		upgrade_panel.hide()
+		if effect_area_collision:
+			effect_area_collision.hide()
 	else:
-		# Position panel based on tower's position
 		position_upgrade_panel()
 		update_upgrade_cost()
 		upgrade_panel.show()
+		if effect_area_collision:
+			effect_area_collision.show()
 
 func position_upgrade_panel():
 	if !upgrade_panel:

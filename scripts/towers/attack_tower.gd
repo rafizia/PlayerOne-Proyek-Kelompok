@@ -10,7 +10,7 @@ class_name AttackTower
 @export var bullet_scene: PackedScene
 @export var base_bullet_speed: float = 500
 @export var base_bullet_damage: float = 1
-@export var base_attack_range: float = 120
+@export var base_range_radius: float = 120
 @export var base_reload_time: float = 0.5
 
 # Simplified upgrade parameters
@@ -29,14 +29,14 @@ var upgrade_costs: Array[int] = []
 var current_bullet_speed: float
 var current_bullet_damage: float
 var base_damage: float  # Store base damage separately from boosted damage
-var current_attack_range: float
+var current_range_radius: float
 var current_reload_time: float
 
 var enemies_in_range: Array = []
 var current_target: Node2D = null
 
 @onready var aim: Marker2D = $Aim
-@onready var detection_area: Area2D = $Sight
+@onready var detection_area: Area2D = $EffectArea
 @onready var cooldown_timer: Timer = $CooldownTimer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -75,7 +75,7 @@ func initialize_stats():
 	current_bullet_speed = base_bullet_speed
 	current_bullet_damage = base_bullet_damage
 	base_damage = base_bullet_damage  # Initialize base damage
-	current_attack_range = base_attack_range
+	current_range_radius = base_range_radius
 	current_reload_time = base_reload_time
 	cooldown_timer.wait_time = current_reload_time
 
@@ -90,7 +90,7 @@ func update_detection_area():
 	var circle_shape = collision_shape.shape
 	
 	if circle_shape is CircleShape2D:
-		circle_shape.radius = current_attack_range
+		circle_shape.radius = current_range_radius
 
 func _process(delta):
 	if not is_active:
@@ -121,7 +121,7 @@ func shoot():
 	if not bullet_scene or not current_target:
 		return
 	
-	#print("Current damage: ", current_bullet_damage)
+	print("Current damage: ", current_bullet_damage)
 	animated_sprite.play("shoot")
 	var bullet = bullet_scene.instantiate()
 	var spawn_pos = aim.global_position
@@ -152,7 +152,7 @@ func get_upgrade_cost() -> int:
 	return 0
 
 func update_tower_stats():
-	current_attack_range = base_attack_range + range_additions[tower_level - 1]
+	current_range_radius = base_range_radius + range_additions[tower_level - 1]
 	base_damage = base_bullet_damage + damage_additions[tower_level - 1]
 	current_bullet_damage = base_damage  # Reset to base damage before applying any boosts
 	current_reload_time = base_reload_time - reload_reductions[tower_level - 1]

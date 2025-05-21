@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://ctkn6sofm7345"]
+[gd_scene load_steps=24 format=3 uid="uid://ctkn6sofm7345"]
 
 [ext_resource type="Script" path="res://scripts/towers/support_tower.gd" id="1_1krxg"]
 [ext_resource type="Texture2D" uid="uid://br6x7xc2afh7c" path="res://assets/towers/support-tower/Support-Tower-2-anim.png" id="1_eifr0"]
 [ext_resource type="Texture2D" uid="uid://ca03ken5iggig" path="res://assets/towers/arrow_up.png" id="3_2yjme"]
+[ext_resource type="Script" path="res://scripts/towers/effect_area_draw.gd" id="3_5pbtu"]
 [ext_resource type="FontFile" uid="uid://cnbae18fxsbpb" path="res://assets/Fonts/Raw/VCR_OSD_MONO_1.001.ttf" id="4_01b2o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y2sy7"]
@@ -100,6 +101,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51k52"]
 size = Vector2(34, 46.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3p4s4"]
+radius = 100.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akwhk"]
 size = Vector2(36, 18)
 
@@ -132,6 +136,14 @@ frame_progress = 0.0721667
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4.25)
 shape = SubResource("RectangleShape2D_51k52")
+
+[node name="EffectArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EffectArea"]
+shape = SubResource("CircleShape2D_3p4s4")
+script = ExtResource("3_5pbtu")
 
 [node name="TowerDetector" type="Area2D" parent="."]
 collision_layer = 4
