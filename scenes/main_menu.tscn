@@ -1,10 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://514k5b5q723t"]
+[gd_scene load_steps=10 format=3 uid="uid://514k5b5q723t"]
 
 [ext_resource type="Texture2D" uid="uid://dtus7ex80cybg" path="res://assets/MainMenu.png" id="1_g4j0d"]
 [ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="2_jw7bk"]
 [ext_resource type="Script" path="res://scripts/main_menu/play_button.gd" id="4_fyrgf"]
 [ext_resource type="Script" path="res://scripts/main_menu/quit_button.gd" id="5_l6ne5"]
+[ext_resource type="Texture2D" uid="uid://bfoc8dmpnxdwu" path="res://assets/leaf.png" id="6_cbekf"]
 [ext_resource type="FontFile" uid="uid://m8d57bup8fh5" path="res://assets/Fonts/Raw/upheavtt.ttf" id="6_o67gm"]
+
+[sub_resource type="Gradient" id="Gradient_vfnai"]
+offsets = PackedFloat32Array(0, 0.229508, 0.754098, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ekx5a"]
+gradient = SubResource("Gradient_vfnai")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wbdp5"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(600, 400, 1)
+direction = Vector3(1, 0.5, 0)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 80.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 50.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.02
+scale_max = 0.05
+color_ramp = SubResource("GradientTexture1D_ekx5a")
 
 [node name="MainMenu" type="CanvasLayer"]
 
@@ -16,6 +39,13 @@ offset_right = 1186.0
 offset_bottom = 748.0
 texture = ExtResource("1_g4j0d")
 expand_mode = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(578, 326)
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_wbdp5")
+texture = ExtResource("6_cbekf")
+visibility_rect = Rect2(-500, -200, 1000, 400)
 
 [node name="PlayButton" type="LinkButton" parent="."]
 offset_left = 78.0

@@ -1,15 +1,13 @@
-[gd_scene load_steps=29 format=4 uid="uid://b02ypjvs52k1g"]
+[gd_scene load_steps=27 format=4 uid="uid://b02ypjvs52k1g"]
 
 [ext_resource type="Texture2D" uid="uid://c4kkhofhke3qb" path="res://assets/mana seed seasonal forest sample (autumn)/seasonal sample (autumn).png" id="1_khvkq"]
 [ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_y2po5"]
 [ext_resource type="Texture2D" uid="uid://c67y66bqmu60i" path="res://assets/mana seed seasonal forest sample (winter)/seasonal water animations/winter water sparkles B 16x16.png" id="2_1h8jx"]
 [ext_resource type="Texture2D" uid="uid://c44odg3vtfo33" path="res://assets/mana seed seasonal forest sample (autumn)/seasonal water animations/autumn waterfall B 16x16.png" id="2_c6qsw"]
 [ext_resource type="Texture2D" uid="uid://c0m4tvak3pv5x" path="res://assets/healthbar.png" id="7_0f76c"]
-[ext_resource type="PackedScene" uid="uid://2tkipgbfq7n4" path="res://scenes/Levels/win_screen.tscn" id="7_tvhaa"]
 [ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="9_384f0"]
 [ext_resource type="Script" path="res://scripts/levels/start_battle.gd" id="9_tpf36"]
 [ext_resource type="PackedScene" uid="uid://j6misgjrn25h" path="res://scenes/UI/tower_selections_ui.tscn" id="10_r5404"]
-[ext_resource type="PackedScene" uid="uid://dprbda82qialb" path="res://scenes/Levels/game_over.tscn" id="12_f5rmg"]
 [ext_resource type="PackedScene" uid="uid://cfm55348ldayh" path="res://scenes/Levels/level_ui.tscn" id="13_yex21"]
 [ext_resource type="PackedScene" uid="uid://cpxvmtmfi4spg" path="res://scenes/Levels/pause_screen.tscn" id="17_lsllv"]
 
@@ -1295,6 +1293,7 @@ point_count = 12
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_y2po5")
+spawn_delay = null
 
 [node name="TileMap" type="Node2D" parent="."]
 position = Vector2(0, 250)
@@ -1352,7 +1351,8 @@ curve = SubResource("Curve2D_4usqh")
 
 [node name="Level_UI" parent="." instance=ExtResource("13_yex21")]
 
-[node name="TowerSelectionsUI" parent="." instance=ExtResource("10_r5404")]
+[node name="PauseScreen" parent="." instance=ExtResource("17_lsllv")]
+visible = false
 
 [node name="StartBattleIcon" type="TextureRect" parent="."]
 offset_left = 770.0
@@ -1382,14 +1382,7 @@ script = ExtResource("9_tpf36")
 
 [node name="Towers" type="Node2D" parent="."]
 
-[node name="PauseScreen" parent="." instance=ExtResource("17_lsllv")]
-visible = false
-
-[node name="WinScreen" parent="." instance=ExtResource("7_tvhaa")]
-visible = false
-
-[node name="GameOver" parent="." instance=ExtResource("12_f5rmg")]
-visible = false
+[node name="TowerSelectionsUI" parent="." instance=ExtResource("10_r5404")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="StartBattleIcon/StartBattle" to="StartBattleIcon/StartBattle" method="_on_pressed"]
