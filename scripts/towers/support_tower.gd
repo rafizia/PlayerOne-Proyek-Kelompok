@@ -38,6 +38,8 @@ func setup_effect_area():
 	# Create the area and collision shape
 	effect_area = Area2D.new()
 	effect_area.name = "EffectArea"
+	effect_area.collision_layer = 2  # Layer 2
+	effect_area.collision_mask = 18  # Layers 2 (2) and 5 (16)
 	var effect_shape = CollisionShape2D.new()
 	var circle_shape = CircleShape2D.new()
 	circle_shape.radius = current_radius
