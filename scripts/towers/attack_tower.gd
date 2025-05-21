@@ -11,7 +11,7 @@ class_name AttackTower
 @export var base_bullet_speed: float = 500
 @export var base_bullet_damage: float = 1
 @export var base_attack_range: float = 120
-@export var base_reload_time: float = 1.0
+@export var base_reload_time: float = 0.5
 
 # Simplified upgrade parameters
 @export var range_upgrade_add: float = 15    # +15 increase per level
