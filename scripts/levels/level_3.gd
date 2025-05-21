@@ -6,11 +6,18 @@ extends Node2D
 @export var spawn_delay := 1.0
 @onready var hp_label = $Level_UI/Health/HPLabel
 @onready var wave_label = $Level_UI/Waves/WaveLabel
+@onready var coin_label = $Level_UI/Coin/CoinLabel
+@onready var energy_label = $Level_UI/Energy/EnergyLabel
+@onready var win_screen = $WinScreen
+@onready var win_screen_continue = $WinScreen/TextureRect/Continue
+@onready var game_over = $GameOver
+@onready var restart_button = $GameOver/TextureRect/Restart
 
-var hp := 20
+var hp = ResourcesManager.hp
 var remaining_enemies = 0
 var current_wave = 0
 var enemy_queue: Array = []
+var is_game_over_handled := false
 
 var wave_data = [
 	[ 	# Wave 1
@@ -64,10 +71,26 @@ var wave_data = [
 
 func _ready():
 	wave_label.text = "Wave 1/10"
+<<<<<<< HEAD
 
 func get_bgm():
 	return bgm
 
+=======
+	win_screen_continue.level_path = "res://scenes/Levels/level3.tscn"
+	restart_button.level_path = "res://scenes/Levels/level3.tscn"
+	
+func _process(delta):
+	hp_label.text = str(ResourcesManager.hp)
+	coin_label.text = str(ResourcesManager.gold)
+	energy_label.text = str(int(ResourcesManager.energy))
+	
+	if (ResourcesManager.hp <= 0 or ResourcesManager.energy <= 0) and not is_game_over_handled:
+		is_game_over_handled = true
+		game_over.visible = true
+		get_tree().paused = true
+	
+>>>>>>> dev
 func start_wave():
 	enemy_queue.clear()
 	
@@ -126,6 +149,7 @@ func _on_timer_timeout() -> void:
 	timer.start() 
 	
 func decrease_hp():
+<<<<<<< HEAD
 	hp -= 1
 	hp_label.text = "%d" % hp
 	if hp <= 0:
@@ -134,3 +158,6 @@ func decrease_hp():
 func game_over():
 	SoundManager.play_bgm(losebgm, false, false)
 	print("Game Over!")
+=======
+	pass
+>>>>>>> dev

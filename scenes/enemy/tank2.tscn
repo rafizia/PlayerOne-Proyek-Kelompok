@@ -32,6 +32,8 @@ size = Vector2(171, 268)
 [node name="tank2" type="CharacterBody2D" groups=["enemies"]]
 rotation = 1.5708
 scale = Vector2(0.2, 0.2)
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_gdnsh")
 
 [node name="Hull" type="AnimatedSprite2D" parent="."]
