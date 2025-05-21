@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 ResourceManager="*res://scripts/managers/resource_manager.gd"
 TransitionLayer="*res://scenes/transition_layer.tscn"
 TowerPlacerManager="*res://scripts/managers/tower_placer_manager.gd"
+SoundManager="*res://scenes/sound_manager.tscn"
 
 [global_group]
 
