@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 signal enemy_died
 
-@export var base_speed: float = 75.0  # Kecepatan dasar (medium)
-@export var health: float = 30    # Health (medium)
-@export var max_health: float = 30
+@export var base_speed: float = 60.0  # Kecepatan dasar (medium)
+@export var health: float = 25    # Health (medium)
+@export var max_health: float = 25
 @export var gold_reward: int = 10     # Reward gold saat dibunuh
 @export var boost_multiplier: float = 2.0  # Pengali kecepatan saat boost
 @export var boost_duration: float = 3.0    # Durasi boost dalam detik

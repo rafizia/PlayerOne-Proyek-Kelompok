@@ -32,39 +32,79 @@ var wave_data = [
 		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 1},
 		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 1},
 		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
-		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1}
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 1}
 	],
 	[	# Wave 3
-		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
-		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
 	],
 	[	# Wave 4
-		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
-		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 2},
 	],
 	[	# Wave 5
-		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 2},
 		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
 	],
 	[	# Wave 6
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 2},
 		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
-		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1}
 	],
 	[	# Wave 7
 		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
-		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
 	],
 	[	# Wave 8
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 2},
 		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
-		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1}
 	],
 	[	# Wave 9
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1},
 		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
-		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1},
 	],
 	[	# Wave 10
 		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
-		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1}
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/tank2.tscn"), "path": 1},
 	]
 ]
 
