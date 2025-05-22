@@ -14,7 +14,7 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ifuie"]
 atlas = ExtResource("1_vx0ud")
-region = Rect2(15, 9, 34, 40)
+region = Rect2(15, 9.86343, 34, 38.2099)
 
 [node name="ResourceTowerPanel" type="Panel"]
 custom_minimum_size = Vector2(80, 80)
@@ -33,6 +33,13 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
 
+[node name="TowerLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_oos0x")
+theme_override_font_sizes/font_size = 12
+text = "Resource"
+horizontal_alignment = 1
+
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -47,18 +54,20 @@ theme_override_constants/margin_bottom = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 8
 alignment = 2
 
 [node name="BuildCostLabel" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_oos0x")
+theme_override_font_sizes/font_size = 14
 text = "15"
 
 [node name="MaintenanceLabel" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
 theme_override_fonts/font = ExtResource("4_oos0x")
+theme_override_font_sizes/font_size = 14
 text = "5"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
