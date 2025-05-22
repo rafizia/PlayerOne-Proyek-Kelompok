@@ -7,7 +7,7 @@ func _on_pressed() -> void:
 	get_tree().paused = false
 	
 	ResourcesManager.hp = 20
-	ResourcesManager.gold = 40
+	ResourcesManager.gold = 50
 	ResourcesManager.energy = 100
 	
 	TransitionLayer.transition(true)

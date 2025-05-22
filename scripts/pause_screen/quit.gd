@@ -13,7 +13,7 @@ func _on_pressed() -> void:
 		tower_placer.tilemap_layers = []
 		
 	ResourcesManager.hp = 20
-	ResourcesManager.gold = 40
+	ResourcesManager.gold = 50
 	ResourcesManager.energy = 100
 	
 	TransitionLayer.transition(true)

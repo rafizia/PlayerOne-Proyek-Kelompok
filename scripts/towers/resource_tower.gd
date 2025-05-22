@@ -7,7 +7,7 @@ var current_generation_rate: float = 0.5
 
 # Upgrade settings
 var generation_multipliers: Array[float] = [1.0, 1.75, 2.5]  # Level 1, 2, 3 multipliers
-var upgrade_costs: Array[int] = [0, 50, 100]  # Costs for upgrading to level 2, 3
+var upgrade_costs: Array[int] = [0, 25, 50]  # Costs for upgrading to level 2, 3
 
 func _ready():
 	super._ready()  # Call parent _ready function
