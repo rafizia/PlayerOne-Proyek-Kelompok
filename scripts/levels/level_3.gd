@@ -130,6 +130,7 @@ func start_wave():
 	if current_wave >= wave_data.size() and remaining_enemies == 0:
 		print("Semua wave selesai!")
 		win_screen.visible = true
+		get_tree().paused = true
 		return
 
 	# Tambah semua musuh dalam antrian spawn

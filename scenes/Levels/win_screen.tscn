@@ -45,6 +45,7 @@ theme_override_font_sizes/font_size = 50
 text = "YOU WIN!"
 
 [node name="Continue" type="LinkButton" parent="TextureRect"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -64,6 +65,7 @@ underline = 2
 script = ExtResource("4_irrd7")
 
 [node name="Quit" type="LinkButton" parent="TextureRect"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -55,6 +55,8 @@ func start_wave():
 	enemy_queue.clear()
 	if current_wave >= wave_data.size():
 		print("Semua wave selesai!")
+		win_screen.visible = true
+		get_tree().paused = true
 		return
 	# queue wave
 	enemy_queue = wave_data[current_wave].duplicate()
@@ -67,6 +69,7 @@ func start_wave():
 func _on_timer_timeout():
 	if enemy_queue.is_empty():
 		timer.stop()
+		current_wave += 1
 		return
 	var info = enemy_queue.pop_front()
 	spawn_enemy(info.scene)
