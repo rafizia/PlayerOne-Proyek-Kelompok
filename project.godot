@@ -21,6 +21,10 @@ TransitionLayer="*res://scenes/transition_layer.tscn"
 TowerPlacerManager="*res://scripts/managers/tower_placer_manager.gd"
 ResourcesManager="*res://scripts/managers/resource_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 enemies=""
