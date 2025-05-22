@@ -1,8 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://d2in52y6ycisl"]
+[gd_scene load_steps=18 format=3 uid="uid://d2in52y6ycisl"]
 
 [ext_resource type="Script" path="res://scripts/towers/attack_tower.gd" id="1_7cibg"]
 [ext_resource type="Texture2D" uid="uid://bdq214k1dfden" path="res://assets/towers/gun-turret/Gun-Turret-1.png" id="1_y2kio"]
 [ext_resource type="PackedScene" uid="uid://cjmcp3atom5c8" path="res://scenes/Towers/GunTurret/bullet_red.tscn" id="2_wanj0"]
+[ext_resource type="Texture2D" uid="uid://ca03ken5iggig" path="res://assets/towers/arrow_up.png" id="4_jeuub"]
+[ext_resource type="Script" path="res://scripts/towers/effect_area_draw.gd" id="4_pqr0a"]
+[ext_resource type="FontFile" uid="uid://cnbae18fxsbpb" path="res://assets/Fonts/Raw/VCR_OSD_MONO_1.001.ttf" id="5_gff3m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c54au"]
 atlas = ExtResource("1_y2kio")
@@ -69,12 +72,21 @@ corner_radius_bottom_right = 120
 corner_radius_bottom_left = 120
 corner_detail = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfah7"]
+bg_color = Color(0.0980392, 0.0823529, 0.14902, 0.470588)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="GunTurret" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_7cibg")
 bullet_scene = ExtResource("2_wanj0")
 base_bullet_damage = 0.8
+damage_upgrade_add = 0.2
+upgrade_cost_base = 25
 
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(30, -5)
@@ -89,12 +101,13 @@ frame_progress = 1.0
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_wcaos")
 
-[node name="Sight" type="Area2D" parent="."]
+[node name="EffectArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EffectArea"]
 shape = SubResource("CircleShape2D_bgwk7")
+script = ExtResource("4_pqr0a")
 
 [node name="TowerDetector" type="Area2D" parent="."]
 collision_layer = 4
@@ -113,7 +126,50 @@ offset_right = 120.0
 offset_bottom = 120.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8od16")
 
+[node name="ClickArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -21.0
+offset_top = -10.0
+offset_right = 22.0
+offset_bottom = 20.0
+
+[node name="Upgrade" type="Panel" parent="."]
+visible = false
+offset_left = 30.0
+offset_top = -20.0
+offset_right = 70.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sfah7")
+
+[node name="MarginContainer" type="MarginContainer" parent="Upgrade"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Upgrade/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="Upgrade/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_jeuub")
+stretch_mode = 3
+
+[node name="Cost" type="Label" parent="Upgrade/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_gff3m")
+theme_override_font_sizes/font_size = 14
+text = "10"
+horizontal_alignment = 1
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
-[connection signal="body_entered" from="Sight" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Sight" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="EffectArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="EffectArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="gui_input" from="ClickArea" to="." method="_on_click_area_gui_input"]
+[connection signal="gui_input" from="Upgrade" to="." method="_on_upgrade_gui_input"]
