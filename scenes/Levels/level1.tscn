@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://j6misgjrn25h" path="res://scenes/UI/tower_selections_ui.tscn" id="9_7f6hi"]
 [ext_resource type="PackedScene" uid="uid://2tkipgbfq7n4" path="res://scenes/Levels/win_screen.tscn" id="10_dmw6h"]
 [ext_resource type="PackedScene" uid="uid://dprbda82qialb" path="res://scenes/Levels/game_over.tscn" id="11_1ti3h"]
-[ext_resource type="AudioStream" path="res://assets/sfx/11L-Epic_orchestral_back-1747870378148.mp3" id="10_5gdxc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_luk14"]
 texture = ExtResource("2_i5c24")
@@ -128,9 +127,5 @@ visible = false
 
 [node name="GameOver" parent="." instance=ExtResource("11_1ti3h")]
 visible = false
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_5gdxc")
-autoplay = true
 
 [connection signal="pressed" from="StartBattleIcon/StartBattle" to="StartBattleIcon/StartBattle" method="_on_pressed"]
