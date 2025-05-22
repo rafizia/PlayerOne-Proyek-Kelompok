@@ -1406,11 +1406,11 @@ rotation = 2.57087
 texture = ExtResource("14_0os0o")
 
 [node name="PathArrow2" type="TextureRect" parent="."]
-offset_left = 35.0
-offset_top = 464.0
-offset_right = 75.0
-offset_bottom = 504.0
-rotation = 1.22697
+offset_left = 116.0
+offset_top = 417.0
+offset_right = 156.0
+offset_bottom = 457.0
+rotation = 0.935496
 texture = ExtResource("14_0os0o")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
