@@ -117,6 +117,14 @@ func upgrade() -> bool:
 		var cost = get_upgrade_cost()
 		if ResourcesManager._instance and ResourcesManager._instance.gold >= cost:
 			ResourcesManager._instance.gold -= cost
+			# Emit resources updated signal to update UI
+			if ResourcesManager._instance.has_signal("resources_updated"):
+				ResourcesManager._instance.emit_signal("resources_updated", 
+					ResourcesManager._instance.energy,
+					ResourcesManager._instance.gold,
+					ResourcesManager._instance.hp
+				)
+			
 			tower_level += 1
 			if tower_level == 2:
 				$AnimatedSprite2D.modulate = Color.YELLOW
