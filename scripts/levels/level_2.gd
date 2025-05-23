@@ -48,6 +48,10 @@ var wave_data = [
 		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 1},
 		{"scene": preload("res://scenes/enemy/tank1.tscn"), "path": 2},
 		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/flyer.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/flyer.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
 		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 2},
 		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 1},
 		{"scene": preload("res://scenes/enemy/grunt.tscn"), "path": 2}
@@ -94,6 +98,11 @@ var wave_data = [
 		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
 		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 2},
 		{"scene": preload("res://scenes/enemy/tank3.tscn"), "path": 1},
+		{"scene": preload("res://scenes/enemy/flyer.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/flyer.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/flyer.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/flyer.tscn"), "path": 2},
+		{"scene": preload("res://scenes/enemy/flyer.tscn"), "path": 2}
 	]
 ]
 
