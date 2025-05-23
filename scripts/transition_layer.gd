@@ -20,6 +20,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_in":
 		on_transition_finished.emit()
 		if (is_loading):
+			AudioServer.get_bus_effect(2,0).volume_db = 0
 			SoundManager.stop_bgm()
 			loading_label.visible = true
 			await get_tree().create_timer(0.8).timeout
