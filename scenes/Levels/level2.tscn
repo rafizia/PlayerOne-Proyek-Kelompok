@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://b02ypjvs52k1g"]
+[gd_scene load_steps=32 format=4 uid="uid://b02ypjvs52k1g"]
 
 [ext_resource type="Texture2D" uid="uid://c4kkhofhke3qb" path="res://assets/mana seed seasonal forest sample (autumn)/seasonal sample (autumn).png" id="1_khvkq"]
 [ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_y2po5"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://eqgv7d0og65b" path="res://scenes/Levels/win_screen.tscn" id="7_tvhaa"]
 [ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="9_384f0"]
 [ext_resource type="Script" path="res://scripts/levels/start_battle.gd" id="9_tpf36"]
+[ext_resource type="PackedScene" uid="uid://duqsi5phr0jjw" path="res://scenes/UI/tutorial_page.tscn" id="10_24tky"]
 [ext_resource type="PackedScene" uid="uid://j6misgjrn25h" path="res://scenes/UI/tower_selections_ui.tscn" id="10_r5404"]
 [ext_resource type="PackedScene" path="res://scenes/Levels/game_over.tscn" id="12_f5rmg"]
 [ext_resource type="AudioStream" uid="uid://cb86r0nabwdu0" path="res://assets/sfx/11L-Epic_orchestral_back-1747871572893.mp3" id="13_ifjag"]
@@ -1392,6 +1393,9 @@ script = ExtResource("9_tpf36")
 
 [node name="Towers" type="Node2D" parent="."]
 
+[node name="TutorialPage" parent="." instance=ExtResource("10_24tky")]
+visible = false
+
 [node name="PauseScreen" parent="." instance=ExtResource("17_lsllv")]
 visible = false
 
@@ -1402,6 +1406,7 @@ visible = false
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("13_ifjag")
 autoplay = true
 bus = &"BGM"
