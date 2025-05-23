@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpxvmtmfi4spg"]
+[gd_scene load_steps=9 format=3 uid="uid://beubfou42vy17"]
 
 [ext_resource type="Texture2D" uid="uid://bml4qd2ajvynd" path="res://assets/menubox.png" id="1_teuqi"]
 [ext_resource type="FontFile" uid="uid://m8d57bup8fh5" path="res://assets/Fonts/Raw/upheavtt.ttf" id="2_ce1a1"]
 [ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="3_vswpb"]
 [ext_resource type="Script" path="res://scripts/pause_screen/continue_button.gd" id="4_44iqu"]
 [ext_resource type="Script" path="res://scripts/pause_screen/quit.gd" id="5_cu0tq"]
+[ext_resource type="Script" path="res://scripts/levels/setting_pause.gd" id="5_egcf1"]
 [ext_resource type="Script" path="res://scripts/levels/continue_button.gd" id="5_qpn8y"]
+[ext_resource type="PackedScene" uid="uid://cedylkh6m65va" path="res://scenes/sound_settings.tscn" id="8_vivug"]
 
 [node name="PauseScreen" type="CanvasLayer"]
+process_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0.509804)
@@ -52,10 +55,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -49.5
-offset_top = 20.0
-offset_right = 49.5
-offset_bottom = 60.0
+offset_left = -48.0
+offset_top = -23.0
+offset_right = 51.0
+offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_vswpb")
@@ -63,6 +66,26 @@ theme_override_font_sizes/font_size = 20
 text = "CONTINUE"
 underline = 2
 script = ExtResource("4_44iqu")
+
+[node name="Setting" type="LinkButton" parent="TextureRect"]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = 20.0
+offset_right = 42.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_vswpb")
+theme_override_font_sizes/font_size = 20
+text = "SETTING"
+underline = 2
+script = ExtResource("5_egcf1")
 
 [node name="Restart" type="LinkButton" parent="TextureRect"]
 process_mode = 2
@@ -104,6 +127,11 @@ text = "QUIT"
 underline = 2
 script = ExtResource("5_cu0tq")
 
+[node name="SoundSetting" parent="." instance=ExtResource("8_vivug")]
+layer = 2
+visible = false
+
 [connection signal="pressed" from="TextureRect/Continue" to="TextureRect/Continue" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Setting" to="TextureRect/Setting" method="_on_pressed"]
 [connection signal="pressed" from="TextureRect/Restart" to="TextureRect/Restart" method="_on_pressed"]
 [connection signal="pressed" from="TextureRect/Quit" to="TextureRect/Quit" method="_on_pressed"]

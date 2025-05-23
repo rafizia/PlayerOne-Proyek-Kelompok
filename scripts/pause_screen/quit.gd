@@ -2,6 +2,7 @@ extends LinkButton
 
 
 func _on_pressed() -> void:
+	SoundManager.play_click()
 	get_tree().paused = false
 	# Reset tower placer manager before transitioning
 	var tower_placer = get_node("/root/TowerPlacerManager")

@@ -19,6 +19,9 @@ class_name AttackTower
 @export var reload_upgrade_reduce: float = 0.1   # -0.1s per level
 @export var upgrade_cost_base: int = 50          # Cost increases by 75 each level
 
+@export var sfx : AudioStream
+@export var bigsfx : AudioStream
+
 # Runtime arrays (auto-generated)
 var range_additions: Array[float] = []
 var damage_additions: Array[float] = []
@@ -123,6 +126,10 @@ func shoot():
 	if not bullet_scene or not current_target:
 		return
 	
+	if base_reload_time < 1:
+		SoundManager.play_sfx(sfx, true)
+	else:
+		SoundManager.play_sfx(bigsfx, true)
 	animated_sprite.play("shoot")
 	var bullet = bullet_scene.instantiate()
 	var spawn_pos = aim.global_position

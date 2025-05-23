@@ -9,6 +9,9 @@ var current_generation_rate: float = 0.5
 var generation_multipliers: Array[float] = [1.0, 1.75, 2.5]  # Level 1, 2, 3 multipliers
 var upgrade_costs: Array[int] = [0, 25, 50]  # Costs for upgrading to level 2, 3
 
+var placed = false
+@export var sfx: AudioStream
+
 func _ready():
 	super._ready()  # Call parent _ready function
 	
@@ -16,10 +19,13 @@ func _ready():
 	tower_name = "Resource Tower"
 	build_cost = 15
 	maintenance_cost = 5
+	
 
 func _process(delta):
 	# Only generate resources if tower is active
 	if !is_active:
+		if !placed:
+			isplaced()
 		return
 		
 	# Only process if the tower is placed (not being dragged)
@@ -43,3 +49,9 @@ func get_upgrade_cost() -> int:
 	if tower_level < max_level:
 		return upgrade_costs[tower_level]
 	return 0
+
+func isplaced():
+	placed = true
+	SoundManager.play_sfx(sfx)
+	
+	

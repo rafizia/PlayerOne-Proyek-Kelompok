@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/towers/attack_tower.gd" id="1_7cibg"]
 [ext_resource type="PackedScene" uid="uid://cjmcp3atom5c8" path="res://scenes/Towers/GunTurret/bullet_red.tscn" id="2_wanj0"]
-[ext_resource type="Texture2D" uid="uid://b1j52phbqoo87" path="res://assets/towers/gun-turret/Gun-Turret-Muzzle.png" id="4_22vyc"]
+[ext_resource type="AudioStream" uid="uid://prftxxes78qj" path="res://assets/sound/sfx/shot.wav" id="3_21of3"]
 [ext_resource type="Texture2D" uid="uid://ca03ken5iggig" path="res://assets/towers/arrow_up.png" id="4_jeuub"]
 [ext_resource type="Script" path="res://scripts/towers/effect_area_draw.gd" id="4_pqr0a"]
+[ext_resource type="AudioStream" uid="uid://dxpudimagl6l4" path="res://assets/sound/sfx/sniper.wav" id="4_tr16t"]
+[ext_resource type="Texture2D" uid="uid://b1j52phbqoo87" path="res://assets/towers/gun-turret/Gun-Turret-Muzzle.png" id="4_22vyc"]
 [ext_resource type="Texture2D" uid="uid://dq4hj5c8pctbn" path="res://assets/towers/gun-turret/Gun-Turret-Base.png" id="4_yaurk"]
 [ext_resource type="FontFile" uid="uid://cnbae18fxsbpb" path="res://assets/Fonts/Raw/VCR_OSD_MONO_1.001.ttf" id="5_gff3m"]
 [ext_resource type="Script" path="res://scripts/towers/muzzle.gd" id="5_okg8s"]
@@ -89,6 +91,8 @@ bullet_scene = ExtResource("2_wanj0")
 base_bullet_damage = 0.8
 damage_upgrade_add = 0.2
 upgrade_cost_base = 25
+sfx = ExtResource("3_21of3")
+bigsfx = ExtResource("4_tr16t")
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("4_yaurk")

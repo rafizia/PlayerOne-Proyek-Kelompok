@@ -2,15 +2,19 @@
 
 [ext_resource type="TileSet" uid="uid://g3dqf1ufjofm" path="res://assets/mana seed seasonal forest sample (spring)/seasonalforestspring.tres" id="1_1dl2o"]
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_n6yy5"]
+[ext_resource type="AudioStream" uid="uid://dut4a5k5gte5s" path="res://assets/sound/bgm/level1.mp3" id="2_7xphp"]
 [ext_resource type="Texture2D" uid="uid://chisdmme6n5c1" path="res://assets/mana seed seasonal forest sample (spring)/seasonal water animations/spring water sparkles B.png" id="2_i5c24"]
+[ext_resource type="AudioStream" uid="uid://cjgl4q1g3ubyc" path="res://assets/sound/bgm/level1run.mp3" id="3_vd3ma"]
 [ext_resource type="Texture2D" uid="uid://c0m4tvak3pv5x" path="res://assets/healthbar.png" id="4_0wrfr"]
+[ext_resource type="AudioStream" uid="uid://cie3f8p6reyex" path="res://assets/sound/bgm/win.mp3" id="4_i22i5"]
+[ext_resource type="AudioStream" uid="uid://cxslsakq33in8" path="res://assets/sound/bgm/lose.mp3" id="5_473ll"]
 [ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="5_gbowb"]
 [ext_resource type="Script" path="res://scripts/levels/start_battle.gd" id="6_mx52f"]
-[ext_resource type="PackedScene" uid="uid://cfm55348ldayh" path="res://scenes/Levels/level_ui.tscn" id="7_sf1gh"]
-[ext_resource type="PackedScene" uid="uid://cpxvmtmfi4spg" path="res://scenes/Levels/pause_screen.tscn" id="8_005pk"]
+[ext_resource type="PackedScene" uid="uid://wafp4rxg1er2" path="res://scenes/Levels/level_ui.tscn" id="7_sf1gh"]
+[ext_resource type="PackedScene" uid="uid://beubfou42vy17" path="res://scenes/Levels/pause_screen.tscn" id="8_005pk"]
 [ext_resource type="PackedScene" uid="uid://j6misgjrn25h" path="res://scenes/UI/tower_selections_ui.tscn" id="9_7f6hi"]
-[ext_resource type="PackedScene" uid="uid://2tkipgbfq7n4" path="res://scenes/Levels/win_screen.tscn" id="10_dmw6h"]
-[ext_resource type="PackedScene" uid="uid://dprbda82qialb" path="res://scenes/Levels/game_over.tscn" id="11_1ti3h"]
+[ext_resource type="PackedScene" uid="uid://eqgv7d0og65b" path="res://scenes/Levels/win_screen.tscn" id="10_dmw6h"]
+[ext_resource type="PackedScene" path="res://scenes/Levels/game_over.tscn" id="11_1ti3h"]
 [ext_resource type="Texture2D" uid="uid://cgeyoeihbyjlx" path="res://assets/yellow_arrow.png" id="12_yqsxt"]
 [ext_resource type="PackedScene" uid="uid://duqsi5phr0jjw" path="res://scenes/UI/tutorial_page.tscn" id="13_v63kp"]
 [ext_resource type="AudioStream" uid="uid://cb86r0nabwdu0" path="res://assets/sfx/11L-Epic_orchestral_back-1747871572893.mp3" id="14_pta3i"]
@@ -50,6 +54,10 @@ point_count = 5
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_n6yy5")
+bgm = ExtResource("2_7xphp")
+runbgm = ExtResource("3_vd3ma")
+winbgm = ExtResource("4_i22i5")
+losebgm = ExtResource("5_473ll")
 
 [node name="TileMap" type="Node2D" parent="."]
 position = Vector2(346, 359)

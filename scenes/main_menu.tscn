@@ -1,11 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://514k5b5q723t"]
+[gd_scene load_steps=14 format=3 uid="uid://514k5b5q723t"]
 
 [ext_resource type="Texture2D" uid="uid://dtus7ex80cybg" path="res://assets/MainMenu.png" id="1_g4j0d"]
+[ext_resource type="Script" path="res://scripts/main_menu/main_menu.gd" id="1_r4xdp"]
 [ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="2_jw7bk"]
+[ext_resource type="AudioStream" uid="uid://cnqjn4tmdywbs" path="res://assets/sound/bgm/mainmenu.mp3" id="2_tee24"]
 [ext_resource type="Script" path="res://scripts/main_menu/play_button.gd" id="4_fyrgf"]
 [ext_resource type="Script" path="res://scripts/main_menu/quit_button.gd" id="5_l6ne5"]
 [ext_resource type="Texture2D" uid="uid://bfoc8dmpnxdwu" path="res://assets/leaf.png" id="6_cbekf"]
 [ext_resource type="FontFile" uid="uid://m8d57bup8fh5" path="res://assets/Fonts/Raw/upheavtt.ttf" id="6_o67gm"]
+[ext_resource type="Script" path="res://scripts/main_menu/setting_button.gd" id="7_cm21l"]
+[ext_resource type="PackedScene" uid="uid://cedylkh6m65va" path="res://scenes/sound_settings.tscn" id="10_aecg4"]
 
 [sub_resource type="Gradient" id="Gradient_vfnai"]
 offsets = PackedFloat32Array(0, 0.229508, 0.754098, 1)
@@ -30,6 +34,8 @@ scale_max = 0.05
 color_ramp = SubResource("GradientTexture1D_ekx5a")
 
 [node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_r4xdp")
+bgm = ExtResource("2_tee24")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.517647)
@@ -49,15 +55,27 @@ visibility_rect = Rect2(-500, -200, 1000, 400)
 
 [node name="PlayButton" type="LinkButton" parent="."]
 offset_left = 78.0
-offset_top = 523.0
+offset_top = 476.0
 offset_right = 271.0
-offset_bottom = 633.0
+offset_bottom = 586.0
 theme_override_colors/font_color = Color(1, 0.94902, 0.8, 1)
 theme_override_fonts/font = ExtResource("2_jw7bk")
 theme_override_font_sizes/font_size = 40
 text = "PLAY"
 underline = 2
 script = ExtResource("4_fyrgf")
+
+[node name="SettingButton" type="LinkButton" parent="."]
+offset_left = 79.0
+offset_top = 529.0
+offset_right = 272.0
+offset_bottom = 639.0
+theme_override_colors/font_color = Color(1, 0.94902, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_jw7bk")
+theme_override_font_sizes/font_size = 40
+text = "SETTINGS"
+underline = 2
+script = ExtResource("7_cm21l")
 
 [node name="QuitButton" type="LinkButton" parent="."]
 offset_left = 75.0
@@ -85,9 +103,16 @@ Terakhir
 
 [node name="PlayArrowLabel" type="Label" parent="."]
 offset_left = 37.0
-offset_top = 516.0
+offset_top = 469.0
 offset_right = 106.0
-offset_bottom = 626.0
+offset_bottom = 579.0
+theme_override_font_sizes/font_size = 30
+
+[node name="SettingsArrowLabel" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 521.0
+offset_right = 105.0
+offset_bottom = 567.0
 theme_override_font_sizes/font_size = 30
 
 [node name="QuitArrowLabel" type="Label" parent="."]
@@ -97,9 +122,15 @@ offset_right = 106.0
 offset_bottom = 624.0
 theme_override_font_sizes/font_size = 30
 
+[node name="SoundSetting" parent="." instance=ExtResource("10_aecg4")]
+visible = false
+
 [connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PlayButton" to="PlayButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="SettingButton" to="SettingButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SettingButton" to="SettingButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="SettingButton" to="SettingButton" method="_on_pressed"]
 [connection signal="mouse_entered" from="QuitButton" to="QuitButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="QuitButton" to="QuitButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="QuitButton" to="QuitButton" method="_on_pressed"]
