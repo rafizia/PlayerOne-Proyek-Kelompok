@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bib5x3643xeud"]
 
-[ext_resource type="PackedScene" uid="uid://c2ohkvrxijaik" path="res://scenes/Enemies/Flyer/flyer.tscn" id="1_k2x5q"]
+[ext_resource type="PackedScene" uid="uid://c2ohkvrxijaik" path="res://scenes/enemy/old/flyer.tscn" id="1_ieanb"]
 
 [sub_resource type="Curve2D" id="Curve2D_wfgg0"]
 _data = {
@@ -14,4 +14,4 @@ curve = SubResource("Curve2D_wfgg0")
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(3, 260)
 
-[node name="Flyer" parent="PathFollow2D" instance=ExtResource("1_k2x5q")]
+[node name="Flyer" parent="PathFollow2D" instance=ExtResource("1_ieanb")]

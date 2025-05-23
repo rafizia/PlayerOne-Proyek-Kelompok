@@ -1,11 +1,11 @@
 [gd_scene load_steps=18 format=4 uid="uid://c4c32sdx7lu5i"]
 
-[ext_resource type="Texture2D" uid="uid://f504iiinf0xm" path="res://assets/mana seed seasonal forest sample (winter)/seasonal sample (winter).png" id="1_oxk31"]
-[ext_resource type="Texture2D" uid="uid://c67y66bqmu60i" path="res://assets/mana seed seasonal forest sample (winter)/seasonal water animations/winter water sparkles B 16x16.png" id="2_dfupy"]
-[ext_resource type="Script" path="res://scenes/Levels/test/path_spawner.gd" id="3_ho5kv"]
+[ext_resource type="Texture2D" uid="uid://f504iiinf0xm" path="res://assets/mana seed seasonal forest sample (winter)/seasonal sample (winter).png" id="1_bq2v0"]
+[ext_resource type="Texture2D" uid="uid://c67y66bqmu60i" path="res://assets/mana seed seasonal forest sample (winter)/seasonal water animations/winter water sparkles B 16x16.png" id="2_2lwfy"]
+[ext_resource type="Script" path="res://scenes/Levels/test/old/path_spawner.gd" id="3_7vi37"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ss4h"]
-texture = ExtResource("1_oxk31")
+texture = ExtResource("1_bq2v0")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -236,7 +236,7 @@ texture = ExtResource("1_oxk31")
 sources/0 = SubResource("TileSetAtlasSource_7ss4h")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s0o0y"]
-texture = ExtResource("1_oxk31")
+texture = ExtResource("1_bq2v0")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -467,7 +467,7 @@ texture = ExtResource("1_oxk31")
 sources/0 = SubResource("TileSetAtlasSource_s0o0y")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0x4p7"]
-texture = ExtResource("1_oxk31")
+texture = ExtResource("1_bq2v0")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -698,7 +698,7 @@ texture = ExtResource("1_oxk31")
 sources/0 = SubResource("TileSetAtlasSource_0x4p7")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yhrir"]
-texture = ExtResource("2_dfupy")
+texture = ExtResource("2_2lwfy")
 0:0/animation_columns = 4
 0:0/animation_speed = 7.0
 0:0/animation_frame_0/duration = 1.0
@@ -725,7 +725,7 @@ texture = ExtResource("2_dfupy")
 sources/0 = SubResource("TileSetAtlasSource_yhrir")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l4dvr"]
-texture = ExtResource("1_oxk31")
+texture = ExtResource("1_bq2v0")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -956,7 +956,7 @@ texture = ExtResource("1_oxk31")
 sources/0 = SubResource("TileSetAtlasSource_l4dvr")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_34fhv"]
-texture = ExtResource("1_oxk31")
+texture = ExtResource("1_bq2v0")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -1187,7 +1187,7 @@ texture = ExtResource("1_oxk31")
 sources/0 = SubResource("TileSetAtlasSource_34fhv")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bw3tl"]
-texture = ExtResource("1_oxk31")
+texture = ExtResource("1_bq2v0")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -1455,7 +1455,7 @@ scale = Vector2(5, 1)
 zoom = Vector2(1.1, 1.1)
 
 [node name="PathSpawner" type="Node2D" parent="."]
-script = ExtResource("3_ho5kv")
+script = ExtResource("3_7vi37")
 
 [node name="Timer" type="Timer" parent="PathSpawner"]
 autostart = true
