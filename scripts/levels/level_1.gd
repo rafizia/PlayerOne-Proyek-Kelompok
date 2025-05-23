@@ -55,11 +55,11 @@ func _process(delta):
 	energy_label.text = str(int(ResourcesManager.energy))
 	
 	if (ResourcesManager.hp <= 0 or ResourcesManager.energy <= 0) and not is_game_over_handled:
-    SoundManager.play_bgm(losebgm, false, false)
+		SoundManager.play_bgm(losebgm, false, false)
 		is_game_over_handled = true
 		game_over.visible = true
 		get_tree().paused = true
-    
+	
 func start_wave():
 	enemy_queue.clear()
 	if current_wave == 0:

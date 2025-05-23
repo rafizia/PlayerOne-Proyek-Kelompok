@@ -1,10 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2in52y6ycisl"]
+[gd_scene load_steps=20 format=3 uid="uid://d2in52y6ycisl"]
 
 [ext_resource type="Script" path="res://scripts/towers/attack_tower.gd" id="1_7cibg"]
 [ext_resource type="Texture2D" uid="uid://bdq214k1dfden" path="res://assets/towers/gun-turret/Gun-Turret-1.png" id="1_y2kio"]
 [ext_resource type="PackedScene" uid="uid://cjmcp3atom5c8" path="res://scenes/Towers/GunTurret/bullet_red.tscn" id="2_wanj0"]
+[ext_resource type="AudioStream" uid="uid://prftxxes78qj" path="res://assets/sound/sfx/shot.wav" id="3_21of3"]
 [ext_resource type="Texture2D" uid="uid://ca03ken5iggig" path="res://assets/towers/arrow_up.png" id="4_jeuub"]
 [ext_resource type="Script" path="res://scripts/towers/effect_area_draw.gd" id="4_pqr0a"]
+[ext_resource type="AudioStream" uid="uid://dxpudimagl6l4" path="res://assets/sound/sfx/sniper.wav" id="4_tr16t"]
 [ext_resource type="FontFile" uid="uid://cnbae18fxsbpb" path="res://assets/Fonts/Raw/VCR_OSD_MONO_1.001.ttf" id="5_gff3m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c54au"]
@@ -87,6 +89,8 @@ bullet_scene = ExtResource("2_wanj0")
 base_bullet_damage = 0.8
 damage_upgrade_add = 0.2
 upgrade_cost_base = 25
+sfx = ExtResource("3_21of3")
+bigsfx = ExtResource("4_tr16t")
 
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(30, -5)

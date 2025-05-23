@@ -117,7 +117,7 @@ func _ready():
 	wave_label.text = "Wave 1/10"
 	win_screen_continue.level_path = "res://scenes/Levels/level3.tscn"
 	restart_button.level_path = "res://scenes/Levels/level3.tscn"
-  restart_button_pause.level_path = "res://scenes/Levels/level3.tscn"
+	restart_button_pause.level_path = "res://scenes/Levels/level3.tscn"
 
 func get_bgm():
 	return bgm
