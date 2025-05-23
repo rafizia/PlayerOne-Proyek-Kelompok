@@ -1,32 +1,41 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2in52y6ycisl"]
+[gd_scene load_steps=20 format=3 uid="uid://d2in52y6ycisl"]
 
-[ext_resource type="Texture2D" uid="uid://bdq214k1dfden" path="res://assets/towers/gun-turret/Gun-Turret-1.png" id="1_y2kio"]
+[ext_resource type="Script" path="res://scripts/towers/attack_tower.gd" id="1_7cibg"]
+[ext_resource type="PackedScene" uid="uid://cjmcp3atom5c8" path="res://scenes/Towers/GunTurret/bullet_red.tscn" id="2_wanj0"]
+[ext_resource type="AudioStream" uid="uid://prftxxes78qj" path="res://assets/sound/sfx/shot.wav" id="3_21of3"]
+[ext_resource type="Texture2D" uid="uid://ca03ken5iggig" path="res://assets/towers/arrow_up.png" id="4_jeuub"]
+[ext_resource type="Script" path="res://scripts/towers/effect_area_draw.gd" id="4_pqr0a"]
+[ext_resource type="AudioStream" uid="uid://dxpudimagl6l4" path="res://assets/sound/sfx/sniper.wav" id="4_tr16t"]
+[ext_resource type="Texture2D" uid="uid://b1j52phbqoo87" path="res://assets/towers/gun-turret/Gun-Turret-Muzzle.png" id="4_22vyc"]
+[ext_resource type="Texture2D" uid="uid://dq4hj5c8pctbn" path="res://assets/towers/gun-turret/Gun-Turret-Base.png" id="4_yaurk"]
+[ext_resource type="FontFile" uid="uid://cnbae18fxsbpb" path="res://assets/Fonts/Raw/VCR_OSD_MONO_1.001.ttf" id="5_gff3m"]
+[ext_resource type="Script" path="res://scripts/towers/muzzle.gd" id="5_okg8s"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c54au"]
-atlas = ExtResource("1_y2kio")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r8yh"]
+atlas = ExtResource("4_22vyc")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_doq0e"]
-atlas = ExtResource("1_y2kio")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rb0q"]
+atlas = ExtResource("4_22vyc")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dsm4w"]
-atlas = ExtResource("1_y2kio")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dxgr"]
+atlas = ExtResource("4_22vyc")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1mu2o"]
-atlas = ExtResource("1_y2kio")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dhmw"]
+atlas = ExtResource("4_22vyc")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_thp5d"]
-atlas = ExtResource("1_y2kio")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvhen"]
+atlas = ExtResource("4_22vyc")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_edxmu"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_68cvc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c54au")
+"texture": SubResource("AtlasTexture_1r8yh")
 }],
 "loop": true,
 "name": &"idle",
@@ -34,31 +43,142 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_doq0e")
+"texture": SubResource("AtlasTexture_2rb0q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dsm4w")
+"texture": SubResource("AtlasTexture_8dxgr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1mu2o")
+"texture": SubResource("AtlasTexture_7dhmw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_thp5d")
+"texture": SubResource("AtlasTexture_mvhen")
 }],
-"loop": true,
-"name": &"nembak",
-"speed": 8.0
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcaos"]
 size = Vector2(42, 29)
 
-[node name="GunTurret" type="StaticBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bgwk7"]
+radius = 120.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_edxmu")
-animation = &"nembak"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_864wr"]
+size = Vector2(44, 23)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8od16"]
+bg_color = Color(1, 1, 1, 0.313726)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 120
+corner_radius_bottom_left = 120
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfah7"]
+bg_color = Color(0.0980392, 0.0823529, 0.14902, 0.470588)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="GunTurret" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_7cibg")
+bullet_scene = ExtResource("2_wanj0")
+base_bullet_damage = 0.8
+damage_upgrade_add = 0.2
+upgrade_cost_base = 25
+sfx = ExtResource("3_21of3")
+bigsfx = ExtResource("4_tr16t")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("4_yaurk")
+
+[node name="Muzzle" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.5, 0)
+sprite_frames = SubResource("SpriteFrames_68cvc")
+animation = &"shoot"
+script = ExtResource("5_okg8s")
+
+[node name="Aim" type="Marker2D" parent="Muzzle"]
+position = Vector2(30, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_wcaos")
+
+[node name="EffectArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EffectArea"]
+shape = SubResource("CircleShape2D_bgwk7")
+script = ExtResource("4_pqr0a")
+
+[node name="TowerDetector" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetector"]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_864wr")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[node name="Area" type="Panel" parent="."]
+offset_left = -119.0
+offset_top = -116.0
+offset_right = 121.0
+offset_bottom = 124.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8od16")
+
+[node name="ClickArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -21.0
+offset_top = -10.0
+offset_right = 22.0
+offset_bottom = 20.0
+
+[node name="Upgrade" type="Panel" parent="."]
+visible = false
+offset_left = 30.0
+offset_top = -20.0
+offset_right = 70.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sfah7")
+
+[node name="MarginContainer" type="MarginContainer" parent="Upgrade"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Upgrade/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="Upgrade/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_jeuub")
+stretch_mode = 3
+
+[node name="Cost" type="Label" parent="Upgrade/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_gff3m")
+theme_override_font_sizes/font_size = 14
+text = "10"
+horizontal_alignment = 1
+
+[connection signal="animation_finished" from="Muzzle" to="." method="_on_muzzle_animation_finished"]
+[connection signal="body_entered" from="EffectArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="EffectArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="gui_input" from="ClickArea" to="." method="_on_click_area_gui_input"]
+[connection signal="gui_input" from="Upgrade" to="." method="_on_upgrade_gui_input"]

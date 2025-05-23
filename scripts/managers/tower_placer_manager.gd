@@ -13,7 +13,15 @@ var can_place: bool = false
 var level_path: String = "Level1"  # Default to Level1
 var tilemap_layers: Array = []
 
+var holdsfx: AudioStreamPlayer
+
+
 func _ready():
+	# Wait for the scene to be ready
+	await get_tree().process_frame
+	initialize_level()
+
+func initialize_level():
 	# Get the current level number from the scene name
 	var scene_name = get_tree().current_scene.name
 	if scene_name.begins_with("Level"):
@@ -60,6 +68,7 @@ func start_tower_placement(tower_scene: PackedScene, cost: int) -> bool:
 	
 	is_dragging = true
 	emit_signal("tower_placement_started", current_tower)
+	holdsfx = SoundManager.play_hold()
 	return true
 
 func update_tower_position(position: Vector2) -> void:
@@ -110,6 +119,9 @@ func update_tower_position(position: Vector2) -> void:
 					current_tower.modulate = Color(255, 0, 0, 0.5)
 
 func end_tower_placement() -> void:
+	if holdsfx:
+		holdsfx.stop()
+	
 	if not is_dragging or not current_tower:
 		return
 	
@@ -123,6 +135,7 @@ func end_tower_placement() -> void:
 			area.hide()
 
 		current_tower.modulate = Color(1, 1, 1)
+		SoundManager.play_place()
 		emit_signal("tower_placement_ended", current_tower, true)
 	else:
 		# Refund the cost and remove the tower
@@ -133,14 +146,3 @@ func end_tower_placement() -> void:
 	current_tower = null
 	is_dragging = false
 	can_place = false
-
-func cancel_tower_placement() -> void:
-	if not is_dragging or not current_tower:
-		return
-	
-	# Refund the cost and remove the tower
-	ResourcesManager._instance.gold += current_tower.cost
-	current_tower.queue_free()
-	current_tower = null
-	is_dragging = false
-	can_place = false 

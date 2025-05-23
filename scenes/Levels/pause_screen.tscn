@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpxvmtmfi4spg"]
+[gd_scene load_steps=7 format=3 uid="uid://beubfou42vy17"]
 
 [ext_resource type="Texture2D" uid="uid://bml4qd2ajvynd" path="res://assets/menubox.png" id="1_teuqi"]
 [ext_resource type="FontFile" uid="uid://m8d57bup8fh5" path="res://assets/Fonts/Raw/upheavtt.ttf" id="2_ce1a1"]
 [ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="3_vswpb"]
 [ext_resource type="Script" path="res://scripts/pause_screen/continue_button.gd" id="4_44iqu"]
 [ext_resource type="Script" path="res://scripts/pause_screen/quit.gd" id="5_cu0tq"]
+[ext_resource type="Script" path="res://scripts/levels/continue_button.gd" id="5_qpn8y"]
 
 [node name="PauseScreen" type="CanvasLayer"]
 
@@ -52,9 +53,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -49.5
-offset_top = 40.0
+offset_top = 20.0
 offset_right = 49.5
-offset_bottom = 80.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_vswpb")
@@ -62,6 +63,26 @@ theme_override_font_sizes/font_size = 20
 text = "CONTINUE"
 underline = 2
 script = ExtResource("4_44iqu")
+
+[node name="Restart" type="LinkButton" parent="TextureRect"]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = 60.0
+offset_right = 43.5
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_vswpb")
+theme_override_font_sizes/font_size = 20
+text = "RESTART"
+underline = 2
+script = ExtResource("5_qpn8y")
 
 [node name="Quit" type="LinkButton" parent="TextureRect"]
 process_mode = 2
@@ -72,9 +93,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -24.5
-offset_top = 80.0
+offset_top = 100.0
 offset_right = 24.5
-offset_bottom = 120.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_vswpb")
@@ -84,4 +105,5 @@ underline = 2
 script = ExtResource("5_cu0tq")
 
 [connection signal="pressed" from="TextureRect/Continue" to="TextureRect/Continue" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Restart" to="TextureRect/Restart" method="_on_pressed"]
 [connection signal="pressed" from="TextureRect/Quit" to="TextureRect/Quit" method="_on_pressed"]

@@ -17,8 +17,26 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ResourceManager="*res://scripts/managers/resource_manager.gd"
 TransitionLayer="*res://scenes/transition_layer.tscn"
+TowerPlacerManager="*res://scripts/managers/tower_placer_manager.gd"
+SoundManager="*res://scenes/sound_manager.tscn"
+ResourcesManager="*res://scripts/managers/resource_manager.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[global_group]
+
+enemies=""
+
+[layer_names]
+
+2d_physics/layer_1="environments"
+2d_physics/layer_2="towers"
+2d_physics/layer_3="towerdetectors"
+2d_physics/layer_4="bullets"
+2d_physics/layer_5="enemies"
 
 [rendering]
 

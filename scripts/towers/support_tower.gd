@@ -4,19 +4,19 @@ class_name SupportTower
 enum SupportType { SLOW, DAMAGE_BOOST }
 
 # Support effect settings
-var support_type: SupportType = SupportType.SLOW
+var support_type: SupportType = SupportType.DAMAGE_BOOST
 var base_effect_amount: float = 0.2  # 20% slow or 20% damage boost
 var current_effect_amount: float = 0.2
-var base_radius: float = 100.0
-var current_radius: float = 100.0
+var base_range_radius: float = 100.0
+var current_range_radius: float = 100.0
 
 # Upgrade settings
 var effect_multipliers: Array[float] = [1.0, 1.5, 2.0]  # Effect strength multiplier
 var radius_increases: Array[float] = [0.0, 30.0, 60.0]  # Additional radius per level
-var upgrade_costs: Array[int] = [0, 75, 150]  # Costs for upgrading to level 2, 3
+var upgrade_costs: Array[int] = [0, 30, 60]  # Costs for upgrading to level 2, 3
 
 # Effect area
-var effect_area: Area2D
+@onready var effect_area: Area2D = $EffectArea
 
 # Effect tracking
 var affected_enemies = []
@@ -30,30 +30,28 @@ func _ready():
 	build_cost = 20
 	maintenance_cost = 8
 	
-	# Setup effect area
-	setup_effect_area()
+	update_effect_radius()
 
-# Setup the effect area
-func setup_effect_area():
-	# Create the area and collision shape
-	effect_area = Area2D.new()
-	effect_area.name = "EffectArea"
-	var effect_shape = CollisionShape2D.new()
-	var circle_shape = CircleShape2D.new()
-	circle_shape.radius = current_radius
-	effect_shape.shape = circle_shape
-	effect_area.add_child(effect_shape)
+func _process(_delta):
+	if !is_active:
+		return
 	
-	# Connect signals
-	effect_area.connect("body_entered", Callable(self, "_on_effect_area_body_entered"))
-	effect_area.connect("body_exited", Callable(self, "_on_effect_area_body_exited"))
-	
-	add_child(effect_area)
+	# Only process if the tower is placed (not being dragged)
+	if get_parent().name != "Towers":
+		return
 
-# Update effect radius
 func update_effect_radius():
-	var circle_shape = effect_area.get_node("CollisionShape2D").shape as CircleShape2D
-	circle_shape.radius = current_radius
+	if not is_instance_valid(effect_area):
+		return
+
+	var collision_shape = effect_area.get_node_or_null("CollisionShape2D")
+	if not collision_shape:
+		return
+
+	var circle_shape = collision_shape.shape
+	
+	if circle_shape is CircleShape2D:
+		circle_shape.radius = current_range_radius
 
 # Handler when body enters effect area
 func _on_effect_area_body_entered(body):
@@ -62,15 +60,17 @@ func _on_effect_area_body_entered(body):
 	
 	# For slow effect (enemies)
 	if support_type == SupportType.SLOW and body.is_in_group("enemies"):
-		affected_enemies.append(body)
-		if body.has_method("apply_slow"):
-			body.apply_slow(current_effect_amount)
+		if !affected_enemies.has(body):
+			affected_enemies.append(body)
+			if body.has_method("apply_slow"):
+				body.apply_slow(current_effect_amount)
 	
 	# For damage boost (other towers)
 	elif support_type == SupportType.DAMAGE_BOOST and body.is_in_group("towers"):
-		affected_towers.append(body)
-		if body.has_method("apply_damage_boost"):
-			body.apply_damage_boost(current_effect_amount)
+		if !affected_towers.has(body):
+			affected_towers.append(body)
+			if body.has_method("apply_damage_boost"):
+				body.apply_damage_boost(current_effect_amount)
 
 # Handler when body exits effect area
 func _on_effect_area_body_exited(body):
@@ -93,7 +93,7 @@ func set_support_type(type: SupportType):
 # Override update_tower_stats
 func update_tower_stats():
 	current_effect_amount = base_effect_amount * effect_multipliers[tower_level - 1]
-	current_radius = base_radius + radius_increases[tower_level - 1]
+	current_range_radius = base_range_radius + radius_increases[tower_level - 1]
 	
 	# Update the effect area
 	update_effect_radius()

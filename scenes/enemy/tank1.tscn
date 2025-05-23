@@ -29,9 +29,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pmki"]
 size = Vector2(171, 268)
 
-[node name="tank1" type="CharacterBody2D"]
+[node name="tank1" type="CharacterBody2D" groups=["enemies"]]
 rotation = 1.5708
 scale = Vector2(0.2, 0.2)
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_j7gl4")
 
 [node name="Hull" type="AnimatedSprite2D" parent="."]
@@ -45,3 +47,14 @@ sprite_frames = SubResource("SpriteFrames_yqca7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -6)
 shape = SubResource("RectangleShape2D_3pmki")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -135.0
+offset_top = 100.0
+offset_right = 65.0004
+offset_bottom = 120.0
+rotation = -1.56972
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+value = 100.0
+show_percentage = false

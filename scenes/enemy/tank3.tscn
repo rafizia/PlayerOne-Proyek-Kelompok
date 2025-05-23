@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://uav8ek4v4tqf"]
 
 [ext_resource type="Texture2D" uid="uid://r46po5hhph61" path="res://assets/free-2d-battle-tank-game-assets/PNG/Hulls_Color_C/Hull_03.png" id="1_0iubh"]
-[ext_resource type="Script" path="res://scripts/enemy/tank_1.gd" id="1_gxxqj"]
+[ext_resource type="Script" path="res://scripts/enemy/tank_3.gd" id="1_qn1uc"]
 [ext_resource type="Texture2D" uid="uid://bnstuqbcq38wj" path="res://assets/free-2d-battle-tank-game-assets/PNG/Weapon_Color_C/Gun_03.png" id="2_w0lvy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l5x4u"]
@@ -29,10 +29,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pmki"]
 size = Vector2(171, 268)
 
-[node name="tank3" type="CharacterBody2D"]
+[node name="tank3" type="CharacterBody2D" groups=["enemies"]]
 rotation = 1.5708
 scale = Vector2(0.2, 0.2)
-script = ExtResource("1_gxxqj")
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_qn1uc")
 
 [node name="Hull" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l5x4u")
@@ -45,3 +47,25 @@ sprite_frames = SubResource("SpriteFrames_yqca7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -6)
 shape = SubResource("RectangleShape2D_3pmki")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -135.0
+offset_top = 80.0005
+offset_right = 25.0003
+offset_bottom = 110.0
+rotation = -1.56831
+max_value = 300.0
+value = 300.0
+show_percentage = false
+
+[node name="ShieldIndicator" type="Node2D" parent="."]
+visible = false
+
+[node name="Shield" type="Polygon2D" parent="ShieldIndicator"]
+color = Color(0.2, 0.5, 1, 0.3)
+polygon = PackedVector2Array(-90, -120, 90, -120, 110, 0, 90, 120, -90, 120, -110, 0)
+
+[node name="ShieldOutline" type="Line2D" parent="ShieldIndicator"]
+points = PackedVector2Array(-90, -120, 90, -120, 110, 0, 90, 120, -90, 120, -110, 0, -90, -120)
+width = 3.0
+default_color = Color(0.4, 0.7, 1, 0.8)

@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://76h8yy252gon"]
+[gd_scene load_steps=7 format=3 uid="uid://76h8yy252gon"]
 
 [ext_resource type="Script" path="res://scripts/UI/tower_panel.gd" id="1_qji7y"]
 [ext_resource type="Texture2D" uid="uid://dsj4dqmrj2avu" path="res://assets/towers/sniper-tower/Sniper-Tower.png" id="1_y4ggs"]
 [ext_resource type="PackedScene" uid="uid://dmkx14uyeu3s1" path="res://scenes/Towers/SniperTower/sniper_tower.tscn" id="2_4qxhs"]
+[ext_resource type="FontFile" uid="uid://cnbae18fxsbpb" path="res://assets/Fonts/Raw/VCR_OSD_MONO_1.001.ttf" id="4_3g86x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irr40"]
-bg_color = Color(0.3, 0.3, 0.3, 1)
+bg_color = Color(0.0980392, 0.0823529, 0.14902, 0.588235)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -13,7 +14,7 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ifuie"]
 atlas = ExtResource("1_y4ggs")
-region = Rect2(12, 13, 48, 49)
+region = Rect2(12, 13, 48, 38.4853)
 
 [node name="SniperTowerPanel" type="Panel"]
 custom_minimum_size = Vector2(80, 80)
@@ -23,7 +24,6 @@ size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_irr40")
 script = ExtResource("1_qji7y")
 tower_scene = ExtResource("2_4qxhs")
-build_cost = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -32,6 +32,13 @@ offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
+
+[node name="TowerLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_3g86x")
+theme_override_font_sizes/font_size = 12
+text = "Sniper"
+horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
@@ -42,19 +49,24 @@ texture = SubResource("AtlasTexture_ifuie")
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 8
 alignment = 2
 
 [node name="BuildCostLabel" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_3g86x")
+theme_override_font_sizes/font_size = 14
 text = "20"
 
 [node name="MaintenanceLabel" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
+theme_override_fonts/font = ExtResource("4_3g86x")
+theme_override_font_sizes/font_size = 14
 text = "8"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

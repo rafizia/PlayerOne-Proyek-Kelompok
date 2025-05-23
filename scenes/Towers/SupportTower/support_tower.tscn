@@ -1,6 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://ctkn6sofm7345"]
+[gd_scene load_steps=24 format=3 uid="uid://ctkn6sofm7345"]
 
+[ext_resource type="Script" path="res://scripts/towers/support_tower.gd" id="1_1krxg"]
 [ext_resource type="Texture2D" uid="uid://br6x7xc2afh7c" path="res://assets/towers/support-tower/Support-Tower-2-anim.png" id="1_eifr0"]
+[ext_resource type="Texture2D" uid="uid://ca03ken5iggig" path="res://assets/towers/arrow_up.png" id="3_2yjme"]
+[ext_resource type="Script" path="res://scripts/towers/effect_area_draw.gd" id="3_5pbtu"]
+[ext_resource type="FontFile" uid="uid://cnbae18fxsbpb" path="res://assets/Fonts/Raw/VCR_OSD_MONO_1.001.ttf" id="4_01b2o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y2sy7"]
 atlas = ExtResource("1_eifr0")
@@ -95,9 +99,33 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51k52"]
-size = Vector2(34, 47)
+size = Vector2(34, 46.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3p4s4"]
+radius = 100.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akwhk"]
+size = Vector2(36, 18)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xgu8u"]
+bg_color = Color(1, 1, 1, 0.313726)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mwb2"]
+bg_color = Color(0.0980392, 0.0823529, 0.14902, 0.470588)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="SupportTower" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_1krxg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_w2tke")
@@ -106,5 +134,74 @@ frame = 1
 frame_progress = 0.0721667
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5.5)
+position = Vector2(0, -4.25)
 shape = SubResource("RectangleShape2D_51k52")
+
+[node name="EffectArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EffectArea"]
+shape = SubResource("CircleShape2D_3p4s4")
+script = ExtResource("3_5pbtu")
+
+[node name="TowerDetector" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetector"]
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_akwhk")
+
+[node name="Area" type="Panel" parent="."]
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xgu8u")
+
+[node name="ClickArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -17.0
+offset_top = -27.0
+offset_right = 17.0
+offset_bottom = 19.0
+
+[node name="Upgrade" type="Panel" parent="."]
+visible = false
+offset_left = 30.0
+offset_top = -20.0
+offset_right = 70.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6mwb2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Upgrade"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Upgrade/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="Upgrade/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_2yjme")
+stretch_mode = 3
+
+[node name="Cost" type="Label" parent="Upgrade/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_01b2o")
+theme_override_font_sizes/font_size = 14
+text = "10"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="EffectArea" to="." method="_on_effect_area_body_entered"]
+[connection signal="body_exited" from="EffectArea" to="." method="_on_effect_area_body_exited"]
+[connection signal="gui_input" from="ClickArea" to="." method="_on_click_area_gui_input"]
+[connection signal="gui_input" from="Upgrade" to="." method="_on_upgrade_gui_input"]
