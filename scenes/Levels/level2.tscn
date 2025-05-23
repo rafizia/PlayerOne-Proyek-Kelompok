@@ -15,8 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://j6misgjrn25h" path="res://scenes/UI/tower_selections_ui.tscn" id="10_r5404"]
 [ext_resource type="PackedScene" path="res://scenes/Levels/game_over.tscn" id="12_f5rmg"]
 [ext_resource type="AudioStream" uid="uid://cb86r0nabwdu0" path="res://assets/sfx/11L-Epic_orchestral_back-1747871572893.mp3" id="13_ifjag"]
-[ext_resource type="PackedScene" uid="uid://wafp4rxg1er2" path="res://scenes/Levels/level_ui.tscn" id="13_yex21"]
-[ext_resource type="PackedScene" uid="uid://beubfou42vy17" path="res://scenes/Levels/pause_screen.tscn" id="17_lsllv"]
+[ext_resource type="PackedScene" uid="uid://cfm55348ldayh" path="res://scenes/Levels/level_ui.tscn" id="13_yex21"]
+[ext_resource type="Texture2D" uid="uid://cgeyoeihbyjlx" path="res://assets/yellow_arrow.png" id="14_0os0o"]
+[ext_resource type="PackedScene" uid="uid://cpxvmtmfi4spg" path="res://scenes/Levels/pause_screen.tscn" id="17_lsllv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8imk0"]
 texture = ExtResource("1_khvkq")
@@ -1404,6 +1405,22 @@ visible = false
 stream = ExtResource("13_ifjag")
 autoplay = true
 bus = &"BGM"
+
+[node name="PathArrow" type="TextureRect" parent="."]
+offset_left = 103.0
+offset_top = 156.0
+offset_right = 143.0
+offset_bottom = 196.0
+rotation = 2.57087
+texture = ExtResource("14_0os0o")
+
+[node name="PathArrow2" type="TextureRect" parent="."]
+offset_left = 116.0
+offset_top = 417.0
+offset_right = 156.0
+offset_bottom = 457.0
+rotation = 0.935496
+texture = ExtResource("14_0os0o")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="StartBattleIcon/StartBattle" to="StartBattleIcon/StartBattle" method="_on_pressed"]
