@@ -1,9 +1,12 @@
 [gd_scene load_steps=17 format=3 uid="uid://dmkx14uyeu3s1"]
 
+
 [ext_resource type="Script" path="res://scripts/towers/attack_tower.gd" id="1_rvifk"]
 [ext_resource type="PackedScene" uid="uid://dmcw8gn0qrjpj" path="res://scenes/Towers/SniperTower/bullet_green.tscn" id="2_2c465"]
+[ext_resource type="AudioStream" uid="uid://prftxxes78qj" path="res://assets/sound/sfx/shot.wav" id="3_17fyk"]
 [ext_resource type="Script" path="res://scripts/towers/effect_area_draw.gd" id="4_27frw"]
 [ext_resource type="Texture2D" uid="uid://ca03ken5iggig" path="res://assets/towers/arrow_up.png" id="4_fnjm5"]
+[ext_resource type="AudioStream" uid="uid://dxpudimagl6l4" path="res://assets/sound/sfx/sniper.wav" id="4_x2dpl"]
 [ext_resource type="Texture2D" uid="uid://d1dbvj638e43e" path="res://assets/towers/sniper-tower/Sniper-Tower-Base.png" id="4_qn2cg"]
 [ext_resource type="Texture2D" uid="uid://cx50y17k8xhd6" path="res://assets/towers/sniper-tower/Sniper-Tower-Muzzle.png" id="5_0sd1x"]
 [ext_resource type="Script" path="res://scripts/towers/muzzle.gd" id="5_atl6u"]
@@ -75,6 +78,8 @@ range_upgrade_add = 20.0
 damage_upgrade_add = 1.0
 reload_upgrade_reduce = 0.2
 upgrade_cost_base = 30
+sfx = ExtResource("3_17fyk")
+bigsfx = ExtResource("4_x2dpl")
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("4_qn2cg")

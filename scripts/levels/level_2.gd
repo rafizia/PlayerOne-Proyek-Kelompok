@@ -97,12 +97,20 @@ var wave_data = [
 	]
 ]
 
+@export var bgm : AudioStreamMP3
+@export var runbgm : AudioStreamMP3
+@export var winbgm : AudioStreamMP3
+@export var losebgm : AudioStreamMP3
+
 func _ready():
 	wave_label.text = "Wave 1/7"
 	win_screen_continue.level_path = "res://scenes/Levels/level3.tscn"
 	restart_button.level_path = "res://scenes/Levels/level2.tscn"
 	restart_button_pause.level_path = "res://scenes/Levels/level2.tscn"
 	
+func get_bgm():
+	return bgm
+
 func _process(delta):
 	hp_label.text = str(ResourcesManager.hp)
 	coin_label.text = str(ResourcesManager.gold)
@@ -111,13 +119,18 @@ func _process(delta):
 	if (ResourcesManager.hp <= 0 or ResourcesManager.energy <= 0) and not is_game_over_handled:
 		is_game_over_handled = true
 		game_over.visible = true
+		SoundManager.play_bgm(losebgm, false, false)
 		get_tree().paused = true
 	
 func start_wave():
 	enemy_queue.clear()
 
+	if current_wave == 0:
+		SoundManager.play_bgm(runbgm,true)
+
 	if current_wave >= wave_data.size() and remaining_enemies == 0:
-		print("Semua wave selesai!")	
+		SoundManager.play_bgm(winbgm, false, false)
+		print("Semua wave selesai!")
 		win_screen.visible = true
 		get_tree().paused = true
 		return

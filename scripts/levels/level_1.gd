@@ -28,6 +28,11 @@ var wave_data = [
 	[ {"scene": preload("res://scenes/enemy/tank2.tscn") }, {"scene": preload("res://scenes/enemy/tank2.tscn") }, {"scene": preload("res://scenes/enemy/tank1.tscn") } ]
 ]
 
+@export var bgm : AudioStreamMP3
+@export var runbgm : AudioStreamMP3
+@export var winbgm : AudioStreamMP3
+@export var losebgm : AudioStreamMP3
+
 func _ready():
 	# initialize UI and timer
 	wave_label.text = "Wave 1/%d" % wave_data.size()
@@ -41,19 +46,26 @@ func _ready():
 	# DO NOT start waves automatically
 	# The start_wave will be called by the start_battle button
 
+func get_bgm():
+	return bgm
+
 func _process(delta):
 	hp_label.text = str(ResourcesManager.hp)
 	coin_label.text = str(ResourcesManager.gold)
 	energy_label.text = str(int(ResourcesManager.energy))
 	
 	if (ResourcesManager.hp <= 0 or ResourcesManager.energy <= 0) and not is_game_over_handled:
+		SoundManager.play_bgm(losebgm, false, false)
 		is_game_over_handled = true
 		game_over.visible = true
 		get_tree().paused = true
-		
+	
 func start_wave():
 	enemy_queue.clear()
+	if current_wave == 0:
+		SoundManager.play_bgm(runbgm,true)
 	if current_wave >= wave_data.size():
+		SoundManager.play_bgm(winbgm, false, false)
 		print("Semua wave selesai!")
 		win_screen.visible = true
 		get_tree().paused = true

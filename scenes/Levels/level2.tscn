@@ -1,11 +1,15 @@
-[gd_scene load_steps=31 format=4 uid="uid://b02ypjvs52k1g"]
+[gd_scene load_steps=34 format=4 uid="uid://b02ypjvs52k1g"]
 
 [ext_resource type="Texture2D" uid="uid://c4kkhofhke3qb" path="res://assets/mana seed seasonal forest sample (autumn)/seasonal sample (autumn).png" id="1_khvkq"]
 [ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_y2po5"]
 [ext_resource type="Texture2D" uid="uid://c67y66bqmu60i" path="res://assets/mana seed seasonal forest sample (winter)/seasonal water animations/winter water sparkles B 16x16.png" id="2_1h8jx"]
+[ext_resource type="AudioStream" uid="uid://bakvcs1dfst3e" path="res://assets/sound/bgm/level2.mp3" id="2_ap053"]
 [ext_resource type="Texture2D" uid="uid://c44odg3vtfo33" path="res://assets/mana seed seasonal forest sample (autumn)/seasonal water animations/autumn waterfall B 16x16.png" id="2_c6qsw"]
+[ext_resource type="AudioStream" uid="uid://d25ljto26m1ji" path="res://assets/sound/bgm/level2run.mp3" id="3_rgqh6"]
+[ext_resource type="AudioStream" uid="uid://cie3f8p6reyex" path="res://assets/sound/bgm/win.mp3" id="4_27ch6"]
+[ext_resource type="AudioStream" uid="uid://cxslsakq33in8" path="res://assets/sound/bgm/lose.mp3" id="5_lo1je"]
 [ext_resource type="Texture2D" uid="uid://c0m4tvak3pv5x" path="res://assets/healthbar.png" id="7_0f76c"]
-[ext_resource type="PackedScene" uid="uid://2tkipgbfq7n4" path="res://scenes/Levels/win_screen.tscn" id="7_tvhaa"]
+[ext_resource type="PackedScene" uid="uid://eqgv7d0og65b" path="res://scenes/Levels/win_screen.tscn" id="7_tvhaa"]
 [ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="9_384f0"]
 [ext_resource type="Script" path="res://scripts/levels/start_battle.gd" id="9_tpf36"]
 [ext_resource type="PackedScene" uid="uid://j6misgjrn25h" path="res://scenes/UI/tower_selections_ui.tscn" id="10_r5404"]
@@ -1297,6 +1301,10 @@ point_count = 12
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_y2po5")
+bgm = ExtResource("2_ap053")
+runbgm = ExtResource("3_rgqh6")
+winbgm = ExtResource("4_27ch6")
+losebgm = ExtResource("5_lo1je")
 
 [node name="TileMap" type="Node2D" parent="."]
 position = Vector2(0, 250)
@@ -1396,6 +1404,7 @@ visible = false
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_ifjag")
 autoplay = true
+bus = &"BGM"
 
 [node name="PathArrow" type="TextureRect" parent="."]
 offset_left = 103.0

@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://514k5b5q723t"]
+[gd_scene load_steps=12 format=3 uid="uid://514k5b5q723t"]
 
 [ext_resource type="Texture2D" uid="uid://dtus7ex80cybg" path="res://assets/MainMenu.png" id="1_g4j0d"]
+[ext_resource type="Script" path="res://scripts/main_menu/main_menu.gd" id="1_r4xdp"]
 [ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="2_jw7bk"]
+[ext_resource type="AudioStream" uid="uid://cnqjn4tmdywbs" path="res://assets/sound/bgm/mainmenu.mp3" id="2_tee24"]
 [ext_resource type="Script" path="res://scripts/main_menu/play_button.gd" id="4_fyrgf"]
 [ext_resource type="Script" path="res://scripts/main_menu/quit_button.gd" id="5_l6ne5"]
 [ext_resource type="Texture2D" uid="uid://bfoc8dmpnxdwu" path="res://assets/leaf.png" id="6_cbekf"]
@@ -30,6 +32,8 @@ scale_max = 0.05
 color_ramp = SubResource("GradientTexture1D_ekx5a")
 
 [node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_r4xdp")
+bgm = ExtResource("2_tee24")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.517647)
