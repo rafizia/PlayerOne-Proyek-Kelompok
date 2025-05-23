@@ -11,15 +11,22 @@ config_version=5
 [application]
 
 config/name="PlayerOne Proyek Kelompok"
+config/version="1.0.0"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Icon.png"
 
 [autoload]
 
-ResourceManager="*res://scripts/managers/resource_manager.gd"
 TransitionLayer="*res://scenes/transition_layer.tscn"
 TowerPlacerManager="*res://scripts/managers/tower_placer_manager.gd"
+SoundManager="*res://scenes/sound_manager.tscn"
+ResourcesManager="*res://scripts/managers/resource_manager.gd"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
 
 [global_group]
 

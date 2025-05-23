@@ -2,6 +2,7 @@ extends LinkButton
 
 
 func _on_pressed() -> void:
+	SoundManager.play_click()
 	get_tree().paused = false
 	# Reset tower placer manager before transitioning
 	var tower_placer = get_node("/root/TowerPlacerManager")
@@ -10,6 +11,10 @@ func _on_pressed() -> void:
 		tower_placer.is_dragging = false
 		tower_placer.can_place = false
 		tower_placer.tilemap_layers = []
+		
+	ResourcesManager.hp = 20
+	ResourcesManager.gold = 50
+	ResourcesManager.energy = 100
 	
 	TransitionLayer.transition(true)
 	await TransitionLayer.on_transition_finished
