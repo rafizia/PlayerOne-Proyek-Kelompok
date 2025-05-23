@@ -1,39 +1,41 @@
 [gd_scene load_steps=20 format=3 uid="uid://d2in52y6ycisl"]
 
 [ext_resource type="Script" path="res://scripts/towers/attack_tower.gd" id="1_7cibg"]
-[ext_resource type="Texture2D" uid="uid://bdq214k1dfden" path="res://assets/towers/gun-turret/Gun-Turret-1.png" id="1_y2kio"]
 [ext_resource type="PackedScene" uid="uid://cjmcp3atom5c8" path="res://scenes/Towers/GunTurret/bullet_red.tscn" id="2_wanj0"]
 [ext_resource type="AudioStream" uid="uid://prftxxes78qj" path="res://assets/sound/sfx/shot.wav" id="3_21of3"]
 [ext_resource type="Texture2D" uid="uid://ca03ken5iggig" path="res://assets/towers/arrow_up.png" id="4_jeuub"]
 [ext_resource type="Script" path="res://scripts/towers/effect_area_draw.gd" id="4_pqr0a"]
 [ext_resource type="AudioStream" uid="uid://dxpudimagl6l4" path="res://assets/sound/sfx/sniper.wav" id="4_tr16t"]
+[ext_resource type="Texture2D" uid="uid://b1j52phbqoo87" path="res://assets/towers/gun-turret/Gun-Turret-Muzzle.png" id="4_22vyc"]
+[ext_resource type="Texture2D" uid="uid://dq4hj5c8pctbn" path="res://assets/towers/gun-turret/Gun-Turret-Base.png" id="4_yaurk"]
 [ext_resource type="FontFile" uid="uid://cnbae18fxsbpb" path="res://assets/Fonts/Raw/VCR_OSD_MONO_1.001.ttf" id="5_gff3m"]
+[ext_resource type="Script" path="res://scripts/towers/muzzle.gd" id="5_okg8s"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c54au"]
-atlas = ExtResource("1_y2kio")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r8yh"]
+atlas = ExtResource("4_22vyc")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_doq0e"]
-atlas = ExtResource("1_y2kio")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rb0q"]
+atlas = ExtResource("4_22vyc")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dsm4w"]
-atlas = ExtResource("1_y2kio")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dxgr"]
+atlas = ExtResource("4_22vyc")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1mu2o"]
-atlas = ExtResource("1_y2kio")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dhmw"]
+atlas = ExtResource("4_22vyc")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_thp5d"]
-atlas = ExtResource("1_y2kio")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvhen"]
+atlas = ExtResource("4_22vyc")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_edxmu"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_68cvc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c54au")
+"texture": SubResource("AtlasTexture_1r8yh")
 }],
 "loop": true,
 "name": &"idle",
@@ -41,20 +43,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_doq0e")
+"texture": SubResource("AtlasTexture_2rb0q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dsm4w")
+"texture": SubResource("AtlasTexture_8dxgr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1mu2o")
+"texture": SubResource("AtlasTexture_7dhmw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_thp5d")
+"texture": SubResource("AtlasTexture_mvhen")
 }],
 "loop": false,
 "name": &"shoot",
-"speed": 8.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcaos"]
@@ -92,14 +94,17 @@ upgrade_cost_base = 25
 sfx = ExtResource("3_21of3")
 bigsfx = ExtResource("4_tr16t")
 
-[node name="Aim" type="Marker2D" parent="."]
-position = Vector2(30, -5)
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("4_yaurk")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_edxmu")
+[node name="Muzzle" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.5, 0)
+sprite_frames = SubResource("SpriteFrames_68cvc")
 animation = &"shoot"
-frame = 3
-frame_progress = 1.0
+script = ExtResource("5_okg8s")
+
+[node name="Aim" type="Marker2D" parent="Muzzle"]
+position = Vector2(30, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
@@ -124,10 +129,10 @@ shape = SubResource("RectangleShape2D_864wr")
 [node name="CooldownTimer" type="Timer" parent="."]
 
 [node name="Area" type="Panel" parent="."]
-offset_left = -120.0
-offset_top = -120.0
-offset_right = 120.0
-offset_bottom = 120.0
+offset_left = -119.0
+offset_top = -116.0
+offset_right = 121.0
+offset_bottom = 124.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8od16")
 
 [node name="ClickArea" type="Control" parent="."]
@@ -171,7 +176,7 @@ theme_override_font_sizes/font_size = 14
 text = "10"
 horizontal_alignment = 1
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
+[connection signal="animation_finished" from="Muzzle" to="." method="_on_muzzle_animation_finished"]
 [connection signal="body_entered" from="EffectArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="EffectArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

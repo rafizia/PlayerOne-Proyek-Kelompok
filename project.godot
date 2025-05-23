@@ -22,6 +22,10 @@ TowerPlacerManager="*res://scripts/managers/tower_placer_manager.gd"
 SoundManager="*res://scenes/sound_manager.tscn"
 ResourcesManager="*res://scripts/managers/resource_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 enemies=""

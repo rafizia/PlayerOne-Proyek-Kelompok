@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://scripts/levels/start_battle.gd" id="8_yk5th"]
 [ext_resource type="PackedScene" uid="uid://j6misgjrn25h" path="res://scenes/UI/tower_selections_ui.tscn" id="9_x24t2"]
 [ext_resource type="PackedScene" uid="uid://2tkipgbfq7n4" path="res://scenes/Levels/win_screen.tscn" id="10_x1c2e"]
-[ext_resource type="PackedScene" path="res://scenes/Levels/game_over.tscn" id="11_u5c5x"]
+[ext_resource type="PackedScene" uid="uid://dprbda82qialb" path="res://scenes/Levels/game_over.tscn" id="11_u5c5x"]
 [ext_resource type="AudioStream" uid="uid://cb86r0nabwdu0" path="res://assets/sfx/11L-Epic_orchestral_back-1747871572893.mp3" id="12_pbmni"]
 [ext_resource type="Texture2D" uid="uid://cgeyoeihbyjlx" path="res://assets/yellow_arrow.png" id="13_pgj4v"]
 
