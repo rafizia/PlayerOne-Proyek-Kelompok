@@ -9,7 +9,7 @@
 [ext_resource type="FontFile" uid="uid://bma6mtaigioet" path="res://assets/Fonts/Raw/Pixellari.ttf" id="9_384f0"]
 [ext_resource type="Script" path="res://scripts/levels/start_battle.gd" id="9_tpf36"]
 [ext_resource type="PackedScene" uid="uid://j6misgjrn25h" path="res://scenes/UI/tower_selections_ui.tscn" id="10_r5404"]
-[ext_resource type="PackedScene" path="res://scenes/Levels/game_over.tscn" id="12_f5rmg"]
+[ext_resource type="PackedScene" uid="uid://dprbda82qialb" path="res://scenes/Levels/game_over.tscn" id="12_f5rmg"]
 [ext_resource type="AudioStream" uid="uid://cb86r0nabwdu0" path="res://assets/sfx/11L-Epic_orchestral_back-1747871572893.mp3" id="13_ifjag"]
 [ext_resource type="PackedScene" uid="uid://cfm55348ldayh" path="res://scenes/Levels/level_ui.tscn" id="13_yex21"]
 [ext_resource type="Texture2D" uid="uid://cgeyoeihbyjlx" path="res://assets/yellow_arrow.png" id="14_0os0o"]

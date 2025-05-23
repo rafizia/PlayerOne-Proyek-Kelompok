@@ -127,9 +127,17 @@ func upgrade() -> bool:
 			
 			tower_level += 1
 			if tower_level == 2:
-				$AnimatedSprite2D.modulate = Color.YELLOW
+				if has_node("AnimatedSprite2D"):
+					$AnimatedSprite2D.modulate = Color.YELLOW
+				else:
+					$Base.modulate = Color.YELLOW
+					$Muzzle.modulate = Color.YELLOW			
 			elif tower_level == 3:
-				$AnimatedSprite2D.modulate = Color.RED
+				if has_node("AnimatedSprite2D"):
+					$AnimatedSprite2D.modulate = Color.RED
+				else:
+					$Base.modulate = Color.RED
+					$Muzzle.modulate = Color.RED
 			update_tower_stats()
 			update_upgrade_cost()
 			return true

@@ -35,10 +35,11 @@ var current_reload_time: float
 var enemies_in_range: Array = []
 var current_target: Node2D = null
 
-@onready var aim: Marker2D = $Aim
+@onready var aim: Marker2D = $Muzzle/Aim
 @onready var detection_area: Area2D = $EffectArea
 @onready var cooldown_timer: Timer = $CooldownTimer
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite: AnimatedSprite2D = $Muzzle
+
 
 func _ready():
 	super._ready()
@@ -110,6 +111,7 @@ func _process(delta):
 			return a.get_parent().progress > b.get_parent().progress
 		)
 		current_target = enemies_in_range[0]
+		get_node("Muzzle").look_at(current_target.global_position)
 		
 		if cooldown_timer.is_stopped():
 			shoot()
@@ -131,9 +133,9 @@ func shoot():
 		current_bullet_damage,
 		current_bullet_speed,
 		spawn_pos
-	)
-
-func _on_animation_finished():
+	)	
+	
+func _on_muzzle_animation_finished() -> void:
 	animated_sprite.stop()
 
 func _on_detection_area_body_entered(body):
@@ -178,3 +180,10 @@ func remove_damage_boost(boost_amount: float):
 	# Remove damage boost and return to base damage
 	current_bullet_damage = base_damage
 	remove_meta("support_boost")
+	
+func _physics_process(delta: float) -> void:
+	pass
+	
+func turn():
+	var enemy_position = get_global_mouse_position()
+	get_node("Muzzle").look_at(enemy_position)
